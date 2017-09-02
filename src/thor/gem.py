@@ -1,4 +1,5 @@
-import tatsu
+import pprint
+
 import tatsu.model
 import tatsu.walkers
 
@@ -94,7 +95,6 @@ class GEMWalker(tatsu.model.NodeWalker):
 if __name__ == '__main__':
     parser = tatsu.compile(GRAMMAR, asmodel=True)
     model = parser.parse(EXAMPLE2)
-
-    print('# WALKER RESULT')
-    result = GEMWalker().walk(model)
-    print(result)
+    gem = GEMWalker().walk(model)
+    p = pprint.PrettyPrinter(indent=2)
+    p.pprint(gem)

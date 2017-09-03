@@ -16,6 +16,8 @@ def sites(site):
         data = app.current_request.raw_body
         app.log.info("Received data: %s", data)
 
+        # TODO: Split this into a dedicated lambda function
+        # to make the API async. Currently it takes about 4 seconds to execute
         if constants.LOG_REQUESTS:
             n = "%s.req" % datetime.datetime.now()
             p = os.path.join(constants.REQ_DIR, n)
@@ -31,6 +33,7 @@ def sites(site):
     except Exception as ex:
         app.log.error(str(ex), exc_info=True)
         raise chalice.ChaliceViewError(str(ex))
+
 
 @app.lambda_function(name='splunk-delivery')
 def splunk_delivery(event, context):

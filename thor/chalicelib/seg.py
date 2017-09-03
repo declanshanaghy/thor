@@ -28,21 +28,22 @@ PRUNE_EMPTY = True
 class SEGWalker(tatsu.model.NodeWalker):
 
     channels = None
-    seg = {
-        SITE: None,
-        NODE: None,
-        TIMESTAMP: None,
-        VOLTAGE: None,
-        ELECTRICITY: {
-            ENERGY: {},
-            POWER: {},
-            CURRENT: {}
-        },
-        TEMPERATURE: {}
-    }
+    seg = None
 
     def __init__(self):
         self.channels = utils.load_yaml("channels.json")
+        self.seg = {
+            SITE: None,
+            NODE: None,
+            TIMESTAMP: None,
+            VOLTAGE: None,
+            ELECTRICITY: {
+                ENERGY: {},
+                POWER: {},
+                CURRENT: {}
+            },
+            TEMPERATURE: {}
+        }
 
     def walk_object(self, node):
         return node

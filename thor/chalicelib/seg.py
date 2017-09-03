@@ -69,22 +69,21 @@ class SEGWalker(tatsu.model.NodeWalker):
         e = self.seg[ELECTRICITY][ENERGY]
         p = self.seg[ELECTRICITY][POWER]
         c = self.seg[ELECTRICITY][CURRENT]
-        for type in [ ENERGY, POWER, CURRENT ]:
-            for ch, data in self.seg[ELECTRICITY][type].items():
-                # Remove the reading if:
-                # the channel is not mapped
-                #   and
-                # any 2 entries are zero
-                if (isinstance(ch, int) and
-                        (e.get(ch, 0) == 0 and p.get(ch, 0) == 0) or
-                        (c.get(ch, 0) == 0 and p.get(ch, 0) == 0) or
-                        (e.get(ch, 0) == 0 and c.get(ch, 0) == 0)):
-                    if ch in e:
-                        del e[ch]
-                    if ch in p:
-                        del p[ch]
-                    if ch in c:
-                        del c[ch]
+        for ch, data in self.seg[ELECTRICITY][CURRENT].items():
+            # Remove the reading if:
+            # the channel is not mapped
+            #   and
+            # any 2 entries are zero
+            if (isinstance(ch, int) and
+                    (e.get(ch, 0) == 0 and p.get(ch, 0) == 0) or
+                    (c.get(ch, 0) == 0 and p.get(ch, 0) == 0) or
+                    (e.get(ch, 0) == 0 and c.get(ch, 0) == 0)):
+                if ch in e:
+                    del e[ch]
+                if ch in p:
+                    del p[ch]
+                if ch in c:
+                    del c[ch]
 
     def _prune_temperature(self):
         for channel, data in self.seg[TEMPERATURE].items():

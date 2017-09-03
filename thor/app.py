@@ -23,12 +23,11 @@ def sites(site):
                 f.write(data)
 
         g = seg.parse(data)
+
         d = json.dumps(g, indent=4, sort_keys=True)
         app.log.info("Parsed data: %s", d)
-        if site == g['site']:
-            return g
-        else:
-            raise chalice.BadRequestError("Requested site does not match data")
+
+        return g
     except Exception as ex:
         app.log.error(str(ex), exc_info=True)
         raise chalice.ChaliceViewError(str(ex))

@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "region": "us-west-1",
+    "api_handler_name": "thor-dev",
+    "api_handler_arn": "arn:aws:lambda:us-west-1:137462835382:function:thor-dev",
+    "rest_api_id": "ujygkd0eyg",
+    "lambda_functions": {},
+    "chalice_version": "1.0.1",
+    "api_gateway_stage": "api",
+    "backend": "api"
+  }
+}

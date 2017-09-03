@@ -1,0 +1,26 @@
+@@grammar::SEG
+
+start::Gem =
+    '(site' site:site_name
+        '(node' node:node_name
+                ts:ts
+                measurements:{measurement}+
+        ')'
+    ')';
+
+site_name = identifier;
+node_name = identifier;
+ts = '?';
+measurement::Measurement = '(' reading:(energy|power|current|temperature|voltage) ')';
+
+energy::Energy = 'e_' ch:channel kwh:decimal;
+power::Power = 'p_' ch:channel w:decimal;
+current::Current = 'a_' ch:channel a:decimal;
+temperature::Temperature = 'temperature_' ch:channel t:('x'|decimal);
+voltage::Voltage = 'voltage' v:decimal;
+
+identifier = /[a-zA-Z0-9-_]+/;
+
+channel::int = integer;
+integer::int = /[0-9]+/;
+decimal::float = /(-?(0|[1-9]\d*)?(\.\d+)?(?<=\d)(e-?(0|[1-9]\d*))?|0x[0-9a-f]+)/;

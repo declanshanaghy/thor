@@ -1,12 +1,11 @@
 import time
 import json
-import os
 
 import tatsu.model
 import tatsu.walkers
 
-import chalicelib.examples as examples
-import chalicelib.utils as utils
+from chalicelib import examples
+from chalicelib import utils
 
 
 SITE = "site"

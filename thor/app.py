@@ -4,8 +4,8 @@ import datetime
 import json
 import logging
 
-import chalicelib.constants as constants
-import chalicelib.seg as seg
+from chalicelib import constants
+from chalicelib import seg
 
 app = chalice.Chalice(app_name='thor')
 app.log.setLevel(logging.DEBUG)
@@ -32,3 +32,8 @@ def sites(site):
         app.log.error(str(ex), exc_info=True)
         raise chalice.ChaliceViewError(str(ex))
 
+@app.lambda_function(name='splunk-delivery')
+def splunk_delivery(event, context):
+    app.log.info('action=handler, status=start, event=%s', event)
+    app.log.debug('action=debug_context, context="%s"', dir(context))
+    return {"delivered": "splunk"}

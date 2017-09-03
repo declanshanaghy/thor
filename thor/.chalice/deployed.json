@@ -3,8 +3,13 @@
     "region": "us-west-2",
     "api_handler_name": "thor-dev",
     "api_handler_arn": "arn:aws:lambda:us-west-2:137462835382:function:thor-dev",
-    "rest_api_id": "y0hi3p0tl4",
-    "lambda_functions": {},
+    "rest_api_id": "y4c0o8x0h2",
+    "lambda_functions": {
+      "thor-dev-splunk-delivery": {
+        "type": "pure_lambda",
+        "arn": "arn:aws:lambda:us-west-2:137462835382:function:thor-dev-splunk-delivery"
+      }
+    },
     "chalice_version": "1.0.1",
     "api_gateway_stage": "api",
     "backend": "api"

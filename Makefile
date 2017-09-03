@@ -1,7 +1,7 @@
 
 .PHONY: venv
 
-AWS_DEFAULT_REGION=us-west-2
+AWS_DEFAULT_REGION := us-west-2
 
 #####
 #

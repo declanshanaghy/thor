@@ -1,7 +1,6 @@
 import os
 import datetime
 import json
-import logging
 
 import web
 
@@ -27,16 +26,25 @@ class Sites:
                 with open(p, "w") as f:
                     f.write(data)
 
-            g = seg.parse(data)
-            j = json.dumps(g, indent=4)
+            s = seg.parse(data)
+            logger.info("Parsed data: %s", s.seg)
 
-            logger.info("Parsed data: %s", g)
-
-            r = splunk.send(g)
+            r = splunk.send(s.records, time=s.time,
+                            source=s.fq_node, logger=logger)
             logger.info("Splunk response: %s", r)
 
             web.header('Content-Type', 'application/json')
-            return j
+
+            ret = {
+                seg.TIMESTAMP: s.timestamp,
+                seg.SITE: s.site,
+                seg.NODE: s.node,
+                seg.FQ_NODE: s.fq_node,
+                seg.VOLTAGE: s.voltage,
+                seg.ELECTRICITY: len(s.seg[seg.ELECTRICITY]),
+                seg.TEMPERATURE: len(s.seg[seg.TEMPERATURE]),
+            }
+            return json.dumps(ret, indent=4, sort_keys=True)
         except Exception as ex:
             logger.error(str(ex), exc_info=True)
             raise web.BadRequest(str(ex))

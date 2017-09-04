@@ -1,3 +1,4 @@
+import logging
 import json
 import os
 
@@ -6,14 +7,15 @@ import seg
 import splunk
 
 
+
 if __name__ == "__main__":
     for root, dirs, files in os.walk(constants.REQ_DIR):
         for name in files:
             n = os.path.join(root, name)
-            print("Reading " + n)
             with open(n) as f:
                 data = f.read()
-            print("Parsing")
+            print("Parsing " + n)
             s = seg.parse(data)
-            print("Sending " + json.dumps(s, indent=2))
-            splunk.send(s)
+            print("Sending " + json.dumps(s.records, indent=4))
+            r = splunk.send(s.records, time=s.time,
+                            source="dshanaghy-mpb:local", logger=logging)

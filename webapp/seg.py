@@ -8,6 +8,8 @@ import utils
 
 SITE = "site"
 NODE = "node"
+FQ_NODE = "fq_node"
+TIME = "time"
 TIMESTAMP = "timestamp"
 TIMESTAMP_CURRENT = "?"
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M:%S %z"
@@ -16,6 +18,7 @@ ELECTRICITY = "electricity"
 TEMPERATURE = "temperature"
 TEMPERATURE_UNKNOWN = "x"
 
+CHANNEL = "channel"
 POWER = "power"
 CURRENT = "current"
 ENERGY = "energy"
@@ -25,7 +28,7 @@ NAME = "name"
 PRUNE_EMPTY = True
 
 
-class SEGWalker(tatsu.model.NodeWalker):
+class JSONWalker(tatsu.model.NodeWalker):
 
     channels = None
     electricity = None
@@ -38,11 +41,36 @@ class SEGWalker(tatsu.model.NodeWalker):
         self.seg = {
             SITE: None,
             NODE: None,
+            TIME: None,
             TIMESTAMP: None,
             VOLTAGE: None,
             ELECTRICITY: [],
             TEMPERATURE: []
         }
+
+    @property
+    def fq_node(self):
+        return self.site + ':' + self.node
+
+    @property
+    def site(self):
+        return self.seg[SITE]
+
+    @property
+    def node(self):
+        return self.seg[NODE]
+
+    @property
+    def timestamp(self):
+        return self.seg[TIMESTAMP]
+
+    @property
+    def time(self):
+        return self.seg[TIME]
+
+    @property
+    def voltage(self):
+        return self.seg[VOLTAGE]
 
     def walk_object(self, node):
         return node
@@ -55,6 +83,8 @@ class SEGWalker(tatsu.model.NodeWalker):
             node.ts = time.strftime(TIMESTAMP_FORMAT)
 
         self.seg[TIMESTAMP] = node.ts
+        self.seg[TIME] = time.time()
+
         for measurement in node.measurements:
             self.walk(measurement)
 
@@ -62,7 +92,7 @@ class SEGWalker(tatsu.model.NodeWalker):
             self._prune_electricity()
             self._prune_temperature()
 
-        return self.seg
+        return self
 
     def _prune_electricity(self):
         for ch, data in self.electritiy.items():
@@ -104,6 +134,7 @@ class SEGWalker(tatsu.model.NodeWalker):
         mapped_name = self.channels[ELECTRICITY].get(str(node.ch), ch)
         if not mapped_name in self.electritiy:
             self.electritiy[mapped_name] = {
+                CHANNEL: ch,
                 POWER: 0.0,
                 CURRENT: 0.0,
                 ENERGY: 0.0
@@ -135,8 +166,48 @@ class SEGWalker(tatsu.model.NodeWalker):
         return node
 
 
+class SplunkKVWalker(JSONWalker):
+    records = None
+
+    def walk__gem(self, node):
+        super(SplunkKVWalker, self).walk__gem(node)
+        self._create_records()
+        return self
+
+    def _create_records(self):
+        self.records = [
+            ", ".join([
+                'site="' + self.seg[SITE] + '"',
+                'node="' + self.seg[NODE] + '"',
+                'type="' + VOLTAGE + '"',
+                VOLTAGE + '=' + str(self.seg[VOLTAGE]),
+            ])
+        ]
+
+        for data in self.seg[ELECTRICITY]:
+            self.records.append(", ".join([
+                'site="' + self.seg[SITE] + '"',
+                'node="' + self.seg[NODE] + '"',
+                'type="' + ELECTRICITY + '"',
+                NAME + '="' + data[NAME] + '"',
+                CHANNEL + '=' + str(data[CHANNEL]),
+                POWER + '=' + str(data[POWER]),
+                CURRENT + '=' + str(data[CURRENT]),
+                ENERGY + '=' + str(data[ENERGY])
+            ]))
+
+        for data in self.seg[TEMPERATURE]:
+            self.records.append(", ".join([
+                'site="' + self.seg[SITE] + '"',
+                'node="' + self.seg[NODE] + '"',
+                'type="' + TEMPERATURE + '"',
+                NAME + '="' + data[NAME] + '"',
+                TEMPERATURE + '=' + str(data[TEMPERATURE]),
+            ]))
+
+
 def parse(data):
     grammar = utils.load_data("seg.ebnf")
     parser = tatsu.compile(grammar, asmodel=True)
     model = parser.parse(data)
-    return SEGWalker().walk(model)
+    return SplunkKVWalker().walk(model)

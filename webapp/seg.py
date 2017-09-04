@@ -26,7 +26,7 @@ ENERGY = "energy"
 
 NAME = "name"
 
-PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", False)
+PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", True)
 
 
 class JSONWalker(tatsu.model.NodeWalker):

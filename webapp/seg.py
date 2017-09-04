@@ -1,3 +1,4 @@
+import os
 import time
 
 import tatsu.model
@@ -25,7 +26,7 @@ ENERGY = "energy"
 
 NAME = "name"
 
-PRUNE_EMPTY = True
+PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", False)
 
 
 class JSONWalker(tatsu.model.NodeWalker):
@@ -92,21 +93,24 @@ class JSONWalker(tatsu.model.NodeWalker):
             self._prune_electricity()
             self._prune_temperature()
 
+        self._format_electricity()
+
         return self
 
     def _prune_electricity(self):
-        for ch, data in self.electritiy.items():
-            # Remove the reading if:
-            # the channel is not mapped
-            #   and
-            # any 2 entries are zero
-            if (isinstance(ch, int) and
-                    (data.get(ENERGY, 0) == 0 and data.get(POWER, 0) == 0) or
-                    (data.get(CURRENT, 0) == 0 and data.get(POWER, 0) == 0) or
-                    (data.get(ENERGY, 0) == 0 and data.get(CURRENT, 0) == 0)):
-                del self.electritiy[ch]
+        if PRUNE_EMPTY:
+            for ch, data in self.electritiy.items():
+                # Remove the reading if:
+                # the channel is not mapped
+                #   and
+                # any 2 entries are zero
+                if (isinstance(ch, int) and
+                        (data.get(ENERGY, 0) == 0 and data.get(POWER, 0) == 0) or
+                        (data.get(CURRENT, 0) == 0 and data.get(POWER, 0) == 0) or
+                        (data.get(ENERGY, 0) == 0 and data.get(CURRENT, 0) == 0)):
+                    del self.electritiy[ch]
 
-
+    def _format_electricity(self):
         for ch, data in self.electritiy.items():
             reading = {NAME: ch}
             reading.update(data)
@@ -189,7 +193,7 @@ class SplunkKVWalker(JSONWalker):
                 'site="' + self.seg[SITE] + '"',
                 'node="' + self.seg[NODE] + '"',
                 'type="' + ELECTRICITY + '"',
-                NAME + '="' + data[NAME] + '"',
+                NAME + '="' + str(data[NAME]) + '"',
                 CHANNEL + '=' + str(data[CHANNEL]),
                 POWER + '=' + str(data[POWER]),
                 CURRENT + '=' + str(data[CURRENT]),
@@ -201,7 +205,7 @@ class SplunkKVWalker(JSONWalker):
                 'site="' + self.seg[SITE] + '"',
                 'node="' + self.seg[NODE] + '"',
                 'type="' + TEMPERATURE + '"',
-                NAME + '="' + data[NAME] + '"',
+                NAME + '="' + str(data[NAME]) + '"',
                 TEMPERATURE + '=' + str(data[TEMPERATURE]),
             ]))
 

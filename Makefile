@@ -1,7 +1,13 @@
 
-.PHONY: venv
+.PHONY: venv deploy webapp
+
+CWD := $(shell pwd)
 
 AWS_DEFAULT_REGION := us-west-2
+STACK := thor-20170903
+BUCKET := thor-20170903
+DEPLOY_USER := ec2-user
+DEPLOY_TGT := 35.166.45.189
 
 #####
 #
@@ -27,15 +33,25 @@ OK=$(GRN)
 WARN=$(PURPLE)
 ERR=$(RED)
 
-deploy:
-	@echo "Deploying to $(AWS_DEFAULT_REGION)"
-	@. venv/bin/activate && \
-	    cd thor && \
-	    AWS_DEFAULT_REGION=$(AWS_DEFAULT_REGION) chalice deploy
+delpoy: cfn webapp
+
+cfn:
+	@echo "Updating CloudFormation stack: $(STACK)..."
+	@aws s3 cp deploy/thor.yml s3://$(BUCKET)/thor.yml
+	@aws --region $(AWS_DEFAULT_REGION) cloudformation update-stack \
+	    --stack-name $(STACK) \
+	    --template-url http://$(BUCKET).s3-$(AWS_DEFAULT_REGION).amazonaws.com/thor.yml || true
+
+webapp:
+	@echo "Deploying to $(DEPLOY_TGT)"
+	@rsync -avzl --exclude=*.pyc -e ssh webapp ${DEPLOY_USER}@${DEPLOY_TGT}:~/thor/
+	@ssh ${DEPLOY_USER}@${DEPLOY_TGT} bash -s < update_webapp.sh
 
 venv:
 	@echo "Creating virtual environment" && \
 	virtualenv --prompt "\n(venv: thor)" venv && \
 	. venv/bin/activate && \
-	    echo `which python` && pip install -U setuptools==18.5 && \
-	    pip install -r thor/requirements.txt
+	    echo `which python` && \
+	    pip install -U setuptools && \
+	    pip install -U pip \
+	    pip install -r requirements.txt

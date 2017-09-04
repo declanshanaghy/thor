@@ -1,0 +1,4 @@
+web.py==0.38
+wsgilog==0.3.1
+tatsu==4.2.3
+requests==2.18.4

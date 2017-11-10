@@ -1,5 +1,7 @@
 import collections
+import constants
 import json
+import logging
 
 import requests
 import requests.auth
@@ -10,7 +12,48 @@ HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
 DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}
 
 
-def send(records, time=None, source=None, sourcetype=None, logger=None):
+class SplunkKVWalker():
+    gem = None
+    records = None
+
+    def __init__(self, gem):
+        self.gem = gem
+        self._create_records()
+
+    def _create_records(self):
+        self.records = [
+            ", ".join([
+                'site="' + self.gem.site + '"',
+                'node="' + self.gem.node + '"',
+                'type="' + constants.VOLTAGE + '"',
+                constants.VOLTAGE + '=' + str(self.gem.voltage),
+            ])
+        ]
+
+        for data in self.gem.electricity:
+            self.records.append(", ".join([
+                'site="' + self.gem.site + '"',
+                'node="' + self.gem.node + '"',
+                'type="' + constants.ELECTRICITY + '"',
+                constants.NAME + '="' + str(data[constants.NAME]) + '"',
+                constants.CHANNEL + '=' + str(data[constants.CHANNEL]),
+                constants.POWER + '=' + str(data[constants.POWER]),
+                constants.CURRENT + '=' + str(data[constants.CURRENT]),
+                constants.ENERGY + '=' + str(data[constants.ENERGY])
+            ]))
+
+        for data in self.gem.temperature:
+            self.records.append(", ".join([
+                'site="' + self.gem.site + '"',
+                'node="' + self.gem.node + '"',
+                'type="' + constants.TEMPERATURE + '"',
+                constants.NAME + '="' + str(data[constants.NAME]) + '"',
+                constants.TEMPERATURE + '=' + str(data[constants.TEMPERATURE]),
+            ]))
+
+
+def _send_events(records, time=None, source=None,
+                 sourcetype=None, logger=None):
     events = []
     for record in records:
         d = collections.OrderedDict()
@@ -35,4 +78,14 @@ def send(records, time=None, source=None, sourcetype=None, logger=None):
         return r.json()
     else:
         raise StandardError("%s: %s" % (r.status_code, r.text))
+
+
+def send(gem, source=None, sourcetype=None, logger=None):
+    if not logger:
+        logger = logging
+
+    w = SplunkKVWalker(gem)
+    r = _send_events(w.records, time=gem.time,
+                     source=source, sourcetype=sourcetype, logger=logger)
+    logger.info("Splunk response: %s", r)
 

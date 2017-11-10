@@ -1,21 +1,44 @@
-import logging
-import json
 import os
 
-import constants
-import seg
+import requests
+
+import asciiwh
+import gem
 import splunk
 
 
+DATA_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data')
+
+
+def send_ascii_request():
+    with open(os.path.join(DATA_DIR, 'ascii_wh', 'req1.txt')) as f:
+        data = f.read()
+
+    response = requests.get("http://localhost:8080/asciiwh/?" + data)
+    print(response)
+
+
+def send_ascii():
+    with open(os.path.join(DATA_DIR, 'ascii_wh', 'req1.txt')) as f:
+        data = f.read()
+
+    items = data.split("&")
+    dct = { i.split("=")[0]: i.split("=")[1] for i in items }
+    g = gem.GEM()
+    asciiwh.parse(dct, g)
+
+    splunk.send(g)
+
+
+def send_seg_request():
+    with open(os.path.join(DATA_DIR, 'seg', 'req1.txt')) as f:
+        data = f.read()
+
+    response = requests.put("http://localhost:8080/sites/local", data=data)
+    print(response)
+
 
 if __name__ == "__main__":
-    for root, dirs, files in os.walk(constants.REQ_DIR):
-        for name in files:
-            n = os.path.join(root, name)
-            with open(n) as f:
-                data = f.read()
-            print("Parsing " + n)
-            s = seg.parse(data)
-            print("Sending " + json.dumps(s.records, indent=4))
-            r = splunk.send(s.records, time=s.time,
-                            source="dshanaghy-mpb:local", logger=logging)
+    # send_seg_request()
+    send_ascii_request()
+    # send_ascii()

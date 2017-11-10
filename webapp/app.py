@@ -5,12 +5,15 @@ import json
 import web
 
 import log
+
+import asciiwh
 import constants
 import seg
+import gem
 import splunk
 
 
-class Sites:
+class SEGReceiver:
     def PUT(self, site):
         logger = web.ctx.env.get('wsgilog.logger')
         logger.info("Processing site: %s", site)
@@ -20,29 +23,63 @@ class Sites:
             logger.info("Received data: %s", data)
 
             if constants.LOG_REQUESTS:
-                n = "%s.req" % datetime.datetime.now()
+                n = "%s.req.txt" % datetime.datetime.now()
                 p = os.path.join(constants.REQ_DIR, n)
                 logger.info("Logging request to: %s", p)
                 with open(p, "w") as f:
                     f.write(data)
 
-            s = seg.parse(data)
-            logger.info("Parsed data: %s", s.seg)
-
-            r = splunk.send(s.records, time=s.time,
-                            source=s.fq_node, logger=logger)
-            logger.info("Splunk response: %s", r)
+            g = gem.GEM()
+            seg.parse(data, g)
+            logger.info("Parsed GEM: %s", g)
+            splunk.send(g, logger=logger)
 
             web.header('Content-Type', 'application/json')
-
             ret = {
-                seg.TIMESTAMP: s.timestamp,
-                seg.SITE: s.site,
-                seg.NODE: s.node,
-                seg.FQ_NODE: s.fq_node,
-                seg.VOLTAGE: s.voltage,
-                seg.ELECTRICITY: len(s.seg[seg.ELECTRICITY]),
-                seg.TEMPERATURE: len(s.seg[seg.TEMPERATURE]),
+                constants.TIMESTAMP: g.timestamp,
+                constants.SITE: g.site,
+                constants.NODE: g.node,
+                constants.FQ_NODE: g.fq_node,
+                constants.VOLTAGE: g.voltage,
+                constants.ELECTRICITY: len(g.electricity),
+                constants.TEMPERATURE: len(g.temperature),
+            }
+            return json.dumps(ret, indent=4, sort_keys=True)
+        except Exception as ex:
+            logger.error(str(ex), exc_info=True)
+            raise web.BadRequest(str(ex))
+
+
+class ASCIIWHReceiver:
+    def GET(self):
+        logger = web.ctx.env.get('wsgilog.logger')
+
+        try:
+            data = web.input()
+            logger.info("Received data: %s", data)
+
+            if constants.LOG_REQUESTS:
+                n = "%s.req.txt" % datetime.datetime.now()
+                p = os.path.join(constants.REQ_DIR, n)
+                logger.info("Logging request to: %s", p)
+                s = "&".join("%s=%s" % (k, v) for k, v in data.items())
+                with open(p, "w") as f:
+                    f.write(s)
+
+            g = gem.GEM()
+            s = asciiwh.parse(data, g)
+            logger.info("Parsed data: %s", s)
+            splunk.send(s.gem, logger=logger)
+
+            web.header('Content-Type', 'application/json')
+            ret = {
+                constants.TIMESTAMP: g.timestamp,
+                constants.SITE: g.site,
+                constants.NODE: g.node,
+                constants.FQ_NODE: g.fq_node,
+                constants.VOLTAGE: g.voltage,
+                constants.ELECTRICITY: len(g.electricity),
+                constants.TEMPERATURE: len(g.temperature),
             }
             return json.dumps(ret, indent=4, sort_keys=True)
         except Exception as ex:
@@ -52,7 +89,9 @@ class Sites:
 
 if __name__ == "__main__":
     urls = (
-        '/sites/(.*)', 'Sites'
+        '/asciiwh', 'ASCIIWHReceiver',
+        '/newseg/(.*)', 'SEGReceiver',
+        '/sites/(.*)', 'SEGReceiver'
     )
     app = web.application(urls, globals())
     app.run(log.Log)

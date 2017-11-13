@@ -7,7 +7,7 @@ import constants
 import utils
 
 
-class SEGWalker(tatsu.model.NodeWalker):
+class NEWSEGWalker(tatsu.model.NodeWalker):
     electricity = {}
     gem = None
 
@@ -29,8 +29,6 @@ class SEGWalker(tatsu.model.NodeWalker):
 
         for measurement in node.measurements:
             self.walk(measurement)
-
-        self.gem.finalize()
 
         return self
 
@@ -58,9 +56,15 @@ class SEGWalker(tatsu.model.NodeWalker):
         return node
 
 
+class NEWSEGParser(object):
+    def __init__(self, data):
+        self.data = data
 
-def parse(data, gem):
-    grammar = utils.load_data("seg.ebnf")
-    parser = tatsu.compile(grammar, asmodel=True)
-    model = parser.parse(data)
-    return SEGWalker(gem).walk(model)
+    def parse(self, gem):
+        grammar = utils.load_data("seg.ebnf")
+        parser = tatsu.compile(grammar, asmodel=True)
+        model = parser.parse(self.data)
+        return NEWSEGWalker(gem).walk(model)
+
+    def format_log(self):
+        return self.data

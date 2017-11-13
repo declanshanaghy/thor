@@ -31,6 +31,7 @@ ENERGY = "energy"
 
 GEM_POWER = "p"
 GEM_CURRENT = "a"
+GEM_WHP = "whp"
 GEM_ENERGY = "wh"
 GEM_TEMPERATURE = "t"
 GEM_SERIAL = "n"

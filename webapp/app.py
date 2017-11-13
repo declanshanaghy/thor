@@ -1,86 +1,58 @@
 import os
 import datetime
 import json
+import logging
 
 import web
 
-import log
-
-import asciiwh
 import constants
 import seg
 import gem
+import log
 import splunk
 
 
-class SEGReceiver:
+class GEMReceiver(object):
+    def proc(self, parser, logger=None):
+        if not logger:
+            logger = logging
+
+        logger.info("Received data: %s", parser.data)
+
+        if constants.LOG_REQUESTS:
+            n = "%s.req.txt" % datetime.datetime.now()
+            p = os.path.join(constants.REQ_DIR, n)
+            logger.info("Logging request to: %s", p)
+            with open(p, "w") as f:
+                f.write(parser.format_log())
+
+        g = gem.GEM()
+        parser.parse(g)
+        g.finalize()
+
+        logger.info("Parsed GEM: %s", g)
+        splunk.send(g, logger=logger)
+
+        return {
+            constants.TIMESTAMP: g.timestamp,
+            constants.SITE: g.site,
+            constants.NODE: g.node,
+            constants.FQ_NODE: g.fq_node,
+            constants.VOLTAGE: g.voltage,
+            constants.ELECTRICITY: len(g.electricity),
+            constants.TEMPERATURE: len(g.temperature),
+        }
+
+
+class NewSEGReceiver(GEMReceiver):
     def PUT(self, site):
         logger = web.ctx.env.get('wsgilog.logger')
-        logger.info("Processing site: %s", site)
+        logger.info("Processing NewSEG. site=%s", site)
 
         try:
             data = web.data()
-            logger.info("Received data: %s", data)
-
-            if constants.LOG_REQUESTS:
-                n = "%s.req.txt" % datetime.datetime.now()
-                p = os.path.join(constants.REQ_DIR, n)
-                logger.info("Logging request to: %s", p)
-                with open(p, "w") as f:
-                    f.write(data)
-
-            g = gem.GEM()
-            seg.parse(data, g)
-            logger.info("Parsed GEM: %s", g)
-            splunk.send(g, logger=logger)
-
-            web.header('Content-Type', 'application/json')
-            ret = {
-                constants.TIMESTAMP: g.timestamp,
-                constants.SITE: g.site,
-                constants.NODE: g.node,
-                constants.FQ_NODE: g.fq_node,
-                constants.VOLTAGE: g.voltage,
-                constants.ELECTRICITY: len(g.electricity),
-                constants.TEMPERATURE: len(g.temperature),
-            }
-            return json.dumps(ret, indent=4, sort_keys=True)
-        except Exception as ex:
-            logger.error(str(ex), exc_info=True)
-            raise web.BadRequest(str(ex))
-
-
-class ASCIIWHReceiver:
-    def GET(self, arse=None):
-        logger = web.ctx.env.get('wsgilog.logger')
-
-        try:
-            data = web.input()
-            logger.info("Received data: %s", data)
-
-            if constants.LOG_REQUESTS:
-                n = "%s.req.txt" % datetime.datetime.now()
-                p = os.path.join(constants.REQ_DIR, n)
-                logger.info("Logging request to: %s", p)
-                s = "&".join("%s=%s" % (k, v) for k, v in data.items())
-                with open(p, "w") as f:
-                    f.write(s)
-
-            g = gem.GEM()
-            asciiwh.parse(data, g)
-            logger.info("Parsed data: %s", g)
-            splunk.send(g, logger=logger)
-
-            web.header('Content-Type', 'application/json')
-            ret = {
-                constants.TIMESTAMP: g.timestamp,
-                constants.SITE: g.site,
-                constants.NODE: g.node,
-                constants.FQ_NODE: g.fq_node,
-                constants.VOLTAGE: g.voltage,
-                constants.ELECTRICITY: len(g.electricity),
-                constants.TEMPERATURE: len(g.temperature),
-            }
+            parser = seg.NEWSEGParser(data)
+            ret = self.proc(parser, logger=logger)
             return json.dumps(ret, indent=4, sort_keys=True)
         except Exception as ex:
             logger.error(str(ex), exc_info=True)
@@ -89,10 +61,11 @@ class ASCIIWHReceiver:
 
 if __name__ == "__main__":
     urls = (
+        '(.*)', 'ASCIIWHReceiver',
         '/asciiwh', 'ASCIIWHReceiver',
         '/asciiwh/(.*)', 'ASCIIWHReceiver',
-        '/newseg/(.*)', 'SEGReceiver',
-        '/sites/(.*)', 'SEGReceiver'
+        '/newseg/(.*)', 'NewSEGReceiver',
+        '/sites/(.*)', 'NewSEGReceiver',
     )
     app = web.application(urls, globals())
     app.run(log.Log)

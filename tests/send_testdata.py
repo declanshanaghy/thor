@@ -24,8 +24,9 @@ def send_ascii():
 
     items = data.split("&")
     dct = { i.split("=")[0]: i.split("=")[1] for i in items }
+    a = asciiwh.ASCIIWH(dct)
     g = gem.GEM()
-    asciiwh.parse(dct, g)
+    a.parse(g)
 
     splunk.send(g)
 
@@ -40,5 +41,5 @@ def send_seg_request():
 
 if __name__ == "__main__":
     # send_seg_request()
-    send_ascii_request()
-    # send_ascii()
+    # send_ascii_request()
+    send_ascii()

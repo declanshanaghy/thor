@@ -5,7 +5,7 @@ import utils
 
 
 class GEM(object):
-    def __init__(self):
+    def __init__(self, site = "Unknown", node = "Unknown"):
         self._nodes = utils.load_yaml("nodes.json")
         self._channels = utils.load_yaml("channels.json")
         self._electricity = {}
@@ -21,6 +21,7 @@ class GEM(object):
     @property
     def fq_node(self):
         return self.site + ':' + self.node
+
 
     def finalize(self):
         if constants.PRUNE_EMPTY:

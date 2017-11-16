@@ -64,7 +64,9 @@ class NEWSEGParser(object):
         grammar = utils.load_data("seg.ebnf")
         parser = tatsu.compile(grammar, asmodel=True)
         model = parser.parse(self.data)
-        return NEWSEGWalker(gem).walk(model)
+        ret = NEWSEGWalker(gem).walk(model)
+        gem.finalize()
+        return ret
 
     def format_log(self):
         return self.data

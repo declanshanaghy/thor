@@ -40,4 +40,4 @@ GEM_ELAPSED = "m"
 
 NAME = "name"
 
-PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", False)
+PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", True)

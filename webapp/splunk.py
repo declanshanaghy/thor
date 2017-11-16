@@ -8,7 +8,7 @@ import requests.auth
 
 
 SPLUNK_HEC_URL = "http://35.166.45.189:8088/services"
-SPLUNK_EVENT_ENDPOINT = SPLUNK_HEC_URL + "/event"
+SPLUNK_EVENT_ENDPOINT = SPLUNK_HEC_URL + "/collector"
 SPLUNK_METRIC_ENDPOINT = SPLUNK_HEC_URL + "/collector"
 HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
 DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}
@@ -154,7 +154,8 @@ class SplunkMetricsHandler(SplunkHandler):
                 d["source"] = self.source
             if self.sourcetype:
                 d["sourcetype"] = self.sourcetype
-            d["event"] = record
+            d["event"] = "metric"
+            d["fields"] = record
 
             events.append(json.dumps(d))
 
@@ -177,7 +178,7 @@ def send(gem, source=None, sourcetype=None, logger=None):
         logger = logging
 
     s = SplunkMetricsHandler(gem, source=source,
-               sourcetype=sourcetype, logger=logger)
+                             sourcetype=sourcetype, logger=logger)
     r = s.send()
     logger.info("Splunk response: %s", r)
 

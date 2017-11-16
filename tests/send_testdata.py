@@ -3,35 +3,40 @@ import os
 import requests
 
 import asciiwh
+import constants
 import gem
+import seg
+import logutil
 import splunk
 
 
 DATA_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data')
 
 
-def send_ascii_request():
-    with open(os.path.join(DATA_DIR, 'ascii_wh', 'req1.txt')) as f:
-        data = f.read()
-
-    response = requests.get("http://localhost:8080/asciiwh/?" + data)
-    print(response)
-
-
 def send_ascii():
-    with open(os.path.join(DATA_DIR, 'ascii_wh', 'req1.txt')) as f:
+    with open(os.path.join(DATA_DIR, 'ascii_wh',
+                           '2017-11-13 11:02:40.281141.req.txt')) as f:
         data = f.read()
 
-    items = data.split("&")
-    dct = { i.split("=")[0]: i.split("=")[1] for i in items }
-    a = asciiwh.ASCIIWH(dct)
-    g = gem.GEM()
-    a.parse(g)
+    a = asciiwh.ASCIIWH()
+    a.set_data(data)
 
-    splunk.send(g)
+    g = gem.GEMProcessor()
+    g.process(a)
 
 
-def send_seg_request():
+def send_newseg():
+    with open(os.path.join(DATA_DIR, 'newseg',
+                           '2017-09-03 22:14:36.497417.req')) as f:
+        data = f.read()
+
+    p = seg.NEWSEGParser(data)
+
+    g = gem.GEMProcessor()
+    g.process(p)
+
+
+def send_newseg_request():
     with open(os.path.join(DATA_DIR, 'seg', 'req1.txt')) as f:
         data = f.read()
 
@@ -40,6 +45,10 @@ def send_seg_request():
 
 
 if __name__ == "__main__":
-    # send_seg_request()
+    logutil.setup_logging(stdout=True,
+                          log_file=os.path.join(constants.LOG_DIR,
+                                                'oneoff.log'))
+    send_newseg()
+    # send_ascii()
+    # send_newseg_request()
     # send_ascii_request()
-    send_ascii()

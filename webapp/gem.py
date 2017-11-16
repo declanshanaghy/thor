@@ -1,7 +1,43 @@
+import datetime
+import logging
+import os
 import time
 
 import constants
+import splunk
 import utils
+
+
+class GEMProcessor(object):
+    def process(self, parser, logger=None):
+        if not logger:
+            logger = logging
+
+        logger.info("Received data: %s", parser.data)
+
+        if constants.LOG_REQUESTS:
+            n = "%s.req.txt" % datetime.datetime.now()
+            p = os.path.join(constants.REQ_DIR, n)
+            logger.info("Logging request to: %s", p)
+            with open(p, "w") as f:
+                f.write(parser.format_log())
+
+        g = GEM()
+        parser.parse(g)
+        g.finalize()
+
+        logger.info("Parsed GEM: %s", g)
+        splunk.send(g, logger=logger)
+
+        return {
+            constants.TIMESTAMP: g.timestamp,
+            constants.SITE: g.site,
+            constants.NODE: g.node,
+            constants.FQ_NODE: g.fq_node,
+            constants.VOLTAGE: g.voltage,
+            constants.ELECTRICITY: len(g.electricity),
+            constants.TEMPERATURE: len(g.temperature),
+        }
 
 
 class GEM(object):
@@ -10,8 +46,8 @@ class GEM(object):
         self._channels = utils.load_yaml("channels.json")
         self._electricity = {}
 
-        self.site = "Unknown"
-        self.node = "Unknown"
+        self.site = "Site"
+        self.node = "Node"
         self.time = time.time()
         self.timestamp = time.time()
         self.voltage = 0
@@ -66,8 +102,12 @@ class GEM(object):
                     del self._electricity[ch]
 
     def set_node(self, node):
-        mapped_name = self._nodes.get(node, node)
-        self.node = mapped_name
+        mapped = self._nodes.get(node)
+        if mapped:
+            self.site = mapped['site']
+            self.node = mapped['node']
+            return True
+        return False
 
     def set_temperature(self, channel, val):
         mapped_name = self._channels[constants.TEMPERATURE].get(

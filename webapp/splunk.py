@@ -7,7 +7,7 @@ import requests
 import requests.auth
 
 
-SPLUNK_HEC_URL = "http://35.166.45.189:8088/services"
+SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services"
 SPLUNK_EVENT_ENDPOINT = SPLUNK_HEC_URL + "/collector"
 SPLUNK_METRIC_ENDPOINT = SPLUNK_HEC_URL + "/collector"
 HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
@@ -168,9 +168,10 @@ class SplunkMetricsHandler(SplunkHandler):
                           data=data, headers=DEFAULT_HEADERS)
 
         if r.status_code == 200:
-            return r.json()
+            return True
         else:
-            raise StandardError("%s: %s" % (r.status_code, r.text))
+            logging.error("%s: %s" % (r.status_code, r.text))
+            return False
 
 
 def send(gem, source=None, sourcetype=None, logger=None):
@@ -179,6 +180,10 @@ def send(gem, source=None, sourcetype=None, logger=None):
 
     s = SplunkMetricsHandler(gem, source=source,
                              sourcetype=sourcetype, logger=logger)
-    r = s.send()
-    logger.info("Splunk response: %s", r)
+    if s.send():
+        logger.info("Indexing succeeded")
+        return True
+    else:
+        logger.error("Indexing failed")
+        return False
 

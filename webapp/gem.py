@@ -27,17 +27,18 @@ class GEMProcessor(object):
         g.finalize()
 
         logger.info("Parsed GEM: %s", g)
-        splunk.send(g, logger=logger)
-
-        return {
-            constants.TIMESTAMP: g.timestamp,
-            constants.SITE: g.site,
-            constants.NODE: g.node,
-            constants.FQ_NODE: g.fq_node,
-            constants.VOLTAGE: g.voltage,
-            constants.ELECTRICITY: len(g.electricity),
-            constants.TEMPERATURE: len(g.temperature),
-        }
+        if splunk.send(g, logger=logger):
+            return {
+                constants.TIMESTAMP: g.timestamp,
+                constants.SITE: g.site,
+                constants.NODE: g.node,
+                constants.FQ_NODE: g.fq_node,
+                constants.VOLTAGE: g.voltage,
+                constants.ELECTRICITY: len(g.electricity),
+                constants.TEMPERATURE: len(g.temperature),
+            }
+        else:
+            return None
 
 
 class GEM(object):

@@ -1,8 +1,14 @@
 import logging
+import os
 import socket
+import time
 
 import gem
 import constants
+import logutil
+
+
+CRS = ("\r", "\n", )
 
 
 class ASCIIWH(object):
@@ -58,53 +64,93 @@ class ASCIIWH(object):
     def format_log(self):
         return self.data
 
-    def run(self):
+    def _listen(self):
+        port = 8888
+        tsleep = 10
+        tries = 1
+        max_tries = 10
+        g = gem.GEMProcessor()
+
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Bind the socket to the port
-        server_address = ('0.0.0.0', 8080)
-        logging.info('starting up on %s port %s' % server_address)
-        sock.bind(server_address)
+        server_address = ('0.0.0.0', port)
+
+        while tries <= max_tries:
+            try:
+                logging.info("Attempting to bind %s", str(server_address))
+                sock.bind(server_address)
+                break
+            except socket.error:
+                if tries >= max_tries:
+                    raise
+                else:
+                    logging.warn("Failed to bind on %s. Attempt %d of %d",
+                                 str(server_address), tries, max_tries)
+                    tries += 1
+                    logging.warn("Sleeping " + str(tsleep))
+                    time.sleep(tsleep)
 
         # Listen for incoming connections
+        logging.info("Bound to %s. Attempting listen", str(server_address))
         sock.listen(1)
+        return sock
 
+
+    def run(self):
         g = gem.GEMProcessor()
 
         while True:
+            sock = self._listen()
+
             # Wait for a connection
-            logging.info('waiting for a connection')
+            logging.info('Waiting for accept')
             connection, client_address = sock.accept()
-            started = False
 
             try:
-                logging.info('connection from', client_address)
+                started = False
+                logging.info('Connection from %s', client_address)
                 data = ""
 
                 while True:
                     rx = connection.recv(1024)
-                    logging.info('received "%s"' % rx)
+                    if not rx:
+                        logging.info("Client closed")
+                        break
+
+                    logging.info('Received "%s"' % rx)
                     if not started and rx[0:2] == "n=":
-                        logging.info("Started")
+                        logging.info("New packet started")
                         started = True
                     elif not started:
-                        logging.info("Not started. Not n=")
+                        logging.info("Not started. rx=%s", rx)
                         continue
 
-                    cr = rx.find("\n")
-                    if cr > 0:
-                        data += rx[:cr]
-                        self.set_data(data)
-                        ret = g.process(self)
-                        logging.info(ret)
-                        data = rx[cr+1:]
+                    for c in CRS:
+                        cr = rx.find(c)
+                        if cr > 0:
+                            data += rx[:cr]
+                            self.set_data(data)
+                            ret = g.process(self)
+                            if ret:
+                                logging.info(ret)
+                            data = rx[cr+1:]
+                            break
                     else:
                         data += rx
+            except StandardError as ex:
+                logging.exception(ex)
             finally:
                 # Clean up the connection
+                logging.info("Shutting down")
                 connection.close()
+                sock.close()
+
 
 if __name__ == "__main__":
+    logutil.setup_logging(stdout=True,
+                          log_file=os.path.join(constants.LOG_DIR,
+                                                constants.LOG_FILE_ASCIIWH))
     server = ASCIIWH()
     server.run()

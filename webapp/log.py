@@ -21,5 +21,5 @@ class Log(WsgiLog):
             tofile = True,
             toprint = True,
             tostream = True,
-            file = constants.LOG_FILE,
+            file = constants.LOG_FILE_WEB,
         )

@@ -38,6 +38,8 @@ def setup_logging(stdout=True, log_file=None):
             logformat = logging.Formatter.format(self, record)
             return logformat
 
+    messages = []
+
     # Set up the root logger.
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
@@ -58,6 +60,7 @@ def setup_logging(stdout=True, log_file=None):
         logger.addHandler(ch)
         formatter = DictFormatter(format, secure_log=True)
         ch.setFormatter(formatter)
+        messages.append("Logging to stdout")
 
     if log_file:
         abs_log_filename = os.path.abspath(log_file)
@@ -78,6 +81,7 @@ def setup_logging(stdout=True, log_file=None):
         formatter = DictFormatter(format, secure_log=True)
         handler.setFormatter(formatter)
         logger.addHandler(handler)
+        messages.append("Logging to " + log_file)
 
     # Disable stupidly verbose INFO messages
     WARN_PKGS = [
@@ -87,3 +91,6 @@ def setup_logging(stdout=True, log_file=None):
     ]
     for pkg in WARN_PKGS:
         logging.getLogger(pkg).setLevel(logging.WARNING)
+
+    for msg in messages:
+        logging.info(msg)

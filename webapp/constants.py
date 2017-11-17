@@ -7,7 +7,8 @@ LOG_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'logs'))
 REQ_DIR = os.path.join(LOG_DIR, 'requests')
 
 LOG_REQUESTS = os.environ.get('LOG_REQUESTS', False)
-LOG_FILE = os.path.join(LOG_DIR, 'thor.log')
+LOG_FILE_WEB = os.path.join(LOG_DIR, 'thor-web.log')
+LOG_FILE_ASCIIWH = os.path.join(LOG_DIR, 'thor-asciiwh.log')
 
 if not os.path.exists(REQ_DIR):
     os.makedirs(REQ_DIR)

@@ -13,6 +13,8 @@ LOG_FILE_ASCIIWH = os.path.join(LOG_DIR, 'thor-asciiwh.log')
 if not os.path.exists(REQ_DIR):
     os.makedirs(REQ_DIR)
 
+ASCII_WH_PORT = 8467
+
 SITE = "site"
 NODE = "node"
 FQ_NODE = "fq_node"

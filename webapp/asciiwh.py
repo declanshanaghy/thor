@@ -65,7 +65,6 @@ class ASCIIWH(object):
         return self.data
 
     def _listen(self):
-        port = 8888
         tsleep = 10
         tries = 1
         max_tries = 10
@@ -75,7 +74,7 @@ class ASCIIWH(object):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Bind the socket to the port
-        server_address = ('0.0.0.0', port)
+        server_address = ('0.0.0.0', constants.ASCII_WH_PORT)
 
         while tries <= max_tries:
             try:
@@ -102,11 +101,11 @@ class ASCIIWH(object):
         g = gem.GEMProcessor()
 
         while True:
-            sock = self._listen()
+            server = self._listen()
 
             # Wait for a connection
             logging.info('Waiting for accept')
-            connection, client_address = sock.accept()
+            client, client_address = server.accept()
 
             try:
                 started = False
@@ -114,7 +113,7 @@ class ASCIIWH(object):
                 data = ""
 
                 while True:
-                    rx = connection.recv(1024)
+                    rx = client.recv(1024)
                     if not rx:
                         logging.info("Client closed")
                         break
@@ -144,8 +143,8 @@ class ASCIIWH(object):
             finally:
                 # Clean up the connection
                 logging.info("Shutting down")
-                connection.close()
-                sock.close()
+                client.close()
+                server.close()
 
 
 if __name__ == "__main__":

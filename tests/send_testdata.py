@@ -1,3 +1,4 @@
+import logging
 import os
 import socket
 
@@ -32,9 +33,13 @@ def send_ascii_tcp():
 
     # Create a TCP/IP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.connect(("127.0.0.1", 8888))
+    addr = (os.environ.get("ASCII_WH_HOST", "127.0.0.1"),
+            constants.ASCII_WH_PORT)
+    sock.connect(addr)
     # if not data[-1:] == "\n":
     #     data += "\n"
+
+    logging.info("Connected to: %s", addr)
 
     l = len(data)
     pieces = [
@@ -43,6 +48,7 @@ def send_ascii_tcp():
         data[2 * l / 3 : l]
     ]
     for piece in pieces:
+        logging.info("Send: %s", piece)
         sock.send(piece)
 
     sock.close()

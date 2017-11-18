@@ -131,7 +131,8 @@ class ASCIIWH(object):
                         if cr > 0:
                             data += rx[:cr]
                             self.set_data(data)
-                            ret = g.process(self)
+                            ret = g.process(self,
+                                            type=constants.SPLUNK_METRICS)
                             if ret:
                                 logging.info(ret)
                             data = rx[cr+1:]

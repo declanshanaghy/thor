@@ -9,7 +9,7 @@ import utils
 
 
 class GEMProcessor(object):
-    def process(self, parser, logger=None):
+    def process(self, parser, logger=None, type=constants.SPLUNK_EVENTS):
         if not logger:
             logger = logging
 
@@ -27,7 +27,7 @@ class GEMProcessor(object):
         g.finalize()
 
         logger.info("Parsed GEM: %s", g)
-        if splunk.send(g, logger=logger):
+        if splunk.send(g, type=type, logger=logger, source=g.fq_node):
             return {
                 constants.TIMESTAMP: g.timestamp,
                 constants.SITE: g.site,
@@ -42,6 +42,14 @@ class GEMProcessor(object):
 
 
 class GEM(object):
+    site = None
+    node = None
+    time = None
+    timestamp = None
+    voltage = 0
+    electricity = None
+    temperature = None
+
     def __init__(self, site = "Unknown", node = "Unknown"):
         self._nodes = utils.load_yaml("nodes.json")
         self._channels = utils.load_yaml("channels.json")
@@ -96,10 +104,14 @@ class GEM(object):
                 # the channel is not mapped
                 #   and
                 # any 2 entries are zero
-                if (isinstance(ch, int) and
-                        (data.get(constants.ENERGY, 0) == 0 and data.get(constants.POWER, 0) == 0) or
-                        (data.get(constants.CURRENT, 0) == 0 and data.get(constants.POWER, 0) == 0) or
-                        (data.get(constants.ENERGY, 0) == 0 and data.get(constants.CURRENT, 0) == 0)):
+                no_eandp = (data.get(constants.ENERGY, 0) == 0 and
+                            data.get(constants.POWER,0) == 0)
+                no_candp = (data.get(constants.CURRENT, 0) == 0 and
+                            data.get(constants.POWER, 0) == 0)
+                no_eandc = (data.get(constants.ENERGY, 0) == 0 and
+                            data.get(constants.CURRENT, 0) == 0)
+                remove = isinstance(ch, int) and (no_candp or no_eandc or no_eandp)
+                if remove:
                     del self._electricity[ch]
 
     def set_node(self, node):

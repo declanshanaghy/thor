@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 import socket
 
 import requests
@@ -14,51 +15,54 @@ import logutil
 DATA_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data')
 
 
-def send_ascii():
-    with open(os.path.join(DATA_DIR, 'ascii_wh',
-                           '2017-11-13 11:02:40.281141.req.txt')) as f:
-        data = f.read()
+def ascii_data():
+    fname = ""
+    p = os.path.join(DATA_DIR, 'ascii_wh')
+    for root, dirs, files in os.walk(p):
+        fname = random.choice(files)
 
+    with open(os.path.join(p, fname)) as f:
+        return f.read()
+
+
+def newseg_data():
+    fname = ""
+    p = os.path.join(DATA_DIR, 'newseg')
+    for root, dirs, files in os.walk(p):
+        fname = random.choice(files)
+
+    with open(os.path.join(p, fname)) as f:
+        return f.read()
+
+
+def send_ascii():
+    data = ascii_data()
     a = asciiwh.ASCIIWH()
     a.set_data(data)
 
     g = gem.GEMProcessor()
-    g.process(a)
+    g.process(a, type=constants.SPLUNK_METRICS)
 
 
 def send_ascii_tcp():
-    with open(os.path.join(DATA_DIR, 'ascii_wh',
-                           '2017-11-13 11:02:40.281141.req.txt')) as f:
-        data = f.read()
+    data = ascii_data()
 
     # Create a TCP/IP socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     addr = (os.environ.get("ASCII_WH_HOST", "127.0.0.1"),
             constants.ASCII_WH_PORT)
-    sock.connect(addr)
-    # if not data[-1:] == "\n":
-    #     data += "\n"
 
+    sock.connect(addr)
     logging.info("Connected to: %s", addr)
 
-    l = len(data)
-    pieces = [
-        data[:l / 3],
-        data[l / 3 : 2 * l / 3],
-        data[2 * l / 3 : l]
-    ]
-    for piece in pieces:
-        logging.info("Send: %s", piece)
-        sock.send(piece)
+    logging.info("Send: %s", data)
+    sock.sendall(data)
 
     sock.close()
 
 
 def send_newseg():
-    with open(os.path.join(DATA_DIR, 'newseg',
-                           '2017-09-03 22:14:36.497417.req')) as f:
-        data = f.read()
-
+    data = newseg_data()
     p = seg.NEWSEGParser(data)
 
     g = gem.GEMProcessor()
@@ -66,9 +70,7 @@ def send_newseg():
 
 
 def send_newseg_request():
-    with open(os.path.join(DATA_DIR, 'seg', 'req1.txt')) as f:
-        data = f.read()
-
+    data = newseg_data()
     response = requests.put("http://localhost:8080/sites/local", data=data)
     print(response)
 
@@ -78,7 +80,7 @@ if __name__ == "__main__":
                           log_file=os.path.join(constants.LOG_DIR,
                                                 'oneoff.log'))
     # send_newseg()
-    # send_ascii()
-    send_ascii_tcp()
+    send_ascii()
+    # send_ascii_tcp()
     # send_newseg_request()
     # send_ascii_request()

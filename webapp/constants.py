@@ -42,5 +42,7 @@ GEM_VOLTAGE = "v"
 GEM_ELAPSED = "m"
 
 NAME = "name"
+SPLUNK_EVENTS = "events"
+SPLUNK_METRICS = "metrics"
 
 PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", True)

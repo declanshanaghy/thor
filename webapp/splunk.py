@@ -7,9 +7,7 @@ import requests
 import requests.auth
 
 
-SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services"
-SPLUNK_EVENT_ENDPOINT = SPLUNK_HEC_URL + "/collector"
-SPLUNK_METRIC_ENDPOINT = SPLUNK_HEC_URL + "/collector"
+SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services/collector"
 HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
 DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}
 
@@ -34,6 +32,24 @@ class SplunkHandler(object):
     def _create_records(self):
         raise NotImplementedError(
             "Subclasses must implemement _create_records")
+
+    def _create_post_data(self):
+        raise NotImplementedError(
+            "Subclasses must implemement _create_post_data")
+
+    def send(self):
+        data = self._create_post_data()
+        if self.logger:
+            self.logger.info("Ready to post events: %s", data)
+
+        r = requests.post(SPLUNK_HEC_URL,
+                          data=data, headers=DEFAULT_HEADERS)
+
+        if r.status_code == 200:
+            return r.json()
+        else:
+            raise StandardError("%s: %s" % (r.status_code, r.text))
+
 
 
 class SplunkEventsHandler(SplunkHandler):
@@ -71,8 +87,7 @@ class SplunkEventsHandler(SplunkHandler):
                 constants.TEMPERATURE + '=' + str(data[constants.TEMPERATURE]),
             ]))
 
-
-    def send(self):
+    def _create_post_data(self):
         events = []
         for record in self.records:
             d = collections.OrderedDict()
@@ -88,18 +103,7 @@ class SplunkEventsHandler(SplunkHandler):
 
             events.append(json.dumps(d))
 
-        data = "\n".join(events)
-
-        if self.logger:
-            self.logger.info("Ready to post events: %s", data)
-
-        r = requests.post(SPLUNK_EVENT_ENDPOINT,
-                          data=data, headers=DEFAULT_HEADERS)
-
-        if r.status_code == 200:
-            return r.json()
-        else:
-            raise StandardError("%s: %s" % (r.status_code, r.text))
+        return "\n".join(events)
 
 
 class SplunkMetricsHandler(SplunkHandler):
@@ -142,7 +146,7 @@ class SplunkMetricsHandler(SplunkHandler):
             m.update(default_dimensions)
             self.records.append(m)
 
-    def send(self):
+    def _create_post_data(self):
         events = []
         for record in self.records:
             d = collections.OrderedDict()
@@ -159,27 +163,19 @@ class SplunkMetricsHandler(SplunkHandler):
 
             events.append(json.dumps(d))
 
-        data = "\n".join(events)
+        return "\n".join(events)
 
-        if self.logger:
-            self.logger.info("Ready to post metrics: %s", data)
-
-        r = requests.post(SPLUNK_METRIC_ENDPOINT,
-                          data=data, headers=DEFAULT_HEADERS)
-
-        if r.status_code == 200:
-            return True
-        else:
-            logging.error("%s: %s" % (r.status_code, r.text))
-            return False
-
-
-def send(gem, source=None, sourcetype=None, logger=None):
+def send(gem, type=constants.SPLUNK_EVENTS, source=None,
+         sourcetype=None, logger=None):
     if not logger:
         logger = logging
 
-    s = SplunkMetricsHandler(gem, source=source,
-                             sourcetype=sourcetype, logger=logger)
+    if type == constants.SPLUNK_EVENTS:
+        s = SplunkEventsHandler(gem, source=source,
+                                 sourcetype=sourcetype, logger=logger)
+    else:
+        s = SplunkMetricsHandler(gem, source=source,
+                                 sourcetype=sourcetype, logger=logger)
     if s.send():
         logger.info("Indexing succeeded")
         return True

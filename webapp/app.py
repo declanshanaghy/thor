@@ -1,6 +1,7 @@
 import json
 import web
 
+import constants
 import seg
 import gem
 import log
@@ -14,7 +15,8 @@ class NewSEGReceiver(gem.GEMProcessor):
         try:
             data = web.data()
             parser = seg.NEWSEGParser(data)
-            ret = self.process(parser, logger=logger)
+            ret = self.process(parser, type=constants.SPLUNK_EVENTS,
+                               logger=logger)
             return json.dumps(ret, indent=4, sort_keys=True)
         except Exception as ex:
             logger.error(str(ex), exc_info=True)

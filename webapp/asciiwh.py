@@ -4,12 +4,15 @@ import select
 import socket
 import time
 
+import retrying
+
 import gem
 import constants
 import logutil
 
 
 CRS = ("\r", "\n", )
+IDLE = 60 * 2
 
 
 class ASCIIWH(object):
@@ -17,6 +20,10 @@ class ASCIIWH(object):
     g = gem.GEMProcessor()
     running = False
     started = False
+    server = None
+    rxs = {}
+    inputs = []
+
 
     def parse(self, gem):
         d = {}
@@ -62,64 +69,31 @@ class ASCIIWH(object):
     def format_log(self):
         return self.data
 
-    def _listen(self):
-        tsleep = 10
-        tries = 1
-        max_tries = 10
+    def shutdown(self):
+        logging.info("Shutting down")
+        for s in self.inputs:
+            self._close(s)
 
+    @retrying.retry(wait_fixed=5000, stop_max_attempt_number=24)
+    def _listen(self):
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
         # Bind the socket to the port
         server_address = ('0.0.0.0', constants.ASCII_WH_PORT)
 
-        while tries <= max_tries:
-            try:
-                logging.info("Attempting to bind %s", str(server_address))
-                sock.bind(server_address)
-                break
-            except socket.error:
-                if tries >= max_tries:
-                    raise
-                else:
-                    logging.warn("Failed to bind on %s. Attempt %d of %d",
-                                 str(server_address), tries, max_tries)
-                    tries += 1
-                    logging.warn("Sleeping " + str(tsleep))
-                    time.sleep(tsleep)
+        try:
+            sock.bind(server_address)
+        except socket.error:
+            logging.error("Bind failed on %s, will retry", str(server_address))
+            raise
 
         # Listen for incoming connections
         sock.listen(1)
         logging.info("Listening on %s", str(server_address))
-        return sock
 
-
-    def run_simple(self):
-        while True:
-            server = self._listen()
-
-            # Wait for a connection
-            logging.info('Waiting for accept')
-            client, client_address = server.accept()
-
-            try:
-                logging.info('Connection from %s', client_address)
-                while True:
-                    rx = client.recv(1024)
-                    if rx:
-                        self.process_rx(rx)
-                    else:
-                        logging.info("Client closed")
-                        client.close()
-                        break
-            except StandardError as ex:
-                logging.exception(ex)
-            finally:
-                # Clean up the connection
-                logging.info("Shutting down")
-                client.close()
-                server.close()
-
+        self.server = sock
+        self.inputs.append(self.server)
 
     def process_rx(self, rx):
         logging.info('Received "%s"' % rx)
@@ -142,61 +116,92 @@ class ASCIIWH(object):
         else:
             self.data += rx
 
+    def _accept(self, s):
+        client, client_address = s.accept()
+        logging.info('Connection from %s', client_address)
+        client.setblocking(0)
+        self.inputs.append(client)
+        self._rx(client)
+
+    def _client_key(self, s):
+        return "%s:%s" % s.getpeername()
+
+    def _rx(self, s):
+        self.rxs[self._client_key(s)] = (time.time(), s)
+
+    def _close(self, s):
+        k = self._client_key(s)
+        logging.info('Closing %s', k)
+
+        s.close()
+        self.inputs.remove(s)
+
+        if k in self.rxs:
+            del self.rxs[k]
+
+    def _process_idle(self):
+        tnow = time.time()
+        for peer, (t, s) in self.rxs.items():
+            logging.info('%s is idle %d secs', peer, tnow - t)
+            if t < tnow - IDLE:
+                logging.info('%s surpassed idle period', peer)
+                self._close(s)
+
     def run(self):
+        self._listen()
+
         while True:
-            server = self._listen()
-            inputs = [server]
+            try:
+                readable, writable, exceptional = select.select(
+                    self.inputs, [], [], IDLE)
+            except select.error as e:
+                logging.exception(e)
+                break
+            except socket.error as e:
+                logging.exception(e)
+                break
+            except Exception as e:
+                logging.exception(e)
+                break
 
-            while True:
-                try:
-                    readable, writable, exceptional = select.select(
-                        inputs, [], [], 0.25)
-                except select.error as e:
-                    logging.exception(e)
-                    break
-                except socket.error as e:
-                    logging.exception(e)
-                    break
-                except Exception as e:
-                    logging.exception(e)
-                    break
+            if not readable and not writable and not exceptional:
+                self._process_idle()
+                continue
 
-                if not readable and not writable and not exceptional:
-                    logging.debug("timeout")
-                    continue
+            # Handle inputs
+            for s in readable:
+                if s is self.server and len(self.inputs) > 1:
+                    logging.warn('Ignoring subsequent connection')
+                elif s is self.server and len(self.inputs) == 1:
+                    # A "readable" server socket is
+                    # ready to accept a connection
+                    self._accept(s)
+                else:
+                    rx = s.recv(2048)
+                    self._rx(s)
 
-                # Handle inputs
-                for s in readable:
-                    if s is server and len(inputs) > 1:
-                        logging.warn('Ignoring subsequent connection')
-                    elif s is server and len(inputs) == 1:
-                        # A "readable" server socket is ready to accept a connection
-                        connection, client_address = s.accept()
-                        logging.info('Connection from %s', client_address)
-                        connection.setblocking(0)
-                        inputs.append(connection)
+                    if rx:
+                        # A readable client socket has data
+                        self.process_rx(rx)
                     else:
-                        rx = s.recv(1024)
-                        if rx:
-                            # A readable client socket has data
-                            self.process_rx(rx)
-                        else:
-                            # Interpret empty result as closed connection
-                            logging.info("Client closed: %s", s.getpeername())
-                            inputs.remove(s)
-                            s.close()
+                        # Interpret empty result as closed connection
+                        logging.info("Client closed: %s", s.getpeername())
+                        self._close(s)
 
-                # Handle "exceptional conditions"
-                for s in exceptional:
-                    logging.info("Exception from: %s", s.getpeername())
-                    # Stop listening for input on the connection
-                    inputs.remove(s)
-                    s.close()
+            # Handle "exceptional conditions"
+            for s in exceptional:
+                logging.info("Exception from: %s", s.getpeername())
+                # Stop listening for input on the connection
+                self._close(s)
 
+        self.shutdown()
 
 if __name__ == "__main__":
     logutil.setup_logging(stdout=True,
                           log_file=os.path.join(constants.LOG_DIR,
                                                 constants.LOG_FILE_ASCIIWH))
-    server = ASCIIWH()
-    server.run()
+    srv = ASCIIWH()
+    try:
+        srv.run()
+    finally:
+        srv.shutdown()

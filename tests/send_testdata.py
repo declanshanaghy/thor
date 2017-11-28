@@ -2,6 +2,7 @@ import logging
 import os
 import random
 import socket
+import time
 
 import requests
 
@@ -26,7 +27,6 @@ def ascii_data():
 
 
 def newseg_data():
-    fname = ""
     p = os.path.join(DATA_DIR, 'newseg')
     for root, dirs, files in os.walk(p):
         fname = random.choice(files)
@@ -39,7 +39,7 @@ def newseg_data():
 def send_ascii():
     data = ascii_data()
     a = asciiwh.ASCIIWH()
-    a.set_data(data)
+    a.data = data
 
     g = gem.GEMProcessor()
     g.process(a, type=constants.SPLUNK_METRICS)
@@ -53,13 +53,16 @@ def send_ascii_tcp():
     addr = (os.environ.get("ASCII_WH_HOST", "127.0.0.1"),
             constants.ASCII_WH_PORT)
 
-    sock.connect(addr)
-    logging.info("Connected to: %s", addr)
+    try:
+        sock.connect(addr)
+        logging.info("Connected to: %s", addr)
 
-    logging.info("Send: %s", data)
-    sock.sendall(data)
+        logging.info("Send: %s", data)
+        sock.sendall(data)
 
-    sock.close()
+        time.sleep(99999)
+    finally:
+        sock.close()
 
 
 def send_newseg():

@@ -165,7 +165,7 @@ class SplunkMetricsHandler(SplunkHandler):
 
         return "\n".join(events)
 
-def send(gem, type=constants.SPLUNK_EVENTS, source=None,
+def send(gem, type=constants.SPLUNK_METRICS, source=None,
          sourcetype=None, logger=None):
     if not logger:
         logger = logging

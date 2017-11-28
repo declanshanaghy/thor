@@ -31,6 +31,7 @@ def newseg_data():
     for root, dirs, files in os.walk(p):
         fname = random.choice(files)
 
+    fname = "x.req"
     with open(os.path.join(p, fname)) as f:
         return f.read()
 
@@ -80,7 +81,7 @@ if __name__ == "__main__":
                           log_file=os.path.join(constants.LOG_DIR,
                                                 'oneoff.log'))
     # send_newseg()
-    send_ascii()
-    # send_ascii_tcp()
+    # send_ascii()
+    send_ascii_tcp()
     # send_newseg_request()
     # send_ascii_request()

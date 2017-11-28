@@ -15,7 +15,7 @@ class NewSEGReceiver(gem.GEMProcessor):
         try:
             data = web.data()
             parser = seg.NEWSEGParser(data)
-            ret = self.process(parser, type=constants.SPLUNK_EVENTS,
+            ret = self.process(parser, type=constants.SPLUNK_METRICS,
                                logger=logger)
             return json.dumps(ret, indent=4, sort_keys=True)
         except Exception as ex:

@@ -1,5 +1,6 @@
 import logging
 import os
+import select
 import socket
 import time
 
@@ -12,22 +13,19 @@ CRS = ("\r", "\n", )
 
 
 class ASCIIWH(object):
-    data = None
-    gem = None
-
-    def set_data(self, data):
-        logging.info('Full packet: %s', data)
-        self.data = data
+    data = ""
+    g = gem.GEMProcessor()
+    running = False
+    started = False
 
     def parse(self, gem):
-        xyz = self.data
-        self.data = {}
-        for kvs in xyz.split("&"):
+        d = {}
+        for kvs in self.data.split("&"):
             kv = kvs.split("=")
             if len(kv) == 2:
-                self.data[kv[0]] = kv[1]
+                d[kv[0]] = kv[1]
 
-        for k, v in self.data.items():
+        for k, v in d.items():
             if k[:3] == constants.GEM_WHP:
                 # Dont allow this to be handled by the else case because a whp
                 # field will accidentally be caught by the wh case (ENERGY)
@@ -68,7 +66,6 @@ class ASCIIWH(object):
         tsleep = 10
         tries = 1
         max_tries = 10
-        g = gem.GEMProcessor()
 
         # Create a TCP/IP socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -92,14 +89,12 @@ class ASCIIWH(object):
                     time.sleep(tsleep)
 
         # Listen for incoming connections
-        logging.info("Bound to %s. Attempting listen", str(server_address))
         sock.listen(1)
+        logging.info("Listening on %s", str(server_address))
         return sock
 
 
-    def run(self):
-        g = gem.GEMProcessor()
-
+    def run_simple(self):
         while True:
             server = self._listen()
 
@@ -108,37 +103,15 @@ class ASCIIWH(object):
             client, client_address = server.accept()
 
             try:
-                started = False
                 logging.info('Connection from %s', client_address)
-                data = ""
-
                 while True:
                     rx = client.recv(1024)
-                    if not rx:
-                        logging.info("Client closed")
-                        break
-
-                    logging.info('Received "%s"' % rx)
-                    if not started and rx[0:2] == "n=":
-                        logging.info("New packet started")
-                        started = True
-                    elif not started:
-                        logging.info("Not started. rx=%s", rx)
-                        continue
-
-                    for c in CRS:
-                        cr = rx.find(c)
-                        if cr > 0:
-                            data += rx[:cr]
-                            self.set_data(data)
-                            ret = g.process(self,
-                                            type=constants.SPLUNK_METRICS)
-                            if ret:
-                                logging.info(ret)
-                            data = rx[cr+1:]
-                            break
+                    if rx:
+                        self.process_rx(rx)
                     else:
-                        data += rx
+                        logging.info("Client closed")
+                        client.close()
+                        break
             except StandardError as ex:
                 logging.exception(ex)
             finally:
@@ -146,6 +119,79 @@ class ASCIIWH(object):
                 logging.info("Shutting down")
                 client.close()
                 server.close()
+
+
+    def process_rx(self, rx):
+        logging.info('Received "%s"' % rx)
+        if not self.started and rx[0:2] == "n=":
+            logging.info("New packet started")
+            self.started = True
+        elif not self.started:
+            logging.info("Not started. rx=%s", rx)
+
+        for c in CRS:
+            cr = rx.find(c)
+            if cr > 0:
+                self.data += rx[:cr]
+                ret = self.g.process(
+                    self, type=constants.SPLUNK_METRICS)
+                if ret:
+                    logging.info(ret)
+                self.data = rx[cr + 1:]
+                break
+        else:
+            self.data += rx
+
+    def run(self):
+        while True:
+            server = self._listen()
+            inputs = [server]
+
+            while True:
+                try:
+                    readable, writable, exceptional = select.select(
+                        inputs, [], [], 0.25)
+                except select.error as e:
+                    logging.exception(e)
+                    break
+                except socket.error as e:
+                    logging.exception(e)
+                    break
+                except Exception as e:
+                    logging.exception(e)
+                    break
+
+                if not readable and not writable and not exceptional:
+                    logging.debug("timeout")
+                    continue
+
+                # Handle inputs
+                for s in readable:
+                    if s is server and len(inputs) > 1:
+                        logging.warn('Ignoring subsequent connection')
+                    elif s is server and len(inputs) == 1:
+                        # A "readable" server socket is ready to accept a connection
+                        connection, client_address = s.accept()
+                        logging.info('Connection from %s', client_address)
+                        connection.setblocking(0)
+                        inputs.append(connection)
+                    else:
+                        rx = s.recv(1024)
+                        if rx:
+                            # A readable client socket has data
+                            self.process_rx(rx)
+                        else:
+                            # Interpret empty result as closed connection
+                            logging.info("Client closed: %s", s.getpeername())
+                            inputs.remove(s)
+                            s.close()
+
+                # Handle "exceptional conditions"
+                for s in exceptional:
+                    logging.info("Exception from: %s", s.getpeername())
+                    # Stop listening for input on the connection
+                    inputs.remove(s)
+                    s.close()
 
 
 if __name__ == "__main__":

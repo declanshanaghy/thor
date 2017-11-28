@@ -7,7 +7,7 @@ AWS_DEFAULT_REGION := us-west-2
 STACK := thor-20170903
 BUCKET := thor-20170903
 DEPLOY_USER := ec2-user
-DEPLOY_TGT := thor.shanaghy.com
+DEPLOY_TGT := 35.166.45.189
 
 #####
 #

@@ -133,7 +133,7 @@ class GEM(object):
     def set_channel(self, channel, type, val):
         mapped_name = self._channels[constants.ELECTRICITY].get(
             str(channel), channel)
-        if not mapped_name in self.electricity:
+        if not mapped_name in self._electricity:
             self._electricity[mapped_name] = {
                 constants.CHANNEL: channel,
                 constants.POWER: 0.0,

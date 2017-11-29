@@ -12,7 +12,7 @@ import logutil
 
 
 CRS = ("\r", "\n", )
-IDLE = 60 * 2
+IDLE = 60 * 5
 
 
 class ASCIIWH(object):
@@ -170,9 +170,7 @@ class ASCIIWH(object):
 
             # Handle inputs
             for s in readable:
-                if s is self.server and len(self.inputs) > 1:
-                    logging.warn('Ignoring subsequent connection')
-                elif s is self.server and len(self.inputs) == 1:
+                if s is self.server:
                     # A "readable" server socket is
                     # ready to accept a connection
                     self._accept(s)

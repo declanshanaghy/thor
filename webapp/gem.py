@@ -50,7 +50,7 @@ class GEM(object):
     electricity = None
     temperature = None
 
-    def __init__(self, site = "Unknown", node = "Unknown"):
+    def __init__(self, site="Unknown", node="Unknown"):
         self._nodes = utils.load_yaml("nodes.json")
         self._channels = utils.load_yaml("channels.json")
         self._electricity = {}

@@ -19,10 +19,10 @@ DATA_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'data')
 def ascii_data():
     fname = ""
     p = os.path.join(DATA_DIR, 'ascii_wh')
-    for root, dirs, files in os.walk(p):
-        fname = random.choice(files)
+    # for root, dirs, files in os.walk(p):
+    #     fname = random.choice(files)
 
-    fname = "2017-11-13 11:00:31.285999.req.txt"
+    fname = "2018-02-25 14:49:42.057508.req.txt"
     with open(os.path.join(p, fname)) as f:
         return f.read()
 

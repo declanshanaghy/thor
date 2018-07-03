@@ -4,10 +4,10 @@
 CWD := $(shell pwd)
 
 AWS_DEFAULT_REGION := us-west-2
-STACK := thor-20170903
-BUCKET := thor-20170903
+STACK := thor-20180703
+BUCKET := thor-20180703
 DEPLOY_USER := ec2-user
-DEPLOY_TGT := 35.166.45.189
+DEPLOY_TGT := 54.218.150.106
 
 #####
 #
@@ -37,7 +37,7 @@ delpoy: cfn webapp
 
 cfn:
 	@echo "Updating CloudFormation stack: $(STACK)..."
-	@aws s3 cp deploy/thor.yml s3://$(BUCKET)/thor.yml
+	@aws s3 cp templates/thor.yml s3://$(BUCKET)/thor.yml
 	@aws --region $(AWS_DEFAULT_REGION) cloudformation update-stack \
 	    --stack-name $(STACK) \
 	    --template-url http://$(BUCKET).s3-$(AWS_DEFAULT_REGION).amazonaws.com/thor.yml || true

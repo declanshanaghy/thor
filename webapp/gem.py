@@ -1,4 +1,4 @@
-import datetime
+import time
 import logging
 import os
 import time
@@ -9,14 +9,15 @@ import utils
 
 
 class GEMProcessor(object):
-    def process(self, parser, logger=None, type=constants.SPLUNK_EVENTS):
+    def process(self, parser, logger=None, type=None):
         if not logger:
             logger = logging
 
         logger.info("Received data: %s", parser.data)
 
         if constants.LOG_REQUESTS:
-            n = "%s.req.txt" % datetime.datetime.now()
+            t = time.time()
+            n = "%s.req.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
             p = os.path.join(constants.REQ_DIR, n)
             logger.info("Logging request to: %s", p)
             with open(p, "w") as f:

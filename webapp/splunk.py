@@ -165,21 +165,25 @@ class SplunkMetricsHandler(SplunkHandler):
 
         return "\n".join(events)
 
-def send(gem, type=constants.SPLUNK_METRICS, source=None,
+def send(gem, type=None, source=None,
          sourcetype=None, logger=None):
     if not logger:
         logger = logging
 
+    s = None
+
     if type == constants.SPLUNK_EVENTS:
         s = SplunkEventsHandler(gem, source=source,
                                  sourcetype=sourcetype, logger=logger)
-    else:
+    elif type == constants.SPLUNK_METRICS:
         s = SplunkMetricsHandler(gem, source=source,
                                  sourcetype=sourcetype, logger=logger)
-    if s.send():
-        logger.info("Indexing succeeded")
-        return True
-    else:
-        logger.error("Indexing failed")
-        return False
+
+    if s:
+        if s.send():
+            logger.info("Indexing succeeded")
+            return True
+        else:
+            logger.error("Indexing failed")
+            return False
 

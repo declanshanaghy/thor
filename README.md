@@ -5,7 +5,7 @@ Thor is the all knowing & all mighty of all things](img/thor.jpg)
 Thor receives data from the [GreenEye's](http://www.brultech.com/greeneye/) on 
 the ground which are producing data using the [SmartEnergyGroup data format](webapp/data/example_in.seg) 
 and translates that into something [easily usable](webapp/data/example_out_splunk.json)
-by an an analytics system.
+by an analytics system.
 
 Translation is achieved via the [EBNF](webapp/data/seg.ebnf) 
 parser [tatsu](http://tatsu.readthedocs.io/) using a custom 

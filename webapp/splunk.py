@@ -1,3 +1,5 @@
+import logging
+import os
 import collections
 import constants
 import json
@@ -5,6 +7,7 @@ import logging
 
 import requests
 import requests.auth
+import time
 
 
 SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services/collector"
@@ -37,14 +40,27 @@ class SplunkHandler(object):
         raise NotImplementedError(
             "Subclasses must implemement _create_post_data")
 
-    def send(self):
+    def send(self, logger=None):
+        if not logger:
+            logger = logging
+
         data = self._create_post_data()
         if self.logger:
             self.logger.info("Ready to post events: %s", data)
 
+        if constants.LOG_REQUESTS is not None and "post-data" in constants.LOG_REQUESTS:
+            t = time.time()
+            n = "%s.post.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
+            p = os.path.join(constants.REQ_DIR, n)
+            logger.info("Logging post-data to: %s", p)
+            with open(p, "w") as f:
+                f.write(data)
+
+        logger.info("post to: %s", SPLUNK_HEC_URL)
         r = requests.post(SPLUNK_HEC_URL,
                           data=data, headers=DEFAULT_HEADERS)
 
+        logger.info("response: %s", r)
         if r.status_code == 200:
             return r.json()
         else:
@@ -180,10 +196,14 @@ def send(gem, type=None, source=None,
                                  sourcetype=sourcetype, logger=logger)
 
     if s:
-        if s.send():
-            logger.info("Indexing succeeded")
-            return True
-        else:
-            logger.error("Indexing failed")
-            return False
+        try:
+            if s.send(logger=logger):
+                logger.info("Indexing succeeded, type=%s", type)
+                return True
+            else:
+                logger.error("Indexing failed, type=%s", type)
+                return False
+        except StandardError as ex:
+            logger.error("Indexing caused exception, ex=%s", ex)
+
 

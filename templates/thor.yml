@@ -3,10 +3,10 @@ Description: Thor Backend Splunk instance
 Parameters:
   VpcId:
     Type: AWS::EC2::VPC::Id
-    Default: vpc-a39784c7
+    Default: vpc-24f4c540
   SubnetId:
     Type: AWS::EC2::Subnet::Id
-    Default: subnet-fdf0a28b
+    Default: subnet-b47e5ad0
   KeyName:
     Type: AWS::EC2::KeyPair::KeyName
     Default: dek
@@ -82,6 +82,9 @@ Resources:
       SubnetId: !Ref SubnetId
       SecurityGroupIds:
         - !Ref InstanceSecurityGroup
+      Tags:
+      - Key: "Name"
+        Value: "thor-cfn"
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:

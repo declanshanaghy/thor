@@ -4,10 +4,11 @@
 CWD := $(shell pwd)
 
 AWS_DEFAULT_REGION := us-west-2
-STACK := thor-20180703
 BUCKET := thor-20180703
+STACK := thor-20180703-gen02
 DEPLOY_USER := ec2-user
-DEPLOY_TGT := 54.218.150.106
+DEPLOY_TGT := 52.32.115.39
+TEMPLATE_URL := http://$(BUCKET).s3-$(AWS_DEFAULT_REGION).amazonaws.com/thor.yml
 
 #####
 #
@@ -35,12 +36,15 @@ ERR=$(RED)
 
 delpoy: cfn webapp
 
-cfn:
-	@echo "Updating CloudFormation stack: $(STACK)..."
+template:
+	@echo "Updating CloudFormation stack: $(STACK)"
 	@aws s3 cp templates/thor.yml s3://$(BUCKET)/thor.yml
+	@echo "Template is available at: $(TEMPLATE_URL)"
+
+cfn:
 	@aws --region $(AWS_DEFAULT_REGION) cloudformation update-stack \
 	    --stack-name $(STACK) \
-	    --template-url http://$(BUCKET).s3-$(AWS_DEFAULT_REGION).amazonaws.com/thor.yml || true
+	    --template-url $(TEMPLATE_URL) || true
 
 webapp:
 	@echo "Deploying to $(DEPLOY_TGT)"
@@ -53,5 +57,5 @@ venv:
 	. venv/bin/activate && \
 	    echo `which python` && \
 	    pip install -U setuptools && \
-	    pip install -U pip \
-	    pip install -r requirements.txt
+	    pip install -U pip awscli && \
+	    pip install -r webapp/requirements.txt

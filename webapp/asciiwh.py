@@ -107,9 +107,8 @@ class ASCIIWH(object):
             cr = rx.find(c)
             if cr > 0:
                 self.data += rx[:cr]
-                ret = self.g.process(self)
-                if ret:
-                    logging.info(ret)
+                ret = self.g.process(self, type=constants.SPLUNK_METRICS)
+                logging.info("processing result: %s", ret)
                 self.data = rx[cr + 1:]
                 break
         else:

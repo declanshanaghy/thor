@@ -2,5 +2,9 @@
   "01000899": {
     "site": "601-Kearney",
     "node": "MainPanel"
+  },
+  "xxxxxxxx": {
+    "site": "Test",
+    "node": "Data"
   }
 }

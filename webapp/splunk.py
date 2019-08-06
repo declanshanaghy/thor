@@ -59,7 +59,7 @@ class SplunkHandler(object):
                 f.write(data)
 
             if constants.S3_BUCKET is not None:
-                objectname = os.path.join(constants.S3_DATAPATH, filename)
+                objectname = os.path.join(constants.S3_DATAPATH, "metrics", filename)
                 logger.info({
                     "message": "Logging post-data to S3",
                     "fspath": fspath,

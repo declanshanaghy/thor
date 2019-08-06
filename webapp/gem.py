@@ -20,16 +20,16 @@ class GEMProcessor(object):
 
         if constants.LOG_REQUESTS is not None and "raw-data" in constants.LOG_REQUESTS:
             t = time.time()
-            filename = "%s.post.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
+            filename = "%s.raw.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
             fspath = os.path.join(constants.REQ_DIR, filename)
             logger.info("Logging post-data to: %s", fspath)
             with open(fspath, "w") as f:
                 f.write(parser.format_log())
 
             if constants.S3_BUCKET is not None:
-                objectname = os.path.join(constants.S3_DATAPATH, filename)
+                objectname = os.path.join(constants.S3_DATAPATH, "raw", filename)
                 logger.info({
-                    "message": "Logging post-data to S3",
+                    "message": "Logging raw-data to S3",
                     "fspath": fspath,
                     "S3_BUCKET": constants.S3_BUCKET,
                     "objectname": objectname,
@@ -138,6 +138,11 @@ class GEM(object):
 
     def set_node(self, node):
         mapped = self._nodes.get(node)
+        logging.info({
+            "message": "set_node",
+            "node": "node",
+            "mapped": "mapped",
+        })
         if mapped:
             self.site = mapped['site']
             self.node = mapped['node']

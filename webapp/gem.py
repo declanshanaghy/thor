@@ -140,8 +140,8 @@ class GEM(object):
         mapped = self._nodes.get(node)
         logging.info({
             "message": "set_node",
-            "node": "node",
-            "mapped": "mapped",
+            "node": node,
+            "mapped": mapped,
         })
         if mapped:
             self.site = mapped['site']

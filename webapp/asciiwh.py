@@ -177,8 +177,12 @@ class ASCIIWH(object):
                     self._rx(s)
 
                     if rx:
-                        # A readable client socket has data
-                        self.process_rx(rx)
+                        try:
+                            # A readable client socket has data
+                            self.process_rx(rx)
+                        except:
+                            logging.exception(
+                                "Unhandled exception processing received data")
                     else:
                         # Interpret empty result as closed connection
                         logging.info("Client closed: %s", s.getpeername())
@@ -193,7 +197,7 @@ class ASCIIWH(object):
         self.shutdown()
 
 if __name__ == "__main__":
-    logutil.setup_logging(stdout=True,
+    logutil.setup_logging(stdout=constants.LOG_STDOUT,
                           log_file=os.path.join(constants.LOG_DIR,
                                                 constants.LOG_FILE_ASCIIWH))
     srv = ASCIIWH()

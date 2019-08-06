@@ -7,6 +7,9 @@ import constants
 import splunk
 import utils
 
+import boto3
+import botocore.exceptions
+
 
 class GEMProcessor(object):
     def process(self, parser, logger=None, type=None):
@@ -17,11 +20,29 @@ class GEMProcessor(object):
 
         if constants.LOG_REQUESTS is not None and "raw-data" in constants.LOG_REQUESTS:
             t = time.time()
-            n = "%s.raw.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
-            p = os.path.join(constants.REQ_DIR, n)
-            logger.info("Logging raw to: %s", p)
-            with open(p, "w") as f:
+            filename = "%s.post.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
+            fspath = os.path.join(constants.REQ_DIR, filename)
+            logger.info("Logging post-data to: %s", fspath)
+            with open(fspath, "w") as f:
                 f.write(parser.format_log())
+
+            if constants.S3_BUCKET is not None:
+                objectname = os.path.join(constants.S3_DATAPATH, filename)
+                logger.info({
+                    "message": "Logging post-data to S3",
+                    "fspath": fspath,
+                    "S3_BUCKET": constants.S3_BUCKET,
+                    "objectname": objectname,
+                })
+
+                # Upload the file
+                s3_client = boto3.client('s3')
+                try:
+                    response = s3_client.upload_file(fspath, constants.S3_BUCKET,
+                                                     objectname)
+                    logger.info("Response from s3: %s", response)
+                except botocore.exceptions.ClientError as e:
+                    logging.error(e)
 
         g = GEM()
         parser.parse(g)

@@ -5,6 +5,8 @@ import os
 import re
 import sys
 
+import constants
+
 
 def setup_logging(stdout=True, log_file=None):
     class DictFormatter(logging.Formatter):
@@ -38,11 +40,16 @@ def setup_logging(stdout=True, log_file=None):
             logformat = logging.Formatter.format(self, record)
             return logformat
 
+    log_level = logging.INFO
+    if constants.LOG_LEVEL == "debug":
+        log_level = logging.DEBUG
+
     messages = []
+    messages.append("log level is " + str(constants.LOG_LEVEL))
 
     # Set up the root logger.
     logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
+    logger.setLevel(log_level)
 
     fragments = [
         '%(asctime)s',
@@ -56,7 +63,7 @@ def setup_logging(stdout=True, log_file=None):
 
     if stdout:
         ch = logging.StreamHandler(sys.stdout)
-        ch.setLevel(logging.DEBUG)
+        ch.setLevel(log_level)
         logger.addHandler(ch)
         formatter = DictFormatter(format, secure_log=True)
         ch.setFormatter(formatter)

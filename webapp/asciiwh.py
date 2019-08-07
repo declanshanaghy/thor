@@ -10,8 +10,7 @@ import gem
 import constants
 import logutil
 
-
-CRS = ("\r", "\n", )
+CRS = ("\r", "\n",)
 IDLE = 60 * 5
 
 
@@ -23,7 +22,6 @@ class ASCIIWH(object):
     server = None
     rxs = {}
     inputs = []
-
 
     def parse(self, gem):
         d = {}
@@ -37,7 +35,7 @@ class ASCIIWH(object):
                 # Dont allow this to be handled by the else case because a whp
                 # field will accidentally be caught by the wh case (ENERGY)
                 fltval = float(v)
-                logging.info("UNKNOWN FIELD TYPE %s=%s", k, fltval)
+                logging.info("UNKNOWN FIELD TYPE GEM_WHP %s=%s", k, fltval)
             elif k[:1] == constants.GEM_CURRENT:
                 ch = k[2:]
                 fltval = float(v)
@@ -62,7 +60,7 @@ class ASCIIWH(object):
             elif k == constants.GEM_ELAPSED:
                 pass
             else:
-                logging.info("UNKNOWN FIELD TYPE %s=%s", k, v)
+                logging.info("UNKNOWN FIELD TYPE k='%s' v='%s'", k, v)
 
         gem.finalize()
 
@@ -83,6 +81,7 @@ class ASCIIWH(object):
         server_address = ('0.0.0.0', constants.ASCII_WH_PORT)
 
         try:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             sock.bind(server_address)
         except socket.error:
             logging.error("Bind failed on %s, will retry", str(server_address))
@@ -96,19 +95,28 @@ class ASCIIWH(object):
         self.inputs.append(self.server)
 
     def process_rx(self, rx):
-        logging.info('Received "%s"' % rx)
         if not self.started and rx[0:2] == "n=":
-            logging.info("New packet started")
+            logging.info({
+                "message": "First packet start found",
+                "rx": rx,
+            })
             self.started = True
         elif not self.started:
-            logging.info("Not started. rx=%s", rx)
+            logging.info({
+                "message": "Not started",
+                "rx": rx,
+            })
 
         for c in CRS:
             cr = rx.find(c)
             if cr > 0:
                 self.data += rx[:cr]
+                self.data = self.data.strip() # Ensure all CRs are removed
                 ret = self.g.process(self, type=constants.SPLUNK_METRICS)
-                logging.info("processing result: %s", ret)
+                logging.info({
+                    "message": "Received result",
+                    "result": ret,
+                })
                 self.data = rx[cr + 1:]
                 break
         else:
@@ -125,7 +133,12 @@ class ASCIIWH(object):
         return "%s:%s" % s.getpeername()
 
     def _rx(self, s):
-        self.rxs[self._client_key(s)] = (time.time(), s)
+        k = self._client_key(s)
+        logging.info({
+            "message": "Received chunk",
+            "client": k,
+        })
+        self.rxs[k] = (time.time(), s)
 
     def _close(self, s):
         k = self._client_key(s)
@@ -195,6 +208,7 @@ class ASCIIWH(object):
                 self._close(s)
 
         self.shutdown()
+
 
 if __name__ == "__main__":
     logutil.setup_logging(stdout=constants.LOG_STDOUT,

@@ -48,7 +48,7 @@ class SplunkHandler(object):
 
         data = self._create_post_data()
         if self.logger:
-            self.logger.info("Ready to post events: %s", data)
+            self.logger.debug("Ready to post events: %s", data)
 
         if constants.LOG_REQUESTS is not None and "post-data" in constants.LOG_REQUESTS:
             t = time.time()

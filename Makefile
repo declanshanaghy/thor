@@ -7,7 +7,7 @@ AWS_DEFAULT_REGION := us-west-2
 BUCKET := thor-20180703
 STACK := thor-20180703-gen02
 DEPLOY_USER := ec2-user
-DEPLOY_TGT := 52.32.115.39
+DEPLOY_TGT := thor.shanaghy.com
 TEMPLATE_URL := http://$(BUCKET).s3-$(AWS_DEFAULT_REGION).amazonaws.com/thor.yml
 
 #####
@@ -46,10 +46,14 @@ cfn:
 	    --stack-name $(STACK) \
 	    --template-url $(TEMPLATE_URL) || true
 
-webapp:
+server_deploy:
 	@echo "Deploying to $(DEPLOY_TGT)"
 	@rsync -avzl --exclude=*.pyc -e ssh webapp ${DEPLOY_USER}@${DEPLOY_TGT}:~/thor/
-	@ssh ${DEPLOY_USER}@${DEPLOY_TGT} bash -s < update_webapp.sh
+	@ssh ${DEPLOY_USER}@${DEPLOY_TGT} bash -s < server_deploy.sh
+
+server_restart:
+	@echo "Restarting $(DEPLOY_TGT)"
+	@ssh ${DEPLOY_USER}@${DEPLOY_TGT} bash -s < server_restart.sh
 
 venv:
 	@echo "Creating virtual environment" && \

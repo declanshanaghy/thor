@@ -1,3 +1,4 @@
+import logging
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -7,6 +8,7 @@ DEFAULT_LOG_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'logs'))
 LOG_DIR = os.environ.get('LOG_DIR', DEFAULT_LOG_DIR)
 REQ_DIR = os.path.join(LOG_DIR, 'requests')
 
+LOG_LEVEL = os.environ.get('LOG_LEVEL', "info")
 LOG_STDOUT = os.environ.get('LOG_STDOUT', False)
 LOG_REQUESTS = os.environ.get('LOG_REQUESTS', None)
 LOG_FILE_WEB = os.path.join(LOG_DIR, 'thor-web.log')
@@ -43,6 +45,8 @@ GEM_WHP = "whp"
 GEM_ENERGY = "wh"
 GEM_TEMPERATURE = "t"
 GEM_SERIAL = "n"
+GEM_SERIAL_EXT = "\\n"  # Subsequent packets come through
+GEM_SERIAL_EXTENDED = "n="
 GEM_VOLTAGE = "v"
 GEM_ELAPSED = "m"
 

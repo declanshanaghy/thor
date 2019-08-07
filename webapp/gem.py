@@ -16,18 +16,23 @@ class GEMProcessor(object):
         if not logger:
             logger = logging
 
-        logger.info("Received data: %s", parser.data)
+        logger.info({
+            "message": "Processing GEM packet",
+            "data": parser.data,
+        })
 
         if constants.LOG_REQUESTS is not None and "raw-data" in constants.LOG_REQUESTS:
             t = time.time()
-            filename = "%s.raw.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
+            filename = "%s.raw.txt" % time.strftime("%Y%m%dT%H%M%S%Z",
+                                                    time.gmtime(t))
             fspath = os.path.join(constants.REQ_DIR, filename)
-            logger.info("Logging post-data to: %s", fspath)
+            logger.info("Logging raw-data to: %s", fspath)
             with open(fspath, "w") as f:
                 f.write(parser.format_log())
 
             if constants.S3_BUCKET is not None:
-                objectname = os.path.join(constants.S3_DATAPATH, "raw", filename)
+                objectname = os.path.join(constants.S3_DATAPATH, "raw",
+                                          filename)
                 logger.info({
                     "message": "Logging raw-data to S3",
                     "fspath": fspath,
@@ -38,7 +43,8 @@ class GEMProcessor(object):
                 # Upload the file
                 s3_client = boto3.client('s3')
                 try:
-                    response = s3_client.upload_file(fspath, constants.S3_BUCKET,
+                    response = s3_client.upload_file(fspath,
+                                                     constants.S3_BUCKET,
                                                      objectname)
                     logger.info("Response from s3: %s", response)
                 except botocore.exceptions.ClientError as e:
@@ -89,7 +95,6 @@ class GEM(object):
     def fq_node(self):
         return self.site + ':' + self.node
 
-
     def finalize(self):
         if constants.PRUNE_EMPTY:
             self._prune_electricity()
@@ -118,7 +123,6 @@ class GEM(object):
         for data in todel:
             self.temperature.remove(data)
 
-
     def _prune_electricity(self):
         if constants.PRUNE_EMPTY:
             for ch, data in self._electricity.items():
@@ -127,12 +131,13 @@ class GEM(object):
                 #   and
                 # any 2 entries are zero
                 no_eandp = (data.get(constants.ENERGY, 0) == 0 and
-                            data.get(constants.POWER,0) == 0)
+                            data.get(constants.POWER, 0) == 0)
                 no_candp = (data.get(constants.CURRENT, 0) == 0 and
                             data.get(constants.POWER, 0) == 0)
                 no_eandc = (data.get(constants.ENERGY, 0) == 0 and
                             data.get(constants.CURRENT, 0) == 0)
-                remove = isinstance(ch, int) and (no_candp or no_eandc or no_eandp)
+                remove = isinstance(ch, int) and (
+                    no_candp or no_eandc or no_eandp)
                 if remove:
                     del self._electricity[ch]
 
@@ -169,4 +174,3 @@ class GEM(object):
             }
 
         self._electricity[mapped_name][type] = val
-

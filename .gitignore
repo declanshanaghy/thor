@@ -22,3 +22,4 @@ venv
 .cache
 output
 *,cover
+tmp

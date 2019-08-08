@@ -67,6 +67,9 @@ class ASCIIWH(object):
     def format_log(self):
         return self.data
 
+    def kind(self):
+        return "asciiwh"
+
     def shutdown(self):
         logging.info("Shutting down")
         for s in self.inputs:
@@ -112,7 +115,7 @@ class ASCIIWH(object):
             if cr > 0:
                 self.data += rx[:cr]
                 self.data = self.data.strip() # Ensure all CRs are removed
-                ret = self.g.process(self, type=constants.SPLUNK_METRICS)
+                ret = self.g.process(self, kinds=[constants.SPLUNK_METRICS,constants.SPLUNK_EVENTS])
                 logging.info({
                     "message": "Received result",
                     "result": ret,

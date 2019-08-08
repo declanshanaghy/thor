@@ -1,15 +1,11 @@
-import logging
-import os
 import collections
 import constants
 import json
 import logging
 
-import boto3
-import botocore.exceptions
 import requests
 import requests.auth
-import time
+import utils
 
 
 SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services/collector"
@@ -18,6 +14,7 @@ DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}
 
 
 class SplunkHandler(object):
+    knd = None
     gem = None
     index = None
     source = None
@@ -25,8 +22,9 @@ class SplunkHandler(object):
     records = []
     logger = None
 
-    def __init__(self, gem, index="main",
+    def __init__(self, gem, kind="unknown", index="main",
                  source=None, sourcetype=None, logger=None):
+        self.kind = kind
         self.gem = gem
         self.index = index
         self.source = source
@@ -50,33 +48,15 @@ class SplunkHandler(object):
         if self.logger:
             self.logger.debug("Ready to post events: %s", data)
 
-        if constants.LOG_REQUESTS is not None and "post-data" in constants.LOG_REQUESTS:
-            t = time.time()
-            filename = "%s.post.txt" % time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
-            fspath = os.path.join(constants.REQ_DIR, filename)
-            logger.info("Logging post-data to: %s", fspath)
-            with open(fspath, "w") as f:
-                f.write(data)
+        utils.log_data(self.kind, data)
 
-            if constants.S3_BUCKET is not None:
-                objectname = os.path.join(constants.S3_DATAPATH, "metrics", filename)
-                logger.info({
-                    "message": "Logging post-data to S3",
-                    "fspath": fspath,
-                    "S3_BUCKET": constants.S3_BUCKET,
-                    "objectname": objectname,
-                })
-
-                # Upload the file
-                s3_client = boto3.client('s3')
-                try:
-                    response = s3_client.upload_file(fspath, constants.S3_BUCKET,
-                                                     objectname)
-                    logger.info("Response from s3: %s", response)
-                except botocore.exceptions.ClientError as e:
-                    logging.error(e)
-
-        logger.info("post to: %s", SPLUNK_HEC_URL)
+        logger.info({
+            "message": "posting to splunk",
+            "hec_url": SPLUNK_HEC_URL,
+            "index": self.index,
+            "source": self.source,
+            "sourcetype": self.sourcetype,
+        })
         r = requests.post(SPLUNK_HEC_URL,
                           data=data, headers=DEFAULT_HEADERS)
 
@@ -91,6 +71,11 @@ class SplunkHandler(object):
 class SplunkEventsHandler(SplunkHandler):
     gem = None
     records = None
+
+    def __init__(self, *args, **kwargs):
+        super(SplunkEventsHandler, self).__init__(
+            kind=constants.SPLUNK_EVENTS, index="thorevents",
+            *args, **kwargs)
 
     def _create_records(self):
         self.records = [
@@ -144,8 +129,9 @@ class SplunkEventsHandler(SplunkHandler):
 
 class SplunkMetricsHandler(SplunkHandler):
     def __init__(self, *args, **kwargs):
-        super(SplunkMetricsHandler, self).__init__(index="thormetrics",
-                                            *args, **kwargs)
+        super(SplunkMetricsHandler, self).__init__(
+            kind=constants.SPLUNK_METRICS, index="thormetrics",
+            *args, **kwargs)
 
     def _create_records(self):
         default_dimensions = {
@@ -201,29 +187,40 @@ class SplunkMetricsHandler(SplunkHandler):
 
         return "\n".join(events)
 
-def send(gem, type=None, source=None,
+def send(gem, kinds=None, source=None,
          sourcetype=None, logger=None):
     if not logger:
         logger = logging
 
-    s = None
+    success = True
+    for kind in kinds:
+        s = None
+        if kind == constants.SPLUNK_EVENTS:
+            s = SplunkEventsHandler(gem, source=source,
+                                     sourcetype=sourcetype, logger=logger)
+        elif kind == constants.SPLUNK_METRICS:
+            s = SplunkMetricsHandler(gem, source=source,
+                                     sourcetype=sourcetype, logger=logger)
 
-    if type == constants.SPLUNK_EVENTS:
-        s = SplunkEventsHandler(gem, source=source,
-                                 sourcetype=sourcetype, logger=logger)
-    elif type == constants.SPLUNK_METRICS:
-        s = SplunkMetricsHandler(gem, source=source,
-                                 sourcetype=sourcetype, logger=logger)
+        if s:
+            try:
+                if s.send(logger=logger):
+                    logger.info({
+                        "message": "Indexing succeeded",
+                        "kind": kind,
+                    })
+                else:
+                    logger.info({
+                        "message": "Indexing failed",
+                        "kind": kind,
+                    })
+                    success = False
+            except StandardError as ex:
+                logger.exception({
+                    "message": "Indexing caused exception",
+                    "kind": kind,
+                    "ex": ex,
+                })
+                success = False
 
-    if s:
-        try:
-            if s.send(logger=logger):
-                logger.info("Indexing succeeded, type=%s", type)
-                return True
-            else:
-                logger.error("Indexing failed, type=%s", type)
-                return False
-        except StandardError as ex:
-            logger.error("Indexing caused exception, ex=%s", ex)
-
-
+    return success

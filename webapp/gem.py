@@ -12,7 +12,7 @@ import botocore.exceptions
 
 
 class GEMProcessor(object):
-    def process(self, parser, logger=None, type=None):
+    def process(self, parser, logger=None, kinds=None):
         if not logger:
             logger = logging
 
@@ -21,41 +21,14 @@ class GEMProcessor(object):
             "data": parser.data,
         })
 
-        if constants.LOG_REQUESTS is not None and "raw-data" in constants.LOG_REQUESTS:
-            t = time.time()
-            filename = "%s.raw.txt" % time.strftime("%Y%m%dT%H%M%S%Z",
-                                                    time.gmtime(t))
-            fspath = os.path.join(constants.REQ_DIR, filename)
-            logger.info("Logging raw-data to: %s", fspath)
-            with open(fspath, "w") as f:
-                f.write(parser.format_log())
-
-            if constants.S3_BUCKET is not None:
-                objectname = os.path.join(constants.S3_DATAPATH, "raw",
-                                          filename)
-                logger.info({
-                    "message": "Logging raw-data to S3",
-                    "fspath": fspath,
-                    "S3_BUCKET": constants.S3_BUCKET,
-                    "objectname": objectname,
-                })
-
-                # Upload the file
-                s3_client = boto3.client('s3')
-                try:
-                    response = s3_client.upload_file(fspath,
-                                                     constants.S3_BUCKET,
-                                                     objectname)
-                    logger.info("Response from s3: %s", response)
-                except botocore.exceptions.ClientError as e:
-                    logging.error(e)
+        utils.log_data(parser.kind(), parser.format_log())
 
         g = GEM()
         parser.parse(g)
         g.finalize()
 
         logger.info("Parsed GEM: %s", g)
-        if splunk.send(g, type=type, logger=logger, source=g.fq_node):
+        if splunk.send(g, kinds=kinds, logger=logger, source=g.fq_node):
             return {
                 constants.TIMESTAMP: g.timestamp,
                 constants.SITE: g.site,

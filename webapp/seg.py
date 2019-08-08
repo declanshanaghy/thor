@@ -70,3 +70,6 @@ class NEWSEGParser(object):
 
     def format_log(self):
         return self.data
+
+    def kind(self):
+        return "newseg"

@@ -60,8 +60,8 @@ def send_ascii_tcp():
 
         logging.info("Send: %s", data)
         sock.sendall(data)
-        time.sleep(1)
-        sock.sendall(data)
+        # time.sleep(1)
+        # sock.sendall(data)
 
     finally:
         sock.close()

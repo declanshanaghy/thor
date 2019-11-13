@@ -22,7 +22,8 @@ def ascii_data():
     # for root, dirs, files in os.walk(p):
     #     fname = random.choice(files)
 
-    fname = "2018-02-25 14:51:42.058186.req.txt"
+    # fname = "2018-02-25 14:51:42.058186.req.txt"
+    fname = "2019-11-13 temp and voltage.req.txt"
     with open(os.path.join(p, fname)) as f:
         return f.read()
 
@@ -43,7 +44,7 @@ def send_ascii():
     a.data = data
 
     g = gem.GEMProcessor()
-    g.process(a, type=constants.SPLUNK_METRICS)
+    g.process(a, kinds=(constants.SPLUNK_METRICS_SCS,))
 
 
 def send_ascii_tcp():
@@ -86,7 +87,7 @@ if __name__ == "__main__":
                           log_file=os.path.join(constants.LOG_DIR,
                                                 'oneoff.log'))
     # send_newseg()
-    # send_ascii()
-    send_ascii_tcp()
+    send_ascii()
+    # send_ascii_tcp()
     # send_newseg_request()
     # send_ascii_request()

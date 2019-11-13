@@ -30,7 +30,8 @@ class GEMProcessor(object):
         logger.info("Parsed GEM: %s", g)
         if splunk.send(g, kinds=kinds, logger=logger, source=g.fq_node):
             return {
-                constants.TIMESTAMP: g.timestamp,
+                constants.TIMESTAMP: g.time,
+                constants.TIMESTAMP_MILLIS: g.time_millis,
                 constants.SITE: g.site,
                 constants.NODE: g.node,
                 constants.FQ_NODE: g.fq_node,
@@ -46,7 +47,7 @@ class GEM(object):
     site = None
     node = None
     time = None
-    timestamp = None
+    time_millis = None
     voltage = 0
     electricity = None
     temperature = None
@@ -59,7 +60,7 @@ class GEM(object):
         self.site = "Site"
         self.node = "Node"
         self.time = time.time()
-        self.timestamp = time.time()
+        self.time_millis = int(round(self.time * 1000))
         self.voltage = 0
         self.electricity = []
         self.temperature = []
@@ -77,7 +78,7 @@ class GEM(object):
 
     def _format_electricity(self):
         for ch, data in self._electricity.items():
-            reading = {constants.NAME: ch}
+            reading = {constants.CHANNEL_NAME: ch}
             reading.update(data)
             self.electricity.append(reading)
 
@@ -89,7 +90,7 @@ class GEM(object):
             #   and
             # it's value is zero
             data = self.temperature[i]
-            if isinstance(data[constants.NAME], int) and \
+            if isinstance(data[constants.CHANNEL_NAME], int) and \
                             data[constants.TEMPERATURE] == 0.0:
                 todel.append(data)
 
@@ -132,7 +133,7 @@ class GEM(object):
             str(channel), channel)
         if val == constants.TEMPERATURE_UNKNOWN:
             val = 0
-        self.temperature.append({constants.NAME: mapped_name,
+        self.temperature.append({constants.CHANNEL_NAME: mapped_name,
                                  constants.TEMPERATURE: val})
 
     def set_channel(self, channel, type, val):
@@ -140,7 +141,7 @@ class GEM(object):
             str(channel), channel)
         if not mapped_name in self._electricity:
             self._electricity[mapped_name] = {
-                constants.CHANNEL: channel,
+                constants.CHANNEL_NUMBER: channel,
                 constants.POWER: 0.0,
                 constants.CURRENT: 0.0,
                 constants.ENERGY: 0.0

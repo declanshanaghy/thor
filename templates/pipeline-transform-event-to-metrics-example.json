@@ -1,1151 +1,1150 @@
+
 {
-  "name": "transform-event-to-metrics-example",
-  "data": {
     "edges": [
-      {
-        "sourceNode": "48b54dcb-0c79-4860-b9a9-e371ac9dba18",
-        "sourcePort": "output",
-        "targetNode": "6e3e43e9-caf7-4f36-b738-924a72a0ede0",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "6e3e43e9-caf7-4f36-b738-924a72a0ede0",
-        "sourcePort": "output",
-        "targetNode": "68cae29d-6833-4fd4-9f87-33e42eb16af4",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "68cae29d-6833-4fd4-9f87-33e42eb16af4",
-        "sourcePort": "output",
-        "targetNode": "f0c49e2d-4013-4da5-85fd-6c478f167a84",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "f0c49e2d-4013-4da5-85fd-6c478f167a84",
-        "sourcePort": "output",
-        "targetNode": "8c57ef2b-e0db-431e-9460-75ec8604fec0",
-        "targetPort": "value"
-      },
-      {
-        "sourceNode": "dd451370-acea-446c-9ca6-e67606e25a23",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "a9e8e9c3-0c8a-4446-8bf6-cd6d2fd46091",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "a705ada7-00cc-46dd-9a2c-5b9e0af44db7",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "e4cb7732-8cdb-4d75-81c4-525e9a3952f5",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "672cbb66-877d-4df2-8b1f-5038d6101f1f",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "8c57ef2b-e0db-431e-9460-75ec8604fec0",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "70171f1b-3cfa-4a2c-b180-6878991972bc",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "c8efc75d-237f-44c6-ae80-39e6f3191423",
-        "sourcePort": "output",
-        "targetNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "3b9438e9-0fce-4c5f-9cd7-b0ef06e88d92",
-        "sourcePort": "output",
-        "targetNode": "256b1574-4300-4542-8d9e-64707479d241",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "256b1574-4300-4542-8d9e-64707479d241",
-        "sourcePort": "output",
-        "targetNode": "32180891-7ff3-4a3e-9b7d-2a5c3adca7ac",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "32180891-7ff3-4a3e-9b7d-2a5c3adca7ac",
-        "sourcePort": "output",
-        "targetNode": "ae9fcc27-5193-4653-96ea-e6bd29668fb0",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "ae9fcc27-5193-4653-96ea-e6bd29668fb0",
-        "sourcePort": "output",
-        "targetNode": "aa6d1c9a-6a9f-47fe-8d79-548231e17ef0",
-        "targetPort": "value"
-      },
-      {
-        "sourceNode": "9837b94b-d23b-41f6-93f0-0f3beb4a47d0",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "d6e41a75-ae52-433f-95e3-131fb317bec2",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "d36c5c88-ba59-4466-b901-00d4e112d083",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "0a824991-511e-48c8-94d3-a0e0f7efd4a1",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "a56066d7-5841-493c-990f-94bfcf48ac56",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "aa6d1c9a-6a9f-47fe-8d79-548231e17ef0",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "832ca766-781b-4047-8dd8-c83b7f2b2e90",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "81164ed7-22c6-46c6-9840-a3186c4f6fe6",
-        "sourcePort": "output",
-        "targetNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "ca9fad82-6f46-4268-b907-e873c9f65c53",
-        "sourcePort": "output",
-        "targetNode": "21631bf9-947c-4cf3-89d1-633c54d28b92",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "21631bf9-947c-4cf3-89d1-633c54d28b92",
-        "sourcePort": "output",
-        "targetNode": "0914713c-b1ce-4e92-ad8f-6f26cda1b479",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "0914713c-b1ce-4e92-ad8f-6f26cda1b479",
-        "sourcePort": "output",
-        "targetNode": "8b805b39-ebb8-4df7-bd99-bd5737efdfdd",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "8b805b39-ebb8-4df7-bd99-bd5737efdfdd",
-        "sourcePort": "output",
-        "targetNode": "69b17db5-04f1-4a8e-98d2-b2b2410bfedf",
-        "targetPort": "value"
-      },
-      {
-        "sourceNode": "32652c54-95f8-443d-96e8-87f13d3de855",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "f39d8fea-d273-43f5-827e-1cca487240c5",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "7824fc07-29f6-422a-88ab-70e407ec796e",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "37113dbe-96fb-4215-ac9f-9b4ea0853a06",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "387e9436-308f-406f-b693-5b1836ee61a2",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "69b17db5-04f1-4a8e-98d2-b2b2410bfedf",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "044f41a3-9369-48a8-ae3c-9edb30c0eec2",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "2114c8bf-9443-4e84-8579-7d6592cf1535",
-        "sourcePort": "output",
-        "targetNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "5a36af96-fa8e-4940-a922-bc0b455560a0",
-        "sourcePort": "output",
-        "targetNode": "22aafdd6-0768-46d5-9efc-f97ca8d56f9d",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "22aafdd6-0768-46d5-9efc-f97ca8d56f9d",
-        "sourcePort": "output",
-        "targetNode": "5b1c73f5-d534-4ddd-91a0-14209e804f40",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "5b1c73f5-d534-4ddd-91a0-14209e804f40",
-        "sourcePort": "output",
-        "targetNode": "30d65979-5e31-4bca-8719-77adf9e8b721",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "30d65979-5e31-4bca-8719-77adf9e8b721",
-        "sourcePort": "output",
-        "targetNode": "48e5842c-c35c-484c-b3e5-63e3f1501b3a",
-        "targetPort": "value"
-      },
-      {
-        "sourceNode": "accb54c9-6d72-49ba-83fa-54096c6ab490",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "dabd4d33-f2df-42fb-8735-49473b52ec9b",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "4e18d059-c734-4c69-8b63-f3eaf630fdfc",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "70b24403-1908-4191-96b1-5500998c0038",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "b4b4f707-bffc-44df-a9ef-a63609ea85e3",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "48e5842c-c35c-484c-b3e5-63e3f1501b3a",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "47f12abe-c9cb-4f8e-898e-43b1fdf9d076",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "0b5d791c-1f8d-49c5-9f49-f6f938cc049c",
-        "sourcePort": "output",
-        "targetNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "sourcePort": "output",
-        "targetNode": "a4cbc635-8ddf-4c43-bf1f-4aeb78708e62",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "sourcePort": "output",
-        "targetNode": "a4cbc635-8ddf-4c43-bf1f-4aeb78708e62",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "sourcePort": "output",
-        "targetNode": "a4cbc635-8ddf-4c43-bf1f-4aeb78708e62",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "sourcePort": "output",
-        "targetNode": "a4cbc635-8ddf-4c43-bf1f-4aeb78708e62",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "a4cbc635-8ddf-4c43-bf1f-4aeb78708e62",
-        "sourcePort": "output",
-        "targetNode": "7bf12270-826d-4ffe-87c2-f1b516e5fa2e",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "2fe4fbee-08fb-42b8-bb7d-9e55ea787c6d",
-        "sourcePort": "output",
-        "targetNode": "f25ccc6c-d875-4e2f-b282-cf7a65d8d168",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "f25ccc6c-d875-4e2f-b282-cf7a65d8d168",
-        "sourcePort": "output",
-        "targetNode": "47f32734-c8c3-4275-a476-a4c1a2777f48",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "47f32734-c8c3-4275-a476-a4c1a2777f48",
-        "sourcePort": "output",
-        "targetNode": "39f40637-fb00-4a70-9162-d00208395c66",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "39f40637-fb00-4a70-9162-d00208395c66",
-        "sourcePort": "output",
-        "targetNode": "18a691da-a7fb-4f95-81ee-c68d67799bdb",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "a3496759-a89e-476c-b06c-399bf5d6ee66",
-        "sourcePort": "output",
-        "targetNode": "eadf6bef-56b2-4268-831d-483ce1bd1ef7",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "eadf6bef-56b2-4268-831d-483ce1bd1ef7",
-        "sourcePort": "output",
-        "targetNode": "b04d88b0-e51d-460d-8703-984631e6c94e",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "b04d88b0-e51d-460d-8703-984631e6c94e",
-        "sourcePort": "output",
-        "targetNode": "d53b93e1-a123-42be-a694-50c08eb94362",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "a5dde38e-692b-4790-a592-7e84d131e3b1",
-        "sourcePort": "output",
-        "targetNode": "a6fa3313-9393-4089-b20a-1443d03ec962",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "a6fa3313-9393-4089-b20a-1443d03ec962",
-        "sourcePort": "output",
-        "targetNode": "c462e669-e755-4fa4-a400-4b8b81c9687a",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "c462e669-e755-4fa4-a400-4b8b81c9687a",
-        "sourcePort": "output",
-        "targetNode": "6f221aec-eeaf-470e-a856-f51e2d59e818",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "1bf4cba0-3d17-47e3-9bfc-417e836e58b2",
-        "sourcePort": "output",
-        "targetNode": "70bf6aaf-d341-4d04-a402-213908406571",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "d53b93e1-a123-42be-a694-50c08eb94362",
-        "sourcePort": "output",
-        "targetNode": "70bf6aaf-d341-4d04-a402-213908406571",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "e03cfc87-7b56-4ff0-b09c-04f4b3abb692",
-        "sourcePort": "output",
-        "targetNode": "70bf6aaf-d341-4d04-a402-213908406571",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "6f221aec-eeaf-470e-a856-f51e2d59e818",
-        "sourcePort": "output",
-        "targetNode": "70bf6aaf-d341-4d04-a402-213908406571",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "7c3fa686-ae95-46a2-ac9b-1b066a802678",
-        "sourcePort": "output",
-        "targetNode": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "70bf6aaf-d341-4d04-a402-213908406571",
-        "sourcePort": "output",
-        "targetNode": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "0ef416c0-98a2-40c8-88b3-9b1ac9de48b5",
-        "sourcePort": "output",
-        "targetNode": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "3fe38919-4832-46a1-b856-f5494131c5ca",
-        "sourcePort": "output",
-        "targetNode": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "f5f21eca-2365-470f-8c06-598ddba54fc2",
-        "sourcePort": "output",
-        "targetNode": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "4e6af294-0080-46fa-8039-73cf8b6edfad",
-        "sourcePort": "output",
-        "targetNode": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "targetPort": "keys-and-values"
-      },
-      {
-        "sourceNode": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "sourcePort": "output",
-        "targetNode": "013d51c3-697a-432d-a0e4-cda405c607d2",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "06b450d1-2435-440e-ad33-988d32a0567c",
-        "sourcePort": "output",
-        "targetNode": "e84ebd94-a4a1-4b0f-9274-42e4acff2041",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "4a15e92b-f753-4835-b2af-cfaec3ad8086",
-        "sourcePort": "output",
-        "targetNode": "a6fe78cb-ebe8-49fc-a994-1180804a888d",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "7bf12270-826d-4ffe-87c2-f1b516e5fa2e",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "function"
-      },
-      {
-        "sourceNode": "a19fd317-87b8-4430-b454-7fdf8372cff2",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "function"
-      },
-      {
-        "sourceNode": "18a691da-a7fb-4f95-81ee-c68d67799bdb",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "function"
-      },
-      {
-        "sourceNode": "013d51c3-697a-432d-a0e4-cda405c607d2",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "function"
-      },
-      {
-        "sourceNode": "e84ebd94-a4a1-4b0f-9274-42e4acff2041",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "function"
-      },
-      {
-        "sourceNode": "a6fe78cb-ebe8-49fc-a994-1180804a888d",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "function"
-      },
-      {
-        "sourceNode": "ac7947db-df03-4979-bcbf-b3bdf0ac171a",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "function"
-      },
-      {
-        "sourceNode": "d7581398-dfc6-4eac-950f-9186b7c5ad52",
-        "sourcePort": "output",
-        "targetNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "targetPort": "input"
-      },
-      {
-        "sourceNode": "e2c05884-a9cb-4994-95ca-4e4f68c62194",
-        "sourcePort": "output",
-        "targetNode": "3f1be6f8-cccb-410a-8e2a-36cd352b5485",
-        "targetPort": "dataset"
-      },
-      {
-        "sourceNode": "0411b339-18e5-4e04-aa4b-94d7fbd4b663",
-        "sourcePort": "output",
-        "targetNode": "3f1be6f8-cccb-410a-8e2a-36cd352b5485",
-        "targetPort": "module"
-      },
-      {
-        "sourceNode": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "sourcePort": "output",
-        "targetNode": "3f1be6f8-cccb-410a-8e2a-36cd352b5485",
-        "targetPort": "input"
-      }
+        {
+            "sourceNode": "4203f821-5cfe-479f-89eb-aee992af330b",
+            "sourcePort": "output",
+            "targetNode": "b6d7233a-8525-44c9-9502-b381865e56ac",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "b6d7233a-8525-44c9-9502-b381865e56ac",
+            "sourcePort": "output",
+            "targetNode": "fba2f99c-cfa7-4594-a382-c1b60e0d9e7c",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "fba2f99c-cfa7-4594-a382-c1b60e0d9e7c",
+            "sourcePort": "output",
+            "targetNode": "8de2da2e-01dd-4409-a713-39d1887c63a3",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "8de2da2e-01dd-4409-a713-39d1887c63a3",
+            "sourcePort": "output",
+            "targetNode": "595f0988-efcd-417a-9e4e-ef3a174c6e41",
+            "targetPort": "value"
+        },
+        {
+            "sourceNode": "5ace234a-45d1-4883-9231-f2622751df44",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "eb1b9297-28d4-4393-af4b-5e94aba1c581",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "246dc803-995f-4cba-a5ea-d17280f1d396",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "055f59d6-8ca6-4dd6-9a24-0cb25635b8f7",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "1fce559c-a4d3-4ee9-8e7f-7dc183c82b4f",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "595f0988-efcd-417a-9e4e-ef3a174c6e41",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "161a60b6-957d-4965-a417-fbd33323c434",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "80e84d72-df6b-41e0-b95c-69df8ea0db86",
+            "sourcePort": "output",
+            "targetNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "b85683da-fdfc-4485-a7ec-d079d0c01868",
+            "sourcePort": "output",
+            "targetNode": "7cd626b7-25a9-4c9d-b2e3-84be44862038",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "7cd626b7-25a9-4c9d-b2e3-84be44862038",
+            "sourcePort": "output",
+            "targetNode": "10a19148-35a1-43c2-a7b3-259600ccb9c5",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "10a19148-35a1-43c2-a7b3-259600ccb9c5",
+            "sourcePort": "output",
+            "targetNode": "9404d5ca-0865-42bb-85b4-d16611033278",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "9404d5ca-0865-42bb-85b4-d16611033278",
+            "sourcePort": "output",
+            "targetNode": "168b2fca-d6c5-4f45-ad83-e6d45fe04a2e",
+            "targetPort": "value"
+        },
+        {
+            "sourceNode": "921f218d-1e99-4bad-8339-641618b696ae",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "00db7595-f6b8-4edc-bc6b-b412e7d077dc",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "250d83b7-85b1-403d-b7b8-bc1f6abac676",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "146641b0-0228-4d85-be2d-08689a745e2f",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "9fc299d6-2f24-47c9-be19-0060e385a521",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "168b2fca-d6c5-4f45-ad83-e6d45fe04a2e",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "fbcefaa2-2b33-4f04-826b-da80d0f8a9b9",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "c4b0ca22-b8e4-4099-b646-36a9b3ee69fa",
+            "sourcePort": "output",
+            "targetNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "e0f2de44-8c00-4497-ac91-c3fc825fc9cf",
+            "sourcePort": "output",
+            "targetNode": "26839169-b402-4e49-90ff-38dccf5165f1",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "26839169-b402-4e49-90ff-38dccf5165f1",
+            "sourcePort": "output",
+            "targetNode": "9936f752-1d4a-468e-a9bd-7318efb577db",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "9936f752-1d4a-468e-a9bd-7318efb577db",
+            "sourcePort": "output",
+            "targetNode": "ae79d78a-588a-4545-b278-c46cf23af4c1",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "ae79d78a-588a-4545-b278-c46cf23af4c1",
+            "sourcePort": "output",
+            "targetNode": "026f2eb3-6e2e-44eb-99c6-e0fad2746e23",
+            "targetPort": "value"
+        },
+        {
+            "sourceNode": "793d5189-f528-4b23-872b-834de28743f0",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "8d2ea4e5-af89-40cd-9d3f-97fd6c4d8d9c",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "7c4e7fd3-5009-4e58-b14b-8f4e0b0ce476",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "5da6c22d-b415-4141-b2c6-7ee53e83be5b",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "ccb0b446-11b0-439e-95a8-579303a69ed2",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "026f2eb3-6e2e-44eb-99c6-e0fad2746e23",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "6316f6bb-96af-4704-a707-4469ca5bed65",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "0e9a0dbd-dace-4292-bce2-73a43fac3b67",
+            "sourcePort": "output",
+            "targetNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "454ebd17-bfe6-4bac-8bad-97727d41fc40",
+            "sourcePort": "output",
+            "targetNode": "bb44b447-c0b2-4277-8703-77b614fcf1c9",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "bb44b447-c0b2-4277-8703-77b614fcf1c9",
+            "sourcePort": "output",
+            "targetNode": "63f96049-8a4d-4710-8af4-2c880e56d928",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "63f96049-8a4d-4710-8af4-2c880e56d928",
+            "sourcePort": "output",
+            "targetNode": "16d1419c-b923-4936-951a-0efa0afff7d3",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "16d1419c-b923-4936-951a-0efa0afff7d3",
+            "sourcePort": "output",
+            "targetNode": "c42d22e4-99a4-4a71-92b3-525b8cfd593a",
+            "targetPort": "value"
+        },
+        {
+            "sourceNode": "a546b500-47ec-4ad5-a8b7-334c44f42212",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "21df1c4b-d86a-4eb3-b04d-b11a99de74f7",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "0373863d-fca8-458e-a30e-39e06a981f1e",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "ddb30ce0-5de9-40f7-9636-ce07c5ade714",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "23dd6296-6bd9-4f0f-b59a-1efd3ed4cdb2",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "c42d22e4-99a4-4a71-92b3-525b8cfd593a",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "25dc282d-a4b5-46b9-a4bf-408dfe246124",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "e3706e1e-d85f-4fbc-a3d3-24d7784fc916",
+            "sourcePort": "output",
+            "targetNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "sourcePort": "output",
+            "targetNode": "6aeaf4f0-cd36-4914-b5bd-9f0a7059a875",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "sourcePort": "output",
+            "targetNode": "6aeaf4f0-cd36-4914-b5bd-9f0a7059a875",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "sourcePort": "output",
+            "targetNode": "6aeaf4f0-cd36-4914-b5bd-9f0a7059a875",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "sourcePort": "output",
+            "targetNode": "6aeaf4f0-cd36-4914-b5bd-9f0a7059a875",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "6aeaf4f0-cd36-4914-b5bd-9f0a7059a875",
+            "sourcePort": "output",
+            "targetNode": "8a0152b0-b541-4460-8923-48412ff1f2fb",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "fefee27a-1863-4799-90ab-a15c344e6035",
+            "sourcePort": "output",
+            "targetNode": "90013044-8f57-474f-839c-ff5a094fa493",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "90013044-8f57-474f-839c-ff5a094fa493",
+            "sourcePort": "output",
+            "targetNode": "1e61271c-9a35-425b-ab02-8070f9df5ee2",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "1e61271c-9a35-425b-ab02-8070f9df5ee2",
+            "sourcePort": "output",
+            "targetNode": "02663726-10bb-49fe-a098-6e083dd7d99a",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "02663726-10bb-49fe-a098-6e083dd7d99a",
+            "sourcePort": "output",
+            "targetNode": "c29506f7-16af-45e4-899c-d6859c9038bc",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "92bf50ce-e43c-4821-a7c4-55d5d3c71b35",
+            "sourcePort": "output",
+            "targetNode": "71e1fcd3-9968-45ae-bf86-7aa0a132d85e",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "71e1fcd3-9968-45ae-bf86-7aa0a132d85e",
+            "sourcePort": "output",
+            "targetNode": "39996705-c5fe-45be-858a-d0dcd1a88058",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "39996705-c5fe-45be-858a-d0dcd1a88058",
+            "sourcePort": "output",
+            "targetNode": "f8b50570-2cd4-46b4-82b4-50ce2a6f9578",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "d72b0bce-cfc0-4f41-b550-7d9d0db0c503",
+            "sourcePort": "output",
+            "targetNode": "f4da94a8-78d8-4d38-a840-4eebeca43e69",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "f4da94a8-78d8-4d38-a840-4eebeca43e69",
+            "sourcePort": "output",
+            "targetNode": "07bd0ffd-19a6-43f3-9f79-5c8b2ac8f3d0",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "07bd0ffd-19a6-43f3-9f79-5c8b2ac8f3d0",
+            "sourcePort": "output",
+            "targetNode": "5499bf4f-c699-4423-bea1-428146470b92",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "133963a1-dd02-481e-aecb-f8c46698710d",
+            "sourcePort": "output",
+            "targetNode": "fe699e52-0f7a-4bfd-a8e6-b8ebbc3e29ad",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "f8b50570-2cd4-46b4-82b4-50ce2a6f9578",
+            "sourcePort": "output",
+            "targetNode": "fe699e52-0f7a-4bfd-a8e6-b8ebbc3e29ad",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "6156093c-d9d4-4b2e-8bdf-2cd642479512",
+            "sourcePort": "output",
+            "targetNode": "fe699e52-0f7a-4bfd-a8e6-b8ebbc3e29ad",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "5499bf4f-c699-4423-bea1-428146470b92",
+            "sourcePort": "output",
+            "targetNode": "fe699e52-0f7a-4bfd-a8e6-b8ebbc3e29ad",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "1ef5a265-f3a7-41b8-8229-9daff250879e",
+            "sourcePort": "output",
+            "targetNode": "82143655-5ed2-4436-a340-cb0831db9981",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "fe699e52-0f7a-4bfd-a8e6-b8ebbc3e29ad",
+            "sourcePort": "output",
+            "targetNode": "82143655-5ed2-4436-a340-cb0831db9981",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "28eab3b7-4cab-4a2d-b95e-7e54e537eabe",
+            "sourcePort": "output",
+            "targetNode": "82143655-5ed2-4436-a340-cb0831db9981",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "c5757a87-25e9-49d3-b976-bea8720a5781",
+            "sourcePort": "output",
+            "targetNode": "82143655-5ed2-4436-a340-cb0831db9981",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "a8b8bbe6-9ba5-425e-8882-81928ca6d8bd",
+            "sourcePort": "output",
+            "targetNode": "82143655-5ed2-4436-a340-cb0831db9981",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "f1a31e67-3be4-4774-bc0b-41f7a8995ade",
+            "sourcePort": "output",
+            "targetNode": "82143655-5ed2-4436-a340-cb0831db9981",
+            "targetPort": "keys-and-values"
+        },
+        {
+            "sourceNode": "82143655-5ed2-4436-a340-cb0831db9981",
+            "sourcePort": "output",
+            "targetNode": "3900483a-c871-4126-8526-1381e94b1310",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "55bbf7f1-f7d6-4f7d-a251-5056300cde34",
+            "sourcePort": "output",
+            "targetNode": "725e8f2c-c01e-4208-a417-af9edc829feb",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "4b7c999b-6d65-4780-9991-9dfc8bc63390",
+            "sourcePort": "output",
+            "targetNode": "dfff32c5-4452-41b4-b901-0198ae9a7e4f",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "8a0152b0-b541-4460-8923-48412ff1f2fb",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "function"
+        },
+        {
+            "sourceNode": "d14e697b-95ff-4801-bd29-8cf5113d5814",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "function"
+        },
+        {
+            "sourceNode": "c29506f7-16af-45e4-899c-d6859c9038bc",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "function"
+        },
+        {
+            "sourceNode": "3900483a-c871-4126-8526-1381e94b1310",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "function"
+        },
+        {
+            "sourceNode": "725e8f2c-c01e-4208-a417-af9edc829feb",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "function"
+        },
+        {
+            "sourceNode": "dfff32c5-4452-41b4-b901-0198ae9a7e4f",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "function"
+        },
+        {
+            "sourceNode": "2a19c760-1c30-48d3-9586-b0c16c674782",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "function"
+        },
+        {
+            "sourceNode": "37289351-4159-4bcf-8edb-92d1d53d8f8f",
+            "sourcePort": "output",
+            "targetNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "targetPort": "input"
+        },
+        {
+            "sourceNode": "95411ad3-3a31-40fa-9601-036a3e4bca9b",
+            "sourcePort": "output",
+            "targetNode": "cea2dbcb-f658-44a4-9f71-341e6e99e6f4",
+            "targetPort": "dataset"
+        },
+        {
+            "sourceNode": "9dcdd626-8c49-406d-a9d6-e83ca8d40eed",
+            "sourcePort": "output",
+            "targetNode": "cea2dbcb-f658-44a4-9f71-341e6e99e6f4",
+            "targetPort": "module"
+        },
+        {
+            "sourceNode": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "sourcePort": "output",
+            "targetNode": "cea2dbcb-f658-44a4-9f71-341e6e99e6f4",
+            "targetPort": "input"
+        }
     ],
     "nodes": [
-      {
-        "attributes": {},
-        "id": "d7581398-dfc6-4eac-950f-9186b7c5ad52",
-        "op": "read-splunk-firehose",
-        "resolvedId": "read-splunk-firehose"
-      },
-      {
-        "attributes": {},
-        "id": "dd451370-acea-446c-9ca6-e67606e25a23",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "name"
-      },
-      {
-        "attributes": {},
-        "id": "a9e8e9c3-0c8a-4446-8bf6-cd6d2fd46091",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "events_per_second"
-      },
-      {
-        "attributes": {},
-        "id": "a705ada7-00cc-46dd-9a2c-5b9e0af44db7",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "unit"
-      },
-      {
-        "attributes": {},
-        "id": "e4cb7732-8cdb-4d75-81c4-525e9a3952f5",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "eps"
-      },
-      {
-        "attributes": {},
-        "id": "672cbb66-877d-4df2-8b1f-5038d6101f1f",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "value"
-      },
-      {
-        "attributes": {},
-        "fieldName": "body",
-        "id": "48b54dcb-0c79-4860-b9a9-e371ac9dba18",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "6e3e43e9-caf7-4f36-b738-924a72a0ede0",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "map\u003cstring, any\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "68cae29d-6833-4fd4-9f87-33e42eb16af4",
-        "key": "eps",
-        "op": "map-get",
-        "resolvedId": "map-get:map\u003cstring,T\u003e:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "f0c49e2d-4013-4da5-85fd-6c478f167a84",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "string"
-      },
-      {
-        "attributes": {},
-        "id": "8c57ef2b-e0db-431e-9460-75ec8604fec0",
-        "op": "parse-double",
-        "resolvedId": "parse-double:string"
-      },
-      {
-        "attributes": {},
-        "id": "70171f1b-3cfa-4a2c-b180-6878991972bc",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "type"
-      },
-      {
-        "attributes": {},
-        "id": "c8efc75d-237f-44c6-ae80-39e6f3191423",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": ""
-      },
-      {
-        "attributes": {},
-        "id": "83065e51-30e0-43fd-921b-aabbc1a966bd",
-        "op": "create-map",
-        "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "9837b94b-d23b-41f6-93f0-0f3beb4a47d0",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "name"
-      },
-      {
-        "attributes": {},
-        "id": "d6e41a75-ae52-433f-95e3-131fb317bec2",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "read_throughput"
-      },
-      {
-        "attributes": {},
-        "id": "d36c5c88-ba59-4466-b901-00d4e112d083",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "unit"
-      },
-      {
-        "attributes": {},
-        "id": "0a824991-511e-48c8-94d3-a0e0f7efd4a1",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "MBps"
-      },
-      {
-        "attributes": {},
-        "id": "a56066d7-5841-493c-990f-94bfcf48ac56",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "value"
-      },
-      {
-        "attributes": {},
-        "fieldName": "body",
-        "id": "3b9438e9-0fce-4c5f-9cd7-b0ef06e88d92",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "256b1574-4300-4542-8d9e-64707479d241",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "map\u003cstring, any\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "32180891-7ff3-4a3e-9b7d-2a5c3adca7ac",
-        "key": "MBps_read",
-        "op": "map-get",
-        "resolvedId": "map-get:map\u003cstring,T\u003e:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "ae9fcc27-5193-4653-96ea-e6bd29668fb0",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "string"
-      },
-      {
-        "attributes": {},
-        "id": "aa6d1c9a-6a9f-47fe-8d79-548231e17ef0",
-        "op": "parse-double",
-        "resolvedId": "parse-double:string"
-      },
-      {
-        "attributes": {},
-        "id": "832ca766-781b-4047-8dd8-c83b7f2b2e90",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "type"
-      },
-      {
-        "attributes": {},
-        "id": "81164ed7-22c6-46c6-9840-a3186c4f6fe6",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": ""
-      },
-      {
-        "attributes": {},
-        "id": "1fc5a00b-93ae-4d60-bf2e-6af768005b79",
-        "op": "create-map",
-        "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "32652c54-95f8-443d-96e8-87f13d3de855",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "name"
-      },
-      {
-        "attributes": {},
-        "id": "f39d8fea-d273-43f5-827e-1cca487240c5",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "write_throughput"
-      },
-      {
-        "attributes": {},
-        "id": "7824fc07-29f6-422a-88ab-70e407ec796e",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "unit"
-      },
-      {
-        "attributes": {},
-        "id": "37113dbe-96fb-4215-ac9f-9b4ea0853a06",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "MBps"
-      },
-      {
-        "attributes": {},
-        "id": "387e9436-308f-406f-b693-5b1836ee61a2",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "value"
-      },
-      {
-        "attributes": {},
-        "fieldName": "body",
-        "id": "ca9fad82-6f46-4268-b907-e873c9f65c53",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "21631bf9-947c-4cf3-89d1-633c54d28b92",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "map\u003cstring, any\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "0914713c-b1ce-4e92-ad8f-6f26cda1b479",
-        "key": "MBps_published",
-        "op": "map-get",
-        "resolvedId": "map-get:map\u003cstring,T\u003e:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "8b805b39-ebb8-4df7-bd99-bd5737efdfdd",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "string"
-      },
-      {
-        "attributes": {},
-        "id": "69b17db5-04f1-4a8e-98d2-b2b2410bfedf",
-        "op": "parse-double",
-        "resolvedId": "parse-double:string"
-      },
-      {
-        "attributes": {},
-        "id": "044f41a3-9369-48a8-ae3c-9edb30c0eec2",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "type"
-      },
-      {
-        "attributes": {},
-        "id": "2114c8bf-9443-4e84-8579-7d6592cf1535",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": ""
-      },
-      {
-        "attributes": {},
-        "id": "5dd72a27-a3d3-45d1-bc50-e70c0bd7f2e8",
-        "op": "create-map",
-        "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "accb54c9-6d72-49ba-83fa-54096c6ab490",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "name"
-      },
-      {
-        "attributes": {},
-        "id": "dabd4d33-f2df-42fb-8735-49473b52ec9b",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "records_per_second"
-      },
-      {
-        "attributes": {},
-        "id": "4e18d059-c734-4c69-8b63-f3eaf630fdfc",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "unit"
-      },
-      {
-        "attributes": {},
-        "id": "70b24403-1908-4191-96b1-5500998c0038",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "rps"
-      },
-      {
-        "attributes": {},
-        "id": "b4b4f707-bffc-44df-a9ef-a63609ea85e3",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "value"
-      },
-      {
-        "attributes": {},
-        "fieldName": "body",
-        "id": "5a36af96-fa8e-4940-a922-bc0b455560a0",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "22aafdd6-0768-46d5-9efc-f97ca8d56f9d",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "map\u003cstring, any\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "5b1c73f5-d534-4ddd-91a0-14209e804f40",
-        "key": "records_per_second",
-        "op": "map-get",
-        "resolvedId": "map-get:map\u003cstring,T\u003e:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "30d65979-5e31-4bca-8719-77adf9e8b721",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "string"
-      },
-      {
-        "attributes": {},
-        "id": "48e5842c-c35c-484c-b3e5-63e3f1501b3a",
-        "op": "parse-double",
-        "resolvedId": "parse-double:string"
-      },
-      {
-        "attributes": {},
-        "id": "47f12abe-c9cb-4f8e-898e-43b1fdf9d076",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "type"
-      },
-      {
-        "attributes": {},
-        "id": "0b5d791c-1f8d-49c5-9f49-f6f938cc049c",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": ""
-      },
-      {
-        "attributes": {},
-        "id": "7ea12ab9-70ba-4be1-8bd8-1af752b3dad2",
-        "op": "create-map",
-        "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "a4cbc635-8ddf-4c43-bf1f-4aeb78708e62",
-        "op": "list",
-        "resolvedId": "list:collection\u003cT\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "7bf12270-826d-4ffe-87c2-f1b516e5fa2e",
-        "name": "body",
-        "op": "as",
-        "resolvedId": "as:T:string"
-      },
-      {
-        "attributes": {},
-        "id": "a19fd317-87b8-4430-b454-7fdf8372cff2",
-        "input": "scp:ingest",
-        "name": "source_type",
-        "op": "as",
-        "resolvedId": "as:T:string"
-      },
-      {
-        "attributes": {},
-        "fieldName": "body",
-        "id": "2fe4fbee-08fb-42b8-bb7d-9e55ea787c6d",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "f25ccc6c-d875-4e2f-b282-cf7a65d8d168",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "map\u003cstring, any\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "47f32734-c8c3-4275-a476-a4c1a2777f48",
-        "key": "location",
-        "op": "map-get",
-        "resolvedId": "map-get:map\u003cstring,T\u003e:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "39f40637-fb00-4a70-9162-d00208395c66",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "string"
-      },
-      {
-        "attributes": {},
-        "id": "18a691da-a7fb-4f95-81ee-c68d67799bdb",
-        "name": "source",
-        "op": "as",
-        "resolvedId": "as:T:string"
-      },
-      {
-        "attributes": {},
-        "id": "7c3fa686-ae95-46a2-ac9b-1b066a802678",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "default_dimensions"
-      },
-      {
-        "attributes": {},
-        "id": "1bf4cba0-3d17-47e3-9bfc-417e836e58b2",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "service"
-      },
-      {
-        "attributes": {},
-        "fieldName": "body",
-        "id": "a3496759-a89e-476c-b06c-399bf5d6ee66",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "eadf6bef-56b2-4268-831d-483ce1bd1ef7",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "map\u003cstring, any\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "b04d88b0-e51d-460d-8703-984631e6c94e",
-        "key": "service",
-        "op": "map-get",
-        "resolvedId": "map-get:map\u003cstring,T\u003e:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "d53b93e1-a123-42be-a694-50c08eb94362",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "string"
-      },
-      {
-        "attributes": {},
-        "id": "e03cfc87-7b56-4ff0-b09c-04f4b3abb692",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "hostname"
-      },
-      {
-        "attributes": {},
-        "fieldName": "body",
-        "id": "a5dde38e-692b-4790-a592-7e84d131e3b1",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "a6fa3313-9393-4089-b20a-1443d03ec962",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "map\u003cstring, any\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "c462e669-e755-4fa4-a400-4b8b81c9687a",
-        "key": "hostname",
-        "op": "map-get",
-        "resolvedId": "map-get:map\u003cstring,T\u003e:string"
-      },
-      {
-        "attributes": {},
-        "default-value": null,
-        "id": "6f221aec-eeaf-470e-a856-f51e2d59e818",
-        "op": "ucast",
-        "resolvedId": "ucast:InT:string:any",
-        "target-type": "string"
-      },
-      {
-        "attributes": {},
-        "id": "70bf6aaf-d341-4d04-a402-213908406571",
-        "op": "create-map",
-        "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "0ef416c0-98a2-40c8-88b3-9b1ac9de48b5",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "default_unit"
-      },
-      {
-        "attributes": {},
-        "id": "3fe38919-4832-46a1-b856-f5494131c5ca",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": ""
-      },
-      {
-        "attributes": {},
-        "id": "f5f21eca-2365-470f-8c06-598ddba54fc2",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "default_type"
-      },
-      {
-        "attributes": {},
-        "id": "4e6af294-0080-46fa-8039-73cf8b6edfad",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": ""
-      },
-      {
-        "attributes": {},
-        "id": "00f8a5fd-6d0d-432a-a89a-11e69b6ba5d6",
-        "op": "create-map",
-        "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "013d51c3-697a-432d-a0e4-cda405c607d2",
-        "name": "attributes",
-        "op": "as",
-        "resolvedId": "as:T:string"
-      },
-      {
-        "attributes": {},
-        "fieldName": "timestamp",
-        "id": "06b450d1-2435-440e-ad33-988d32a0567c",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "id": "e84ebd94-a4a1-4b0f-9274-42e4acff2041",
-        "name": "timestamp",
-        "op": "as",
-        "resolvedId": "as:T:string"
-      },
-      {
-        "attributes": {},
-        "fieldName": "id",
-        "id": "4a15e92b-f753-4835-b2af-cfaec3ad8086",
-        "op": "get",
-        "resolvedId": "get:string"
-      },
-      {
-        "attributes": {},
-        "id": "a6fe78cb-ebe8-49fc-a994-1180804a888d",
-        "name": "id",
-        "op": "as",
-        "resolvedId": "as:T:string"
-      },
-      {
-        "attributes": {},
-        "id": "ac7947db-df03-4979-bcbf-b3bdf0ac171a",
-        "input": "metric",
-        "name": "kind",
-        "op": "as",
-        "resolvedId": "as:T:string"
-      },
-      {
-        "attributes": {},
-        "id": "1df882ae-fb0b-4a02-a207-a95fb3c38294",
-        "op": "projection",
-        "resolvedId": "projection:collection\u003crecord\u003cR\u003e\u003e:collection\u003cexpression\u003cany\u003e\u003e"
-      },
-      {
-        "attributes": {},
-        "id": "0411b339-18e5-4e04-aa4b-94d7fbd4b663",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": ""
-      },
-      {
-        "attributes": {},
-        "id": "e2c05884-a9cb-4994-95ca-4e4f68c62194",
-        "op": "literal",
-        "resolvedId": "literal:T",
-        "value": "metrics"
-      },
-      {
-        "attributes": {},
-        "id": "3f1be6f8-cccb-410a-8e2a-36cd352b5485",
-        "op": "write-index",
-        "resolvedId": "write-index:collection\u003crecord\u003cR\u003e\u003e:expression\u003cstring\u003e:expression\u003cstring\u003e"
-      }
+        {
+            "attributes": {},
+            "id": "37289351-4159-4bcf-8edb-92d1d53d8f8f",
+            "op": "read-splunk-firehose",
+            "resolvedId": "read-splunk-firehose"
+        },
+        {
+            "attributes": {},
+            "id": "5ace234a-45d1-4883-9231-f2622751df44",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "name"
+        },
+        {
+            "attributes": {},
+            "id": "eb1b9297-28d4-4393-af4b-5e94aba1c581",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "events_per_second"
+        },
+        {
+            "attributes": {},
+            "id": "246dc803-995f-4cba-a5ea-d17280f1d396",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "unit"
+        },
+        {
+            "attributes": {},
+            "id": "055f59d6-8ca6-4dd6-9a24-0cb25635b8f7",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "eps"
+        },
+        {
+            "attributes": {},
+            "id": "1fce559c-a4d3-4ee9-8e7f-7dc183c82b4f",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "value"
+        },
+        {
+            "attributes": {},
+            "fieldName": "body",
+            "id": "4203f821-5cfe-479f-89eb-aee992af330b",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "b6d7233a-8525-44c9-9502-b381865e56ac",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "map\u003cstring, any\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "fba2f99c-cfa7-4594-a382-c1b60e0d9e7c",
+            "key": "eps",
+            "op": "map-get",
+            "resolvedId": "map-get:map\u003cstring,T\u003e:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "8de2da2e-01dd-4409-a713-39d1887c63a3",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "string"
+        },
+        {
+            "attributes": {},
+            "id": "595f0988-efcd-417a-9e4e-ef3a174c6e41",
+            "op": "parse-double",
+            "resolvedId": "parse-double:string"
+        },
+        {
+            "attributes": {},
+            "id": "161a60b6-957d-4965-a417-fbd33323c434",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "type"
+        },
+        {
+            "attributes": {},
+            "id": "80e84d72-df6b-41e0-b95c-69df8ea0db86",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": ""
+        },
+        {
+            "attributes": {},
+            "id": "707d4d88-180a-4636-92a4-94b5a37c2cfb",
+            "op": "create-map",
+            "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "921f218d-1e99-4bad-8339-641618b696ae",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "name"
+        },
+        {
+            "attributes": {},
+            "id": "00db7595-f6b8-4edc-bc6b-b412e7d077dc",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "read_throughput"
+        },
+        {
+            "attributes": {},
+            "id": "250d83b7-85b1-403d-b7b8-bc1f6abac676",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "unit"
+        },
+        {
+            "attributes": {},
+            "id": "146641b0-0228-4d85-be2d-08689a745e2f",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "MBps"
+        },
+        {
+            "attributes": {},
+            "id": "9fc299d6-2f24-47c9-be19-0060e385a521",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "value"
+        },
+        {
+            "attributes": {},
+            "fieldName": "body",
+            "id": "b85683da-fdfc-4485-a7ec-d079d0c01868",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "7cd626b7-25a9-4c9d-b2e3-84be44862038",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "map\u003cstring, any\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "10a19148-35a1-43c2-a7b3-259600ccb9c5",
+            "key": "MBps_read",
+            "op": "map-get",
+            "resolvedId": "map-get:map\u003cstring,T\u003e:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "9404d5ca-0865-42bb-85b4-d16611033278",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "string"
+        },
+        {
+            "attributes": {},
+            "id": "168b2fca-d6c5-4f45-ad83-e6d45fe04a2e",
+            "op": "parse-double",
+            "resolvedId": "parse-double:string"
+        },
+        {
+            "attributes": {},
+            "id": "fbcefaa2-2b33-4f04-826b-da80d0f8a9b9",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "type"
+        },
+        {
+            "attributes": {},
+            "id": "c4b0ca22-b8e4-4099-b646-36a9b3ee69fa",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": ""
+        },
+        {
+            "attributes": {},
+            "id": "d769d50c-4898-4358-b8d8-b94a5d72d18a",
+            "op": "create-map",
+            "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "793d5189-f528-4b23-872b-834de28743f0",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "name"
+        },
+        {
+            "attributes": {},
+            "id": "8d2ea4e5-af89-40cd-9d3f-97fd6c4d8d9c",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "write_throughput"
+        },
+        {
+            "attributes": {},
+            "id": "7c4e7fd3-5009-4e58-b14b-8f4e0b0ce476",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "unit"
+        },
+        {
+            "attributes": {},
+            "id": "5da6c22d-b415-4141-b2c6-7ee53e83be5b",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "MBps"
+        },
+        {
+            "attributes": {},
+            "id": "ccb0b446-11b0-439e-95a8-579303a69ed2",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "value"
+        },
+        {
+            "attributes": {},
+            "fieldName": "body",
+            "id": "e0f2de44-8c00-4497-ac91-c3fc825fc9cf",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "26839169-b402-4e49-90ff-38dccf5165f1",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "map\u003cstring, any\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "9936f752-1d4a-468e-a9bd-7318efb577db",
+            "key": "MBps_published",
+            "op": "map-get",
+            "resolvedId": "map-get:map\u003cstring,T\u003e:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "ae79d78a-588a-4545-b278-c46cf23af4c1",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "string"
+        },
+        {
+            "attributes": {},
+            "id": "026f2eb3-6e2e-44eb-99c6-e0fad2746e23",
+            "op": "parse-double",
+            "resolvedId": "parse-double:string"
+        },
+        {
+            "attributes": {},
+            "id": "6316f6bb-96af-4704-a707-4469ca5bed65",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "type"
+        },
+        {
+            "attributes": {},
+            "id": "0e9a0dbd-dace-4292-bce2-73a43fac3b67",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": ""
+        },
+        {
+            "attributes": {},
+            "id": "45d31a08-0c5b-4761-bd81-07b8fd2cf52f",
+            "op": "create-map",
+            "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "a546b500-47ec-4ad5-a8b7-334c44f42212",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "name"
+        },
+        {
+            "attributes": {},
+            "id": "21df1c4b-d86a-4eb3-b04d-b11a99de74f7",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "records_per_second"
+        },
+        {
+            "attributes": {},
+            "id": "0373863d-fca8-458e-a30e-39e06a981f1e",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "unit"
+        },
+        {
+            "attributes": {},
+            "id": "ddb30ce0-5de9-40f7-9636-ce07c5ade714",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "rps"
+        },
+        {
+            "attributes": {},
+            "id": "23dd6296-6bd9-4f0f-b59a-1efd3ed4cdb2",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "value"
+        },
+        {
+            "attributes": {},
+            "fieldName": "body",
+            "id": "454ebd17-bfe6-4bac-8bad-97727d41fc40",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "bb44b447-c0b2-4277-8703-77b614fcf1c9",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "map\u003cstring, any\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "63f96049-8a4d-4710-8af4-2c880e56d928",
+            "key": "records_per_second",
+            "op": "map-get",
+            "resolvedId": "map-get:map\u003cstring,T\u003e:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "16d1419c-b923-4936-951a-0efa0afff7d3",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "string"
+        },
+        {
+            "attributes": {},
+            "id": "c42d22e4-99a4-4a71-92b3-525b8cfd593a",
+            "op": "parse-double",
+            "resolvedId": "parse-double:string"
+        },
+        {
+            "attributes": {},
+            "id": "25dc282d-a4b5-46b9-a4bf-408dfe246124",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "type"
+        },
+        {
+            "attributes": {},
+            "id": "e3706e1e-d85f-4fbc-a3d3-24d7784fc916",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": ""
+        },
+        {
+            "attributes": {},
+            "id": "6614e74f-7eb7-4c19-9ec1-24b3bacb5946",
+            "op": "create-map",
+            "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "6aeaf4f0-cd36-4914-b5bd-9f0a7059a875",
+            "op": "list",
+            "resolvedId": "list:collection\u003cT\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "8a0152b0-b541-4460-8923-48412ff1f2fb",
+            "name": "body",
+            "op": "as",
+            "resolvedId": "as:T:string"
+        },
+        {
+            "attributes": {},
+            "id": "d14e697b-95ff-4801-bd29-8cf5113d5814",
+            "input": "scp:ingest",
+            "name": "source_type",
+            "op": "as",
+            "resolvedId": "as:T:string"
+        },
+        {
+            "attributes": {},
+            "fieldName": "body",
+            "id": "fefee27a-1863-4799-90ab-a15c344e6035",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "90013044-8f57-474f-839c-ff5a094fa493",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "map\u003cstring, any\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "1e61271c-9a35-425b-ab02-8070f9df5ee2",
+            "key": "location",
+            "op": "map-get",
+            "resolvedId": "map-get:map\u003cstring,T\u003e:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "02663726-10bb-49fe-a098-6e083dd7d99a",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "string"
+        },
+        {
+            "attributes": {},
+            "id": "c29506f7-16af-45e4-899c-d6859c9038bc",
+            "name": "source",
+            "op": "as",
+            "resolvedId": "as:T:string"
+        },
+        {
+            "attributes": {},
+            "id": "1ef5a265-f3a7-41b8-8229-9daff250879e",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "default_dimensions"
+        },
+        {
+            "attributes": {},
+            "id": "133963a1-dd02-481e-aecb-f8c46698710d",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "service"
+        },
+        {
+            "attributes": {},
+            "fieldName": "body",
+            "id": "92bf50ce-e43c-4821-a7c4-55d5d3c71b35",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "71e1fcd3-9968-45ae-bf86-7aa0a132d85e",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "map\u003cstring, any\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "39996705-c5fe-45be-858a-d0dcd1a88058",
+            "key": "service",
+            "op": "map-get",
+            "resolvedId": "map-get:map\u003cstring,T\u003e:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "f8b50570-2cd4-46b4-82b4-50ce2a6f9578",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "string"
+        },
+        {
+            "attributes": {},
+            "id": "6156093c-d9d4-4b2e-8bdf-2cd642479512",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "hostname"
+        },
+        {
+            "attributes": {},
+            "fieldName": "body",
+            "id": "d72b0bce-cfc0-4f41-b550-7d9d0db0c503",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "f4da94a8-78d8-4d38-a840-4eebeca43e69",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "map\u003cstring, any\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "07bd0ffd-19a6-43f3-9f79-5c8b2ac8f3d0",
+            "key": "hostname",
+            "op": "map-get",
+            "resolvedId": "map-get:map\u003cstring,T\u003e:string"
+        },
+        {
+            "attributes": {},
+            "default-value": null,
+            "id": "5499bf4f-c699-4423-bea1-428146470b92",
+            "op": "ucast",
+            "resolvedId": "ucast:InT:string:any",
+            "target-type": "string"
+        },
+        {
+            "attributes": {},
+            "id": "fe699e52-0f7a-4bfd-a8e6-b8ebbc3e29ad",
+            "op": "create-map",
+            "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "28eab3b7-4cab-4a2d-b95e-7e54e537eabe",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "default_unit"
+        },
+        {
+            "attributes": {},
+            "id": "c5757a87-25e9-49d3-b976-bea8720a5781",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": ""
+        },
+        {
+            "attributes": {},
+            "id": "a8b8bbe6-9ba5-425e-8882-81928ca6d8bd",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "default_type"
+        },
+        {
+            "attributes": {},
+            "id": "f1a31e67-3be4-4774-bc0b-41f7a8995ade",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": ""
+        },
+        {
+            "attributes": {},
+            "id": "82143655-5ed2-4436-a340-cb0831db9981",
+            "op": "create-map",
+            "resolvedId": "create-map:collection\u003cexpression\u003cany\u003e\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "3900483a-c871-4126-8526-1381e94b1310",
+            "name": "attributes",
+            "op": "as",
+            "resolvedId": "as:T:string"
+        },
+        {
+            "attributes": {},
+            "fieldName": "timestamp",
+            "id": "55bbf7f1-f7d6-4f7d-a251-5056300cde34",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "id": "725e8f2c-c01e-4208-a417-af9edc829feb",
+            "name": "timestamp",
+            "op": "as",
+            "resolvedId": "as:T:string"
+        },
+        {
+            "attributes": {},
+            "fieldName": "id",
+            "id": "4b7c999b-6d65-4780-9991-9dfc8bc63390",
+            "op": "get",
+            "resolvedId": "get:string"
+        },
+        {
+            "attributes": {},
+            "id": "dfff32c5-4452-41b4-b901-0198ae9a7e4f",
+            "name": "id",
+            "op": "as",
+            "resolvedId": "as:T:string"
+        },
+        {
+            "attributes": {},
+            "id": "2a19c760-1c30-48d3-9586-b0c16c674782",
+            "input": "metric",
+            "name": "kind",
+            "op": "as",
+            "resolvedId": "as:T:string"
+        },
+        {
+            "attributes": {},
+            "id": "c0794b05-5613-4d7f-8f56-663dd0f49997",
+            "op": "projection",
+            "resolvedId": "projection:collection\u003crecord\u003cR\u003e\u003e:collection\u003cexpression\u003cany\u003e\u003e"
+        },
+        {
+            "attributes": {},
+            "id": "9dcdd626-8c49-406d-a9d6-e83ca8d40eed",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": ""
+        },
+        {
+            "attributes": {},
+            "id": "95411ad3-3a31-40fa-9601-036a3e4bca9b",
+            "op": "literal",
+            "resolvedId": "literal:T",
+            "value": "metrics"
+        },
+        {
+            "attributes": {},
+            "id": "cea2dbcb-f658-44a4-9f71-341e6e99e6f4",
+            "op": "write-index",
+            "resolvedId": "write-index:collection\u003crecord\u003cR\u003e\u003e:expression\u003cstring\u003e:expression\u003cstring\u003e"
+        }
     ],
     "rootNode": [
-      "3f1be6f8-cccb-410a-8e2a-36cd352b5485"
+        "cea2dbcb-f658-44a4-9f71-341e6e99e6f4"
     ]
-  }
+}

@@ -12,10 +12,10 @@ Parameters:
     Default: dek
   ImageId:
     Type: AWS::EC2::Image::Id
-    Default: ami-c6fa0dbe
+    Default: ami-089b39fe61f6147ae
   InstanceType:
     Type: String
-    Default: m4.xlarge
+    Default: m3.medium
     AllowedValues:
     - t1.micro
     - t2.nano

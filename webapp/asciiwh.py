@@ -115,7 +115,10 @@ class ASCIIWH(object):
             if cr > 0:
                 self.data += rx[:cr]
                 self.data = self.data.strip() # Ensure all CRs are removed
-                ret = self.g.process(self, kinds=[constants.SPLUNK_METRICS,constants.SPLUNK_EVENTS])
+                ret = self.g.process(
+                    self,
+                    kinds=(constants.SPLUNK_METRICS_SCS,)
+                )
                 logging.info({
                     "message": "Received result",
                     "result": ret,
@@ -140,6 +143,7 @@ class ASCIIWH(object):
         logging.info({
             "message": "Received chunk",
             "client": k,
+            # "len": len(s),
         })
         self.rxs[k] = (time.time(), s)
 

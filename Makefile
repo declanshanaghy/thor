@@ -5,7 +5,7 @@ CWD := $(shell pwd)
 
 AWS_DEFAULT_REGION := us-west-2
 BUCKET := thor-20180703
-STACK := thor-20180703-gen02
+STACK := thor-20180703-gen03
 DEPLOY_USER := ec2-user
 DEPLOY_TGT := thor.shanaghy.com
 TEMPLATE_URL := http://$(BUCKET).s3-$(AWS_DEFAULT_REGION).amazonaws.com/thor.yml
@@ -34,7 +34,7 @@ OK=$(GRN)
 WARN=$(PURPLE)
 ERR=$(RED)
 
-delpoy: cfn webapp
+delpoy: cfn server_deploy server_restart
 
 template:
 	@echo "Updating CloudFormation stack: $(STACK)"
@@ -43,6 +43,7 @@ template:
 
 cfn:
 	@aws --region $(AWS_DEFAULT_REGION) cloudformation update-stack \
+	    --capabilities CAPABILITY_IAM \
 	    --stack-name $(STACK) \
 	    --template-url $(TEMPLATE_URL) || true
 

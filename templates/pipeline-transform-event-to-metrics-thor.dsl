@@ -1,28 +1,37 @@
 // Format event data into the schema required by a metrics index in SCP.
 //
-// The DSL assumes the following payload is available in the pipeline:
+// The DSL assumes the following payloads are available from the LSDC events:
 //
 //{
-//     "time": 1565213388.534426,
+//    "time": 1565213388.534426,
 //    "index": "thorevents",
 //    "source": "601-Kearney:MainPanel",
 //    "event": "site=\"601-Kearney\",
-//                node=\"MainPanel\",
-//                type=\"voltage\",
-//                voltage=116.3"
+//              node=\"MainPanel\",
+//              type=\"voltage\",
+//              voltage=116.3"
 //}
 //{
 //    "time": 1565213388.534426,
 //    "index": "thorevents",
 //    "source": "601-Kearney:MainPanel",
 //    "event": "site=\"601-Kearney\",
-//                node=\"MainPanel\",
-//                type=\"electricity\",
-//                name=\"Mains\",
-//                channel=24,
-//                power=535.0,
-//                current=4.3,
-//                energy=8.28"
+//              node=\"MainPanel\",
+//              type=\"temperature\",
+//              name=\"Garage\",
+//              temperature=74.0"}
+//{
+//    "time": 1565213388.534426,
+//    "index": "thorevents",
+//    "source": "601-Kearney:MainPanel",
+//    "event": "site=\"601-Kearney\",
+//              node=\"MainPanel\",
+//              type=\"electricity\",
+//              name=\"Mains\",
+//              channel=24,
+//              power=535.0,
+//              current=4.3,
+//              energy=8.28"
 //}
 //
 // and formats the data to the following schema required by the metrics index:
@@ -68,39 +77,49 @@
 // 	"kind": "metric"
 // }]
 
-events = read-splunk-firehose();
+//events = read-splunk-firehose();
+events = read-from-aws-s3(connection-id: literal("531631d0-b1cf-4c70-b512-09afc1838258"));
+
 
 metrics = list(
+//    create-map(
+//        literal("name"), literal("voltage"),
+//        literal("unit"), literal("v"),
+//        literal("type"), literal(""),
+//        literal("value"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "voltage"), "string", null)),
+//        literal("channel"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "channel"), "string", null)),
+//        literal("name"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "name"), "string", null))
+//    ),
     create-map(
-        literal("name"), literal("events_per_second"),
-        literal("unit"), literal("eps"),
-        literal("value"), parse-double(ucast(map-get(ucast(get("body"), "map<string, any>", null), "eps"), "string", null)),
-        literal("type"), literal("")
+        literal("name"), literal("current"),
+        literal("unit"), literal("A"),
+        literal("type"), literal(""),
+        literal("value"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "current"), "string", null)),
+        literal("channel"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "channel"), "string", null)),
+        literal("name"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "name"), "string", null))
     ),
     create-map(
-        literal("name"), literal("read_throughput"),
-        literal("unit"), literal("MBps"),
-        literal("value"), parse-double(ucast(map-get(ucast(get("body"), "map<string, any>", null), "MBps_read"), "string", null)),
-        literal("type"), literal("")
+        literal("name"), literal("power"),
+        literal("unit"), literal("kW"),
+        literal("type"), literal(""),
+        literal("value"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "power"), "string", null)),
+        literal("channel"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "channel"), "string", null)),
+        literal("name"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "name"), "string", null))
     ),
     create-map(
-        literal("name"), literal("write_throughput"),
-        literal("unit"), literal("MBps"),
-        literal("value"), parse-double(ucast(map-get(ucast(get("body"), "map<string, any>", null), "MBps_published"), "string", null)),
-        literal("type"), literal("")
-    ),
-    create-map(
-        literal("name"), literal("records_per_second"),
-        literal("unit"), literal("rps"),
-        literal("value"), parse-double(ucast(map-get(ucast(get("body"), "map<string, any>", null), "records_per_second"), "string", null)),
-        literal("type"), literal("")
+        literal("name"), literal("energy"),
+        literal("unit"), literal("kWh"),
+        literal("type"), literal(""),
+        literal("value"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "energy"), "string", null)),
+        literal("channel"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "channel"), "string", null)),
+        literal("name"), parse-double(ucast(map-get(ucast(get("event"), "map<string, any>", null), "name"), "string", null))
     )
 );
 
 attributes = create-map(
     literal("default_dimensions"), create-map(
-        literal("service"), ucast(map-get(ucast(get("body"), "map<string, any>", null), "service"), "string", null),
-        literal("hostname"), ucast(map-get(ucast(get("body"), "map<string, any>", null), "hostname"), "string", null)
+        literal("site"), ucast(map-get(ucast(get("event"), "map<string, any>", null), "site"), "string", null),
+        literal("node"), ucast(map-get(ucast(get("event"), "map<string, any>", null), "node"), "string", null)
     ),
     literal("default_unit"), literal(""),
     literal("default_type"), literal("")
@@ -108,13 +127,13 @@ attributes = create-map(
 
 formattedMetrics = projection(
     events,
-    as(metrics, "body"),
-    as("scp:ingest", "source_type"),
-    as(ucast(map-get(ucast(get("body"), "map<string, any>", null), "location"), "string", null), "source"),
-    as(attributes, "attributes"),
     as(get("timestamp"), "timestamp"),
-    as(get("id"), "id"),
+    as(metrics, "body"),
+    as("gem:electricity", "source_type"),
+    as("601-Kearney:MainPanel", "source"),
+    as(attributes, "attributes"),
     as("metric", "kind")
 );
 
 write-index(formattedMetrics, module: literal(""), dataset: literal("thormetricsxformed"));
+

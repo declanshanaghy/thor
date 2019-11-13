@@ -25,32 +25,34 @@ def log_data(kind, data):
         t = time.time()
         st = time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
         filename = "%s.%s.txt" % (st, kind)
-        fspath = os.path.join(constants.REQ_DIR, filename)
-        logging.info("Logging %s to: %s", kind, fspath)
+        obj_path = os.path.join(constants.REQ_DIR, filename)
 
-        logging.info({
-            "message": "Logging to filesystem",
-            "kind": kind,
-            "fspath": fspath,
-        })
-        with open(fspath, "w") as f:
-            f.write(data)
+        if constants.LOG_FS_ENABLED:
+            logging.info("Logging %s to: %s", kind, obj_path)
 
-        if constants.S3_BUCKET is not None:
-            objectname = os.path.join(constants.S3_DATAPATH, kind,
+            logging.info({
+                "message": "Logging to filesystem",
+                "kind": kind,
+                "path": obj_path,
+            })
+            with open(obj_path, "w") as f:
+                f.write(data)
+
+        if constants.LOG_S3_BUCKET is not None:
+            objectname = os.path.join(constants.LOG_S3_DATAPATH, kind,
                                       filename)
             logging.info({
                 "message": "Logging to S3",
                 "kind": kind,
-                "fspath": fspath,
-                "S3_BUCKET": constants.S3_BUCKET,
+                "path": obj_path,
+                "S3_BUCKET": constants.LOG_S3_BUCKET,
                 "objectname": objectname,
             })
 
             # Upload the file
             s3_client = boto3.client('s3')
             try:
-                response = s3_client.upload_file(fspath, constants.S3_BUCKET,
+                response = s3_client.upload_file(obj_path, constants.LOG_S3_BUCKET,
                                                  objectname)
                 logging.debug("Response from s3: %s", response)
             except botocore.exceptions.ClientError as e:

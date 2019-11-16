@@ -58,8 +58,6 @@ class SplunkHandler(object):
         hostdata = self._get_api_data()
 
         data = self._create_post_data()
-        logger.debug("Ready to post events: %s", data)
-
         utils.log_data(self.kind, data)
 
         logger.info({
@@ -76,7 +74,8 @@ class SplunkHandler(object):
         if r.status_code == 200:
             return r.json()
         else:
-            raise StandardError("%s: %s" % (r.status_code, r.text))
+            request_id = r.headers["x-request-id"]
+            raise StandardError("request_id=%s, status_code=%s, body=%s" % (request_id, r.status_code, r.text))
 
 
 class SplunkEventsHandler(SplunkHandler):
@@ -261,13 +260,6 @@ class SplunkMetricsSCSHandler(SplunkMetricsHandler):
             "clientId": rawcreds["clientId"],
         })
 
-        # mgr = scs_auth.PKCEAuthManager(
-        #     host=self.authn_host,
-        #     client_id=rawcreds["client_id"],
-        #     redirect_uri=rawcreds["redirect_url"],
-        #     username=rawcreds["username"],
-        #     password=rawcreds["password"]
-        # )
         mgr = scs_auth.ClientAuthManager(
             host=self.authn_host,
             client_id=rawcreds["clientId"],
@@ -342,6 +334,7 @@ class SplunkMetricsSCSHandler(SplunkMetricsHandler):
                             constants.CHANNEL_NUMBER, ""),
                         constants.CHANNEL_NAME: data.get(
                             constants.CHANNEL_NAME, ""),
+                        constants.KIND: data.get(constants.KIND, ""),
                     }
                 }
                 self.records.append(m)

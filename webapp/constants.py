@@ -12,6 +12,7 @@ REQ_DIR = os.path.join(LOG_DIR, 'requests')
 
 LOG_LEVEL = os.environ.get('LOG_LEVEL', "info")
 LOG_STDOUT = os.environ.get('LOG_STDOUT', False) == 'True'
+LOG_DATA_STDOUT = os.environ.get('LOG_DATA_STDOUT', False) == 'True'
 LOG_REQUESTS = os.environ.get('LOG_REQUESTS', None)
 LOG_FILE_WEB = os.path.join(LOG_DIR, 'thor-web.log')
 LOG_FILE_ASCIIWH = os.path.join(LOG_DIR, 'thor-asciiwh.log')
@@ -69,7 +70,7 @@ SPLUNK_EVENTS = "events"
 SPLUNK_METRICS = "metrics"
 SPLUNK_METRICS_SCS = "metrics-scs"
 
-PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", True)
+PRUNE_EMPTY = os.environ.get("PRUNE_EMPTY", True) == 'True'
 
 STAGING_IDP_HOST = "https://splunk-ciam.okta.com"
 STAGING_IDP_AUTHSERVER = "aus1rarj6tQPJfJlz2p7"

@@ -22,8 +22,8 @@ def ascii_data():
     # for root, dirs, files in os.walk(p):
     #     fname = random.choice(files)
 
-    # fname = "2018-02-25 14:51:42.058186.req.txt"
-    fname = "2019-11-13 temp and voltage.req.txt"
+    fname = "2019-11-15 18:25:22.038.req.txt"
+    # fname = "2019-11-13 temp and voltage.req.txt"
     with open(os.path.join(p, fname)) as f:
         return f.read()
 

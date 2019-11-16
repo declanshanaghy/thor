@@ -23,11 +23,17 @@ def load_yaml(file):
 def log_data(kind, data):
     if constants.LOG_REQUESTS is not None and kind in constants.LOG_REQUESTS:
         t = time.time()
-        st = time.strftime("%Y%m%dT%H%M%S%Z", time.gmtime(t))
+        st = time.strftime("%Y%m%dT%H%M%S%z", time.gmtime(t))
         filename = "%s.%s.txt" % (st, kind)
         obj_path = os.path.join(constants.REQ_DIR, filename)
 
-        if constants.LOG_FS_ENABLED:
+        if constants.LOG_DATA_STDOUT:
+            logging.info({
+                "message": "handling data",
+                "data": data
+            })
+
+        if constants.LOG_FS_ENABLED: #NB This is required for S3 logging to work
             logging.info("Logging %s to: %s", kind, obj_path)
 
             logging.info({

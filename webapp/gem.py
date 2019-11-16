@@ -104,14 +104,18 @@ class GEM(object):
                 # the channel is not mapped
                 #   and
                 # any 2 entries are zero
+                is_int = False
+                try:
+                    is_int = isinstance(int(ch), int)
+                except:
+                    is_int = False
                 no_eandp = (data.get(constants.ENERGY, 0) == 0 and
                             data.get(constants.POWER, 0) == 0)
                 no_candp = (data.get(constants.CURRENT, 0) == 0 and
                             data.get(constants.POWER, 0) == 0)
                 no_eandc = (data.get(constants.ENERGY, 0) == 0 and
                             data.get(constants.CURRENT, 0) == 0)
-                remove = isinstance(ch, int) and (
-                    no_candp or no_eandc or no_eandp)
+                remove = is_int and (no_candp or no_eandc or no_eandp)
                 if remove:
                     del self._electricity[ch]
 
@@ -129,22 +133,39 @@ class GEM(object):
         return False
 
     def set_temperature(self, channel, val):
-        mapped_name = self._channels[constants.TEMPERATURE].get(
-            str(channel), channel)
         if val == constants.TEMPERATURE_UNKNOWN:
             val = 0
-        self.temperature.append({constants.CHANNEL_NAME: mapped_name,
-                                 constants.TEMPERATURE: val})
+
+        channel_info = self._channels[constants.TEMPERATURE].get(
+            str(channel), None)
+        if channel_info is None:
+            channel_info = {
+                constants.CHANNEL_NAME: channel,
+            }
+
+        name = channel_info[constants.CHANNEL_NAME]
+        self.temperature.append({
+            constants.CHANNEL_NAME: name,
+            constants.CHANNEL_NUMBER: channel,
+            constants.TEMPERATURE: val
+        })
 
     def set_channel(self, channel, type, val):
-        mapped_name = self._channels[constants.ELECTRICITY].get(
-            str(channel), channel)
-        if not mapped_name in self._electricity:
-            self._electricity[mapped_name] = {
+        channel_info = self._channels[constants.ELECTRICITY].get(
+            str(channel), None)
+        if channel_info is None:
+            channel_info = {
+                constants.CHANNEL_NAME: channel,
+            }
+
+        name = channel_info[constants.CHANNEL_NAME]
+        if not name in self._electricity:
+            channel_info.update({
                 constants.CHANNEL_NUMBER: channel,
                 constants.POWER: 0.0,
                 constants.CURRENT: 0.0,
                 constants.ENERGY: 0.0
-            }
+            })
+            self._electricity[name] = channel_info
 
-        self._electricity[mapped_name][type] = val
+        self._electricity[name][type] = val

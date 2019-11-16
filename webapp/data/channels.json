@@ -1,29 +1,105 @@
 {
   "electricity": {
-    "1": "Oven & Microwave",
-    "3": "Kitchen Lights & Family Room Sockets",
-    "4": "Family Room Lights & Living Room Sockets",
-    "5": "Laundry & Garage Outlets",
-    "6": "Garage Lights",
-    "7": "Dryer",
-    "9": "Dishwasher",
-    "10": "Furnace & Cameras",
-    "13": "Mstr Br & Ofc",
-    "14": "Compactor",
-    "16": "Other Br & Hall",
-    "17": "Washer & Dryer",
-    "18": "Kit GFI",
-    "19": "Bathroom GFI",
-    "20": "Kit Fridge & Sckts",
-    "21": "Garage Fridge",
-    "22": "Mstr Br Floor",
-    "23": "Spa",
-    "24": "Mains",
-    "25": "Solar",
-    "29": "Garage HiAmp",
-    "31": "Stove"
+    "1": {
+      "channel_name": "Oven & Microwave",
+      "kind": "sink"
+    },
+    "3": {
+      "channel_name": "Kitchen Lights & Family Room Sockets",
+      "kind": "sink"
+    },
+    "4": {
+      "channel_name": "Family Room Lights & Living Room Sockets",
+      "kind": "sink"
+    },
+    "5": {
+      "channel_name": "Laundry & Garage Outlets",
+      "kind": "sink"
+    },
+    "6": {
+      "channel_name": "Garage Lights",
+      "kind": "sink"
+    },
+    "7": {
+      "channel_name": "Dryer",
+      "kind": "sink"
+    },
+    "9": {
+      "channel_name": "Dishwasher",
+      "kind": "sink"
+    },
+    "10": {
+      "channel_name": "Furnace & Cameras",
+      "kind": "sink"
+    },
+    "13": {
+      "channel_name": "Mstr Br & Ofc",
+      "kind": "sink"
+    },
+    "14": {
+      "channel_name": "Compactor",
+      "kind": "sink"
+    },
+    "16": {
+      "channel_name": "Other Br & Hall",
+      "kind": "sink"
+    },
+    "17": {
+      "channel_name": "Washer & Dryer",
+      "kind": "sink"
+    },
+    "18": {
+      "channel_name": "Kit GFI",
+      "kind": "sink"
+    },
+    "19": {
+      "channel_name": "Bathroom GFI",
+      "kind": "sink"
+    },
+    "20": {
+      "channel_name": "Kit Fridge & Sckts",
+      "kind": "sink"
+    },
+    "21": {
+      "channel_name": "Garage Fridge",
+      "kind": "sink"
+    },
+    "22": {
+      "channel_name": "Mstr Br Floor",
+      "kind": "sink"
+    },
+    "23": {
+      "channel_name": "Spa",
+      "kind": "sink"
+    },
+    "24": {
+      "channel_name": "Grid",
+      "kind": "source"
+    },
+    "25": {
+      "channel_name": "Solar",
+      "kind": "source"
+    },
+    "26": {
+      "channel_name": "Garage Right",
+      "kind": "sink"
+    },
+    "27": {
+      "channel_name": "Garage Left",
+      "kind": "sink"
+    },
+    "29": {
+      "channel_name": "Air Conditioning",
+      "kind": "sink"
+    },
+    "31": {
+      "channel_name": "Stove",
+      "kind": "sink"
+    }
   },
   "temperature": {
-    "1": "Garage"
+    "1": {
+      "channel_name": "Garage"
+    }
   }
 }

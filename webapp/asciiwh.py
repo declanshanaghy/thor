@@ -221,6 +221,13 @@ if __name__ == "__main__":
     logutil.setup_logging(stdout=constants.LOG_STDOUT,
                           log_file=os.path.join(constants.LOG_DIR,
                                                 constants.LOG_FILE_ASCIIWH))
+    settings = {}
+    for s in dir(constants):
+        if not '__' in s:
+            settings[s] = getattr(constants,s)
+    logging.info({
+        "settings": settings,
+    })
     srv = ASCIIWH()
     try:
         srv.run()

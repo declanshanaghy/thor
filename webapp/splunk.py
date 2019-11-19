@@ -15,8 +15,8 @@ SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services/collector"
 HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
 DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}
 
-CREDSFILE_RAW = os.path.join(constants.TMP_DIR, "creds", "credentials.raw")
-CREDSFILE_TOKEN = os.path.join(constants.TMP_DIR, "creds", "credentials.token")
+CREDSFILE_RAW = os.path.join(constants.CREDS_DIR, "credentials.raw")
+CREDSFILE_TOKEN = os.path.join(constants.CREDS_DIR, "credentials.token")
 
 class SplunkHandler(object):
     knd = None
@@ -329,13 +329,7 @@ class SplunkMetricsSCSHandler(SplunkMetricsHandler):
                     "name": kind,
                     "value": data[kind],
                     "unit": constants.UNITS[kind],
-                    "dimensions": {
-                        constants.CHANNEL_NUMBER: data.get(
-                            constants.CHANNEL_NUMBER, ""),
-                        constants.CHANNEL_NAME: data.get(
-                            constants.CHANNEL_NAME, ""),
-                        constants.KIND: data.get(constants.KIND, ""),
-                    }
+                    "dimensions": data["dimensions"]
                 }
                 self.records.append(m)
 

@@ -2,99 +2,147 @@
   "electricity": {
     "1": {
       "channel_name": "Oven & Microwave",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "cooking"
     },
     "3": {
       "channel_name": "Kitchen Lights & Family Room Sockets",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "accessory",
+      "function": "misc"
     },
     "4": {
       "channel_name": "Family Room Lights & Living Room Sockets",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "accessory",
+      "function": "misc"
     },
     "5": {
       "channel_name": "Laundry & Garage Outlets",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "accessory",
+      "function": "garage"
     },
     "6": {
       "channel_name": "Garage Lights",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "accessory",
+      "function": "lighting"
     },
     "7": {
       "channel_name": "Dryer",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "cleaning"
     },
     "9": {
       "channel_name": "Dishwasher",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "cleaning"
     },
     "10": {
       "channel_name": "Furnace & Cameras",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "heating"
     },
     "13": {
-      "channel_name": "Mstr Br & Ofc",
-      "kind": "sink"
+      "channel_name": "Master Bedroom & Office",
+      "kind": "sink",
+      "category": "accessory",
+      "function": "misc"
     },
     "14": {
       "channel_name": "Compactor",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "cleaning"
     },
     "16": {
-      "channel_name": "Other Br & Hall",
-      "kind": "sink"
+      "channel_name": "Other Bedrooms & Hall",
+      "kind": "sink",
+      "category": "accessory",
+      "function": "misc"
     },
     "17": {
       "channel_name": "Washer & Dryer",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "cleaning"
     },
     "18": {
-      "channel_name": "Kit GFI",
-      "kind": "sink"
+      "channel_name": "Kit GFI Sockets",
+      "kind": "sink",
+      "category": "accessory",
+      "function": "misc"
     },
     "19": {
-      "channel_name": "Bathroom GFI",
-      "kind": "sink"
+      "channel_name": "Bathroom GFI Sockets",
+      "kind": "sink",
+      "category": "accessory",
+      "function": "misc"
     },
     "20": {
-      "channel_name": "Kit Fridge & Sckts",
-      "kind": "sink"
+      "channel_name": "Kitchen Fridge & Sockets",
+      "kind": "sink",
+      "category": "appliance",
+      "function": "storage"
     },
     "21": {
       "channel_name": "Garage Fridge",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "storage"
     },
     "22": {
-      "channel_name": "Mstr Br Floor",
-      "kind": "sink"
+      "channel_name": "Master Bathroom Floor",
+      "kind": "sink",
+      "category": "appliance",
+      "function": "heating"
     },
     "23": {
       "channel_name": "Spa",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "entertainment"
     },
     "24": {
       "channel_name": "Grid",
-      "kind": "source"
+      "kind": "source",
+      "category": "grid",
+      "function": "source"
     },
     "25": {
       "channel_name": "Solar",
-      "kind": "source"
+      "kind": "source",
+      "category": "solar",
+      "function": "source"
     },
     "26": {
       "channel_name": "Garage Right",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "garage",
+      "function": "power"
     },
     "27": {
       "channel_name": "Garage Left",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "garage",
+      "function": "power"
     },
     "29": {
-      "channel_name": "Air Conditioning",
-      "kind": "sink"
+      "channel_name": "Air Conditioner",
+      "kind": "sink",
+      "category": "appliance",
+      "function": "cooling"
     },
     "31": {
       "channel_name": "Stove",
-      "kind": "sink"
+      "kind": "sink",
+      "category": "appliance",
+      "function": "cooking"
     }
   },
   "temperature": {

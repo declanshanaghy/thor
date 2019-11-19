@@ -156,16 +156,18 @@ class GEM(object):
         if channel_info is None:
             channel_info = {
                 constants.CHANNEL_NAME: channel,
+                constants.CHANNEL_NUMBER: channel,
             }
 
         name = channel_info[constants.CHANNEL_NAME]
         if not name in self._electricity:
-            channel_info.update({
+            self._electricity[name] = {
                 constants.CHANNEL_NUMBER: channel,
                 constants.POWER: 0.0,
                 constants.CURRENT: 0.0,
                 constants.ENERGY: 0.0
-            })
-            self._electricity[name] = channel_info
+            }
+            self._electricity[name]["dimensions"] = channel_info
+            self._electricity[name]["dimensions"][constants.CHANNEL_NUMBER] = channel
 
         self._electricity[name][type] = val

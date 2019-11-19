@@ -2,7 +2,7 @@ import os
 import tempfile
 
 
-TMP_DIR = os.environ.get('TMP_DIR', tempfile.gettempdir())
+CREDS_DIR = os.environ.get('CREDS_DIR', tempfile.gettempdir())
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 DEFAULT_LOG_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'logs'))

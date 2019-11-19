@@ -10,25 +10,25 @@
       "channel_name": "Kitchen Lights & Family Room Sockets",
       "kind": "sink",
       "category": "accessory",
-      "function": "misc"
+      "function": "living area"
     },
     "4": {
       "channel_name": "Family Room Lights & Living Room Sockets",
       "kind": "sink",
       "category": "accessory",
-      "function": "misc"
+      "function": "living area"
     },
     "5": {
       "channel_name": "Laundry & Garage Outlets",
       "kind": "sink",
       "category": "accessory",
-      "function": "garage"
+      "function": "workshop power"
     },
     "6": {
       "channel_name": "Garage Lights",
       "kind": "sink",
       "category": "accessory",
-      "function": "lighting"
+      "function": "garage lighting"
     },
     "7": {
       "channel_name": "Dryer",
@@ -52,7 +52,7 @@
       "channel_name": "Master Bedroom & Office",
       "kind": "sink",
       "category": "accessory",
-      "function": "misc"
+      "function": "bedrooms"
     },
     "14": {
       "channel_name": "Compactor",
@@ -64,7 +64,7 @@
       "channel_name": "Other Bedrooms & Hall",
       "kind": "sink",
       "category": "accessory",
-      "function": "misc"
+      "function": "bedrooms"
     },
     "17": {
       "channel_name": "Washer & Dryer",
@@ -73,28 +73,28 @@
       "function": "cleaning"
     },
     "18": {
-      "channel_name": "Kit GFI Sockets",
+      "channel_name": "Kitchen GFI Sockets",
       "kind": "sink",
       "category": "accessory",
-      "function": "misc"
+      "function": "kitchen"
     },
     "19": {
       "channel_name": "Bathroom GFI Sockets",
       "kind": "sink",
       "category": "accessory",
-      "function": "misc"
+      "function": "bathroom"
     },
     "20": {
       "channel_name": "Kitchen Fridge & Sockets",
       "kind": "sink",
       "category": "appliance",
-      "function": "storage"
+      "function": "refrigeration"
     },
     "21": {
       "channel_name": "Garage Fridge",
       "kind": "sink",
       "category": "appliance",
-      "function": "storage"
+      "function": "refrigeration"
     },
     "22": {
       "channel_name": "Master Bathroom Floor",
@@ -124,13 +124,13 @@
       "channel_name": "Garage Right",
       "kind": "sink",
       "category": "garage",
-      "function": "power"
+      "function": "workshop power"
     },
     "27": {
       "channel_name": "Garage Left",
       "kind": "sink",
       "category": "garage",
-      "function": "power"
+      "function": "workshop power"
     },
     "29": {
       "channel_name": "Air Conditioner",

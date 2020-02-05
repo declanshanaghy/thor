@@ -1,0 +1,1758 @@
+[
+    {
+        "body": [
+            {
+                "unit": "Volts", 
+                "name": "voltage", 
+                "value": 128.2
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.12, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Furnace & Cameras", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "10"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 8.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Furnace & Cameras", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "10"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.14, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Furnace & Cameras", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "10"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 2.32, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen Lights & Family Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "3"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 273.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen Lights & Family Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "3"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 4.47, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen Lights & Family Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "3"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.76, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Kitchen Fridge & Sockets", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "20"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 113.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Kitchen Fridge & Sockets", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "20"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 1.52, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Kitchen Fridge & Sockets", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "20"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "7"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "7"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "7"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 11.94, 
+                "dimensions": {
+                    "category": "grid", 
+                    "channel_name": "Grid", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "24"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 1446.0, 
+                "dimensions": {
+                    "category": "grid", 
+                    "channel_name": "Grid", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "24"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 24.54, 
+                "dimensions": {
+                    "category": "grid", 
+                    "channel_name": "Grid", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "24"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 7.94, 
+                "dimensions": {
+                    "category": "solar", 
+                    "channel_name": "Solar", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "25"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 831.0, 
+                "dimensions": {
+                    "category": "solar", 
+                    "channel_name": "Solar", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "25"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 15.98, 
+                "dimensions": {
+                    "category": "solar", 
+                    "channel_name": "Solar", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "25"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.18, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Left", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "27"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 17.0, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Left", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "27"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.32, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Left", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "27"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Air Conditioner", 
+                    "kind": "sink", 
+                    "function": "cooling", 
+                    "channel_number": "29"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Air Conditioner", 
+                    "kind": "sink", 
+                    "function": "cooling", 
+                    "channel_number": "29"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Air Conditioner", 
+                    "kind": "sink", 
+                    "function": "cooling", 
+                    "channel_number": "29"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 4.78, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Washer & Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "17"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 495.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Washer & Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "17"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 10.25, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Washer & Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "17"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "kitchen", 
+                    "channel_number": "18"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 1.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "kitchen", 
+                    "channel_number": "18"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.01, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "kitchen", 
+                    "channel_number": "18"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dishwasher", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "9"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dishwasher", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "9"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dishwasher", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "9"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.18, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Oven & Microwave", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "1"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 3.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Oven & Microwave", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "1"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.07, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Oven & Microwave", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "1"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Master Bathroom Floor", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "22"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Master Bathroom Floor", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "22"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Master Bathroom Floor", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "22"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 3.38, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Master Bedroom & Office", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "13"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 237.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Master Bedroom & Office", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "13"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 4.67, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Master Bedroom & Office", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "13"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.08, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Bathroom GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "bathroom", 
+                    "channel_number": "19"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 1.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Bathroom GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "bathroom", 
+                    "channel_number": "19"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.05, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Bathroom GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "bathroom", 
+                    "channel_number": "19"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.12, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Garage Lights", 
+                    "kind": "sink", 
+                    "function": "garage lighting", 
+                    "channel_number": "6"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 16.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Garage Lights", 
+                    "kind": "sink", 
+                    "function": "garage lighting", 
+                    "channel_number": "6"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.3, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Garage Lights", 
+                    "kind": "sink", 
+                    "function": "garage lighting", 
+                    "channel_number": "6"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.92, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Family Room Lights & Living Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "4"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 168.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Family Room Lights & Living Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "4"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 3.08, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Family Room Lights & Living Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "4"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.16, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Right", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "26"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 8.0, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Right", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "26"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.14, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Right", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "26"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.22, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Laundry & Garage Outlets", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "5"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 2.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Laundry & Garage Outlets", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "5"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.05, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Laundry & Garage Outlets", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "5"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Stove", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "31"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 3.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Stove", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "31"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.06, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Stove", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "31"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.54, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Other Bedrooms & Hall", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "16"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 110.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Other Bedrooms & Hall", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "16"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 2.14, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Other Bedrooms & Hall", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "16"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Spa", 
+                    "kind": "sink", 
+                    "function": "entertainment", 
+                    "channel_number": "23"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Spa", 
+                    "kind": "sink", 
+                    "function": "entertainment", 
+                    "channel_number": "23"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Spa", 
+                    "kind": "sink", 
+                    "function": "entertainment", 
+                    "channel_number": "23"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.46, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Garage Fridge", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "21"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 177.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Garage Fridge", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "21"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 2.78, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Garage Fridge", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "21"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Compactor", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "14"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Compactor", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "14"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Compactor", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "14"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.12, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Furnace & Cameras", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "10"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 8.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Furnace & Cameras", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "10"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.14, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Furnace & Cameras", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "10"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 2.32, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen Lights & Family Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "3"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 273.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen Lights & Family Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "3"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 4.47, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen Lights & Family Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "3"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.76, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Kitchen Fridge & Sockets", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "20"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 113.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Kitchen Fridge & Sockets", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "20"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 1.52, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Kitchen Fridge & Sockets", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "20"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "7"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "7"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "7"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 11.94, 
+                "dimensions": {
+                    "category": "grid", 
+                    "channel_name": "Grid", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "24"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 1446.0, 
+                "dimensions": {
+                    "category": "grid", 
+                    "channel_name": "Grid", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "24"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 24.54, 
+                "dimensions": {
+                    "category": "grid", 
+                    "channel_name": "Grid", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "24"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 7.94, 
+                "dimensions": {
+                    "category": "solar", 
+                    "channel_name": "Solar", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "25"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 831.0, 
+                "dimensions": {
+                    "category": "solar", 
+                    "channel_name": "Solar", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "25"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 15.98, 
+                "dimensions": {
+                    "category": "solar", 
+                    "channel_name": "Solar", 
+                    "kind": "source", 
+                    "function": "source", 
+                    "channel_number": "25"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.18, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Left", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "27"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 17.0, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Left", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "27"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.32, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Left", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "27"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Air Conditioner", 
+                    "kind": "sink", 
+                    "function": "cooling", 
+                    "channel_number": "29"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Air Conditioner", 
+                    "kind": "sink", 
+                    "function": "cooling", 
+                    "channel_number": "29"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Air Conditioner", 
+                    "kind": "sink", 
+                    "function": "cooling", 
+                    "channel_number": "29"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 4.78, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Washer & Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "17"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 495.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Washer & Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "17"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 10.25, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Washer & Dryer", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "17"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "kitchen", 
+                    "channel_number": "18"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 1.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "kitchen", 
+                    "channel_number": "18"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.01, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Kitchen GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "kitchen", 
+                    "channel_number": "18"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dishwasher", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "9"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dishwasher", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "9"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Dishwasher", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "9"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.18, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Oven & Microwave", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "1"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 3.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Oven & Microwave", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "1"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.07, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Oven & Microwave", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "1"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Master Bathroom Floor", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "22"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Master Bathroom Floor", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "22"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Master Bathroom Floor", 
+                    "kind": "sink", 
+                    "function": "heating", 
+                    "channel_number": "22"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 3.38, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Master Bedroom & Office", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "13"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 237.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Master Bedroom & Office", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "13"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 4.67, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Master Bedroom & Office", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "13"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.08, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Bathroom GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "bathroom", 
+                    "channel_number": "19"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 1.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Bathroom GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "bathroom", 
+                    "channel_number": "19"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.05, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Bathroom GFI Sockets", 
+                    "kind": "sink", 
+                    "function": "bathroom", 
+                    "channel_number": "19"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.12, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Garage Lights", 
+                    "kind": "sink", 
+                    "function": "garage lighting", 
+                    "channel_number": "6"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 16.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Garage Lights", 
+                    "kind": "sink", 
+                    "function": "garage lighting", 
+                    "channel_number": "6"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.3, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Garage Lights", 
+                    "kind": "sink", 
+                    "function": "garage lighting", 
+                    "channel_number": "6"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.92, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Family Room Lights & Living Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "4"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 168.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Family Room Lights & Living Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "4"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 3.08, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Family Room Lights & Living Room Sockets", 
+                    "kind": "sink", 
+                    "function": "living area", 
+                    "channel_number": "4"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.16, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Right", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "26"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 8.0, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Right", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "26"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.14, 
+                "dimensions": {
+                    "category": "garage", 
+                    "channel_name": "Garage Right", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "26"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.22, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Laundry & Garage Outlets", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "5"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 2.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Laundry & Garage Outlets", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "5"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.05, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Laundry & Garage Outlets", 
+                    "kind": "sink", 
+                    "function": "workshop power", 
+                    "channel_number": "5"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Stove", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "31"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 3.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Stove", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "31"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.06, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Stove", 
+                    "kind": "sink", 
+                    "function": "cooking", 
+                    "channel_number": "31"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.54, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Other Bedrooms & Hall", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "16"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 110.0, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Other Bedrooms & Hall", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "16"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 2.14, 
+                "dimensions": {
+                    "category": "accessory", 
+                    "channel_name": "Other Bedrooms & Hall", 
+                    "kind": "sink", 
+                    "function": "bedrooms", 
+                    "channel_number": "16"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Spa", 
+                    "kind": "sink", 
+                    "function": "entertainment", 
+                    "channel_number": "23"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Spa", 
+                    "kind": "sink", 
+                    "function": "entertainment", 
+                    "channel_number": "23"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Spa", 
+                    "kind": "sink", 
+                    "function": "entertainment", 
+                    "channel_number": "23"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 1.46, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Garage Fridge", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "21"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 177.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Garage Fridge", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "21"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 2.78, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Garage Fridge", 
+                    "kind": "sink", 
+                    "function": "refrigeration", 
+                    "channel_number": "21"
+                }
+            }, 
+            {
+                "unit": "Amps", 
+                "name": "current", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Compactor", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "14"
+                }
+            }, 
+            {
+                "unit": "Watts", 
+                "name": "power", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Compactor", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "14"
+                }
+            }, 
+            {
+                "unit": "Watt Hours", 
+                "name": "energy", 
+                "value": 0.0, 
+                "dimensions": {
+                    "category": "appliance", 
+                    "channel_name": "Compactor", 
+                    "kind": "sink", 
+                    "function": "cleaning", 
+                    "channel_number": "14"
+                }
+            }, 
+            {
+                "unit": "Fahrenheit", 
+                "name": "temperature", 
+                "value": 65.0, 
+                "dimensions": {
+                    "channel_number": "1", 
+                    "channel_name": "Garage"
+                }
+            }
+        ], 
+        "sourcetype": "electricity", 
+        "timestamp": 1575932774203, 
+        "source": "601-Kearney:MainPanel", 
+        "host": "601-Kearney:MainPanel", 
+        "attributes": {
+            "defaultDimensions": {
+                "node": "MainPanel", 
+                "site": "601-Kearney"
+            }
+        }
+    }
+]

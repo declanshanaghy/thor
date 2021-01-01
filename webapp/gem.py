@@ -7,9 +7,6 @@ import constants
 import splunk
 import utils
 
-import boto3
-import botocore.exceptions
-
 
 class GEMProcessor(object):
     def process(self, parser, logger=None, kinds=None):

@@ -28,3 +28,6 @@ storage and analytics.
  * [GEM Packet Format Manual](https://www.brultech.com/software/files/getsoft/1/1#man)
    * ASCII-WH details on page 12
 
+# Dependencies
+
+* python 2.7.16

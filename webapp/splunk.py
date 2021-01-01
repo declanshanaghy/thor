@@ -11,9 +11,12 @@ import requests.auth
 import utils
 import scs_auth
 
-SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services/collector"
-HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
-DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}
+# SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services/collector"
+SPLUNK_HEC_URL = "http://192.168.1.172:10080/services/collector"
+
+# HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
+# DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}
+DEFAULT_HEADERS = {}
 
 CREDSFILE_RAW = os.path.join(constants.CREDS_DIR, "credentials.raw")
 CREDSFILE_TOKEN = os.path.join(constants.CREDS_DIR, "credentials.token")
@@ -72,6 +75,11 @@ class SplunkHandler(object):
 
         logger.info("response: %s", r)
         if r.status_code == 200:
+            body = r.text
+            logger.info({
+                "message": "splunk post succeeded",
+                "response": body
+            })
             return r.json()
         else:
             request_id = r.headers["x-request-id"]
@@ -370,8 +378,7 @@ class SplunkMetricsSCSHandler(SplunkMetricsHandler):
         return json.dumps(data, indent=4)
 
 
-def send(gem, kinds=None, source=None,
-         sourcetype="electricity", logger=None):
+def send(gem, kinds=None, source=None, logger=None):
     if not logger:
         logger = logging
 
@@ -379,11 +386,11 @@ def send(gem, kinds=None, source=None,
     for kind in kinds:
         if kind == constants.SPLUNK_EVENTS:
             handlers.append(SplunkEventsHandler(gem, source=source,
-                                                sourcetype=sourcetype,
+                                                sourcetype='electricity-events',
                                                 logger=logger))
         elif kind == constants.SPLUNK_METRICS:
             handlers.append(SplunkMetricsHandler(gem, source=source,
-                                                 sourcetype=sourcetype,
+                                                 sourcetype='electricity-metrics',
                                                  logger=logger))
         elif kind == constants.SPLUNK_METRICS_SCS:
             pattern = CREDSFILE_RAW + ".*"
@@ -399,7 +406,7 @@ def send(gem, kinds=None, source=None,
                 environment = parts[-3]
                 handlers.append(SplunkMetricsSCSHandler(
                     gem, tenant, environment=environment,
-                    source=source, sourcetype=sourcetype, logger=logger))
+                    source=source, sourcetype='electricity-events', logger=logger))
 
     success = True
     for handler in handlers:

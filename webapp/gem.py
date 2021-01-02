@@ -154,6 +154,9 @@ class GEM(object):
             channel_info = {
                 constants.CHANNEL_NAME: channel,
                 constants.CHANNEL_NUMBER: channel,
+                constants.BIAS: constants.UNKNOWN,
+                constants.CATEGORY: constants.UNKNOWN,
+                constants.FUNCTION: constants.UNKNOWN,
             }
 
         name = channel_info[constants.CHANNEL_NAME]
@@ -166,5 +169,8 @@ class GEM(object):
             }
             self._electricity[name]["dimensions"] = channel_info
             self._electricity[name]["dimensions"][constants.CHANNEL_NUMBER] = channel
+            self._electricity[name]["dimensions"][constants.BIAS] = channel_info[constants.BIAS]
+            self._electricity[name]["dimensions"][constants.CATEGORY] = channel_info[constants.CATEGORY]
+            self._electricity[name]["dimensions"][constants.FUNCTION] = channel_info[constants.FUNCTION]
 
         self._electricity[name][type] = val

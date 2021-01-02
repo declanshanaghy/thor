@@ -2,145 +2,145 @@
   "electricity": {
     "1": {
       "channel_name": "Oven & Microwave",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "cooking"
     },
     "3": {
       "channel_name": "Kitchen Lights & Family Room Sockets",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "living area"
     },
     "4": {
       "channel_name": "Family Room Lights & Living Room Sockets",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "living area"
     },
     "5": {
       "channel_name": "Laundry & Garage Outlets",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "workshop power"
     },
     "6": {
       "channel_name": "Garage Lights",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "garage lighting"
     },
     "7": {
       "channel_name": "Dryer",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "cleaning"
     },
     "9": {
       "channel_name": "Dishwasher",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "cleaning"
     },
     "10": {
       "channel_name": "Furnace & Cameras",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "heating"
     },
     "13": {
       "channel_name": "Master Bedroom & Office",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "bedrooms"
     },
     "14": {
       "channel_name": "Compactor",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "cleaning"
     },
     "16": {
       "channel_name": "Other Bedrooms & Hall",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "bedrooms"
     },
     "17": {
       "channel_name": "Washer & Dryer",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "cleaning"
     },
     "18": {
       "channel_name": "Kitchen GFI Sockets",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "kitchen"
     },
     "19": {
       "channel_name": "Bathroom GFI Sockets",
-      "kind": "sink",
+      "bias": "sink",
       "category": "accessory",
       "function": "bathroom"
     },
     "20": {
       "channel_name": "Kitchen Fridge & Sockets",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "refrigeration"
     },
     "21": {
       "channel_name": "Garage Fridge",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "refrigeration"
     },
     "22": {
       "channel_name": "Master Bathroom Floor",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "heating"
     },
     "23": {
       "channel_name": "Spa",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "entertainment"
     },
     "24": {
       "channel_name": "Grid",
-      "kind": "source",
+      "bias": "source",
       "category": "grid",
       "function": "source"
     },
     "25": {
       "channel_name": "Solar",
-      "kind": "source",
+      "bias": "source",
       "category": "solar",
       "function": "source"
     },
     "26": {
       "channel_name": "Garage Right",
-      "kind": "sink",
+      "bias": "sink",
       "category": "garage",
       "function": "workshop power"
     },
     "27": {
       "channel_name": "Garage Left",
-      "kind": "sink",
+      "bias": "sink",
       "category": "garage",
       "function": "workshop power"
     },
     "29": {
       "channel_name": "Air Conditioner",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "cooling"
     },
     "31": {
       "channel_name": "Stove",
-      "kind": "sink",
+      "bias": "sink",
       "category": "appliance",
       "function": "cooking"
     }

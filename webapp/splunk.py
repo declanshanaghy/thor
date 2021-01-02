@@ -168,17 +168,16 @@ class SplunkMetricsHandler(SplunkHandler):
         self.records = [m]
 
         for data in self.gem.electricity:
-            for kind in [constants.CURRENT, constants.POWER,
+            for metric in [constants.CURRENT, constants.POWER,
                          constants.ENERGY]:
                 m = {
-                    "metric_name": kind,
-                    "_value": data[kind],
-                    constants.CHANNEL_NUMBER: data.get(
-                        constants.CHANNEL_NUMBER, ""),
-                    constants.CHANNEL_NAME: data.get(constants.CHANNEL_NAME,
-                                                     ""),
+                    "metric_name": metric,
+                    "_value": data[metric],
+                    constants.CHANNEL_NUMBER: data.get(constants.CHANNEL_NUMBER, ""),
+                    constants.CHANNEL_NAME: data.get(constants.CHANNEL_NAME,""),
                 }
                 m.update(default_dimensions)
+                m.update(data["dimensions"])
                 self.records.append(m)
 
         for data in self.gem.temperature:
@@ -331,12 +330,12 @@ class SplunkMetricsSCSHandler(SplunkMetricsHandler):
         self.records = [m]
 
         for data in self.gem.electricity:
-            for kind in [constants.CURRENT, constants.POWER,
+            for metric in [constants.CURRENT, constants.POWER,
                          constants.ENERGY]:
                 m = {
-                    "name": kind,
-                    "value": data[kind],
-                    "unit": constants.UNITS[kind],
+                    "name": metric,
+                    "value": data[metric],
+                    "unit": constants.UNITS[metric],
                     "dimensions": data["dimensions"]
                 }
                 self.records.append(m)

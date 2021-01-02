@@ -21,6 +21,7 @@ DEFAULT_HEADERS = {}
 CREDSFILE_RAW = os.path.join(constants.CREDS_DIR, "credentials.raw")
 CREDSFILE_TOKEN = os.path.join(constants.CREDS_DIR, "credentials.token")
 
+
 class SplunkHandler(object):
     knd = None
     gem = None

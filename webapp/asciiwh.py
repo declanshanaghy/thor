@@ -117,7 +117,7 @@ class ASCIIWH(object):
                 self.data = self.data.strip() # Ensure all CRs are removed
                 ret = self.g.process(
                     self,
-                    kinds=(constants.SPLUNK_METRICS_SCS,)
+                    kinds=(constants.SPLUNK_METRICS,)
                 )
                 logging.info({
                     "message": "Received result",

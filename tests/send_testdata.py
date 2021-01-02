@@ -39,6 +39,7 @@ def newseg_data():
 
 
 def send_ascii():
+    """Load ascii data from file, parse it and send directly to a final destination"""
     data = ascii_data()
     a = asciiwh.ASCIIWH()
     a.data = data
@@ -48,6 +49,7 @@ def send_ascii():
 
 
 def send_ascii_tcp():
+    """Sends raw ascii data to a TCP socket. The server will send it on to it's final destination"""
     data = ascii_data()
 
     # Create a TCP/IP socket
@@ -88,8 +90,8 @@ if __name__ == "__main__":
                                                 'oneoff.log'))
     while True:
         # send_newseg()
-        send_ascii()
-        # send_ascii_tcp()
+        # send_ascii()
+        send_ascii_tcp()
         # send_newseg_request()
         # send_ascii_request()
 

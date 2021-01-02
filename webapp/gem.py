@@ -1,6 +1,4 @@
-import time
 import logging
-import os
 import time
 
 import constants

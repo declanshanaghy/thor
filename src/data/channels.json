@@ -112,13 +112,13 @@
       "channel_name": "Grid",
       "bias": "source",
       "category": "grid",
-      "function": "source"
+      "function": "grid"
     },
     "25": {
       "channel_name": "Solar",
       "bias": "source",
       "category": "solar",
-      "function": "source"
+      "function": "solar"
     },
     "26": {
       "channel_name": "Garage Right",

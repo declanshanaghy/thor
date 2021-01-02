@@ -14,7 +14,6 @@ LOG_LEVEL = os.environ.get('LOG_LEVEL', "info")
 LOG_STDOUT = os.environ.get('LOG_STDOUT', False) == 'True'
 LOG_DATA_STDOUT = os.environ.get('LOG_DATA_STDOUT', False) == 'True'
 LOG_REQUESTS = os.environ.get('LOG_REQUESTS', None)
-LOG_FILE_WEB = os.path.join(LOG_DIR, 'thor-web.log')
 LOG_FILE_ASCIIWH = os.path.join(LOG_DIR, 'thor-asciiwh.log')
 
 LOG_FS_ENABLED = os.environ.get('LOG_FS_ENABLED', False) == 'True'

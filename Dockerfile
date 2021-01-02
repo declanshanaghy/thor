@@ -12,7 +12,7 @@ ENV LOG_FS_ENABLED=False
 #ENV LOG_DIR=/tmp/logs
 #ENV CREDS_DIR=/tmp/creds
 
-COPY webapp /webapp
-RUN pip install -r webapp/requirements.txt
+COPY src /thor
+RUN pip install -r /thor/requirements.txt
 
-CMD ["python2", "/webapp/asciiwh.py"]
+CMD ["python2", "/thor/asciiwh.py"]

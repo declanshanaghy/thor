@@ -7,7 +7,7 @@ Thor is the all knowing & all mighty of all things](img/thor.jpg)
 ## Overview
 
 Thor receives data from the [Brultech GreenEye's](http://www.brultech.com/greeneye/) on 
-the ground which are producing data using the [ASCII-WH data format](src/data/example_in.asciiwh) 
+the ground which are producing data using the [ASCII-WH data format](src/data/example_in_tcp_asciiwh.txt) 
 and translates that into something [easily usable](src/data/example_out_splunk_metrics.json)
 by an an analytics system.
 

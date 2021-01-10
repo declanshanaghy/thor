@@ -12,7 +12,7 @@ import utils
 import scs_auth
 
 # SPLUNK_HEC_URL = "http://thor.shanaghy.com:8088/services/collector"
-SPLUNK_HEC_URL = "http://thor:10080/services/collector"
+SPLUNK_HEC_URL = "http://cribl:10080/services/collector"
 
 # HEC_TOKEN = "B840C47D-FDF9-4C94-AD7F-EC92FD289204"
 # DEFAULT_HEADERS = {"Authorization": "Splunk " + HEC_TOKEN}

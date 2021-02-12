@@ -1,0 +1,116 @@
+{
+  "conf": {
+    "output": "default",
+    "groups": {},
+    "asyncFuncTimeout": 1000,
+    "functions": [
+      {
+        "filter": "true",
+        "conf": {
+          "add": [
+            {
+              "name": "_raw",
+              "value": "query.split(/&(?=wh_|t_)/)"
+            }
+          ],
+          "keep": [
+            "n",
+            "m",
+            "_raw.*",
+            "_raw"
+          ],
+          "remove": [
+            "*"
+          ]
+        },
+        "id": "eval",
+        "description": "split query into groups of KV paris to work with - keep only relevant fields"
+      },
+      {
+        "filter": "true",
+        "conf": {
+          "srcExpr": "_raw",
+          "dstField": "_raw"
+        },
+        "id": "unroll",
+        "description": "unroll each KV pair into its own event"
+      },
+      {
+        "filter": "true",
+        "conf": {
+          "source": "_raw",
+          "iterations": 100,
+          "overwrite": false,
+          "regex": "/wh_(?<circuit_id>\\d+)/"
+        },
+        "id": "regex_extract",
+        "description": "extract circuit id"
+      },
+      {
+        "filter": "true",
+        "conf": {
+          "rules": [
+            {
+              "matchRegex": "/_\\d+/g",
+              "replaceExpr": "''"
+            }
+          ],
+          "fields": [
+            "_raw"
+          ]
+        },
+        "id": "mask",
+        "description": "get rid of ids in field values"
+      },
+      {
+        "filter": "true",
+        "conf": {
+          "mode": "extract",
+          "type": "kvp",
+          "srcField": "_raw",
+          "cleanFields": false
+        },
+        "id": "serde",
+        "description": "parse into kv pairs",
+        "disabled": false
+      },
+      {
+        "filter": "a == null",
+        "conf": {},
+        "id": "drop",
+        "description": "filter out invalid events",
+        "disabled": false
+      },
+      {
+        "filter": "true",
+        "conf": {
+          "fields": [
+            {
+              "metricType": "counter",
+              "inFieldName": "a",
+              "outFieldExpr": "'amps'"
+            },
+            {
+              "metricType": "counter",
+              "inFieldName": "wh",
+              "outFieldExpr": "'watthour'"
+            },
+            {
+              "metricType": "counter",
+              "inFieldName": "p",
+              "outFieldExpr": "'power'"
+            }
+          ],
+          "dimensions": [
+            "!_*",
+            "*"
+          ],
+          "overwrite": false
+        },
+        "id": "publish_metrics",
+        "disabled": false
+      }
+    ]
+  },
+  "id": "gem-power"
+}
